@@ -354,9 +354,32 @@
     </section>
 
    <footer class="border-t border-black/10 bg-[#f7f3ee]">
-  <div class="mx-auto max-w-7xl px-6 py-8 text-center text-sm">
-    <div class="font-bold uppercase tracking-[0.2em]">
-      Made with ❤️ in Thailand
+  <div class="mx-auto max-w-7xl px-6 py-10 text-center">
+
+    <!-- Branding -->
+    <div class="mb-4 text-xs uppercase tracking-[0.4em] text-black/60">
+      Currywurst & Kokosmilch
     </div>
+
+    <!-- Animated Text -->
+    <div class="text-sm font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+      Made with 
+      <span class="heart">❤️</span>
+      in Thailand
+    </div>
+
   </div>
 </footer>
+
+<style>
+  .heart {
+    display: inline-block;
+    animation: pulse 1.4s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+</style>
