@@ -9,9 +9,14 @@
     content="Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand."
   />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     html {
       scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
     }
 
     .heart {
@@ -21,69 +26,105 @@
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.18); }
       100% { transform: scale(1); }
     }
 
-    .bird {
+    /* Premium flying objects */
+    .flying-item {
       position: fixed;
       left: -120px;
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
       pointer-events: none;
-      z-index: 20;
-      opacity: 0.8;
+      z-index: 5;
+      opacity: 0.16;
     }
 
-    .bird svg {
+    .flying-item svg {
       width: 100%;
       height: 100%;
       display: block;
+      fill: #000;
     }
 
-    .bird1 { top: 18%; animation: fly1 16s linear infinite; }
-    .bird2 { top: 34%; animation: fly2 21s linear infinite; }
-    .bird3 { top: 58%; animation: fly3 26s linear infinite; }
+    .curry1 { top: 16%; animation: flyCurry1 20s linear infinite; }
+    .curry2 { top: 58%; animation: flyCurry2 28s linear infinite; }
+    .coco1  { top: 32%; animation: flyCoco1 24s linear infinite; }
+    .coco2  { top: 74%; animation: flyCoco2 32s linear infinite; }
 
-    @keyframes fly1 {
-      0%   { transform: translateX(0) translateY(0) scale(0.95); opacity: 0; }
-      8%   { opacity: 0.8; }
-      45%  { transform: translateX(55vw) translateY(-24px) scale(1); }
-      100% { transform: translateX(120vw) translateY(12px) scale(0.95); opacity: 0; }
+    @keyframes flyCurry1 {
+      0%   { transform: translateX(0) translateY(0) rotate(0deg) scale(0.95); opacity: 0; }
+      8%   { opacity: 0.14; }
+      48%  { transform: translateX(55vw) translateY(-24px) rotate(120deg) scale(1); }
+      100% { transform: translateX(120vw) translateY(16px) rotate(220deg) scale(0.96); opacity: 0; }
     }
 
-    @keyframes fly2 {
-      0%   { transform: translateX(0) translateY(0) scale(0.9); opacity: 0; }
-      10%  { opacity: 0.7; }
-      50%  { transform: translateX(62vw) translateY(18px) scale(1.05); }
-      100% { transform: translateX(120vw) translateY(-18px) scale(0.9); opacity: 0; }
+    @keyframes flyCurry2 {
+      0%   { transform: translateX(0) translateY(0) rotate(0deg) scale(1); opacity: 0; }
+      10%  { opacity: 0.12; }
+      52%  { transform: translateX(62vw) translateY(18px) rotate(-90deg) scale(1.05); }
+      100% { transform: translateX(120vw) translateY(-18px) rotate(-180deg) scale(1); opacity: 0; }
     }
 
-    @keyframes fly3 {
-      0%   { transform: translateX(0) translateY(0) scale(1); opacity: 0; }
-      12%  { opacity: 0.65; }
-      48%  { transform: translateX(48vw) translateY(-34px) scale(1.08); }
-      100% { transform: translateX(120vw) translateY(24px) scale(1); opacity: 0; }
+    @keyframes flyCoco1 {
+      0%   { transform: translateX(0) translateY(0) rotate(0deg) scale(0.92); opacity: 0; }
+      10%  { opacity: 0.16; }
+      48%  { transform: translateX(50vw) translateY(-34px) rotate(70deg) scale(1); }
+      100% { transform: translateX(120vw) translateY(18px) rotate(120deg) scale(0.94); opacity: 0; }
+    }
+
+    @keyframes flyCoco2 {
+      0%   { transform: translateX(0) translateY(0) rotate(0deg) scale(1); opacity: 0; }
+      12%  { opacity: 0.13; }
+      50%  { transform: translateX(58vw) translateY(22px) rotate(-65deg) scale(1.06); }
+      100% { transform: translateX(120vw) translateY(-26px) rotate(-110deg) scale(1); opacity: 0; }
+    }
+
+    .soft-shadow {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
   </style>
 </head>
 
 <body class="bg-[#f7f3ee] text-black antialiased">
 
-  <!-- Animated Birds -->
-  <div class="bird bird1" aria-hidden="true">
-    <svg viewBox="0 0 64 64" fill="none">
-      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+  <!-- Premium Flying Currywurst & Coconut Silhouettes -->
+  <div class="flying-item curry1" aria-hidden="true">
+    <svg viewBox="0 0 64 64">
+      <g transform="rotate(-18 32 32)">
+        <rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect>
+        <path d="M16 22 C22 18, 28 18, 34 22 C40 26, 46 26, 52 22" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+        <path d="M14 42 C20 38, 28 38, 34 42 C40 46, 46 46, 50 42" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      </g>
     </svg>
   </div>
-  <div class="bird bird2" aria-hidden="true">
-    <svg viewBox="0 0 64 64" fill="none">
-      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+
+  <div class="flying-item curry2" aria-hidden="true">
+    <svg viewBox="0 0 64 64">
+      <g transform="rotate(12 32 32)">
+        <rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect>
+        <path d="M16 22 C22 18, 28 18, 34 22 C40 26, 46 26, 52 22" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+        <path d="M14 42 C20 38, 28 38, 34 42 C40 46, 46 46, 50 42" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      </g>
     </svg>
   </div>
-  <div class="bird bird3" aria-hidden="true">
-    <svg viewBox="0 0 64 64" fill="none">
-      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+
+  <div class="flying-item coco1" aria-hidden="true">
+    <svg viewBox="0 0 64 64">
+      <path d="M32 10 C22 10 14 18 14 28 C14 42 24 54 32 54 C40 54 50 42 50 28 C50 18 42 10 32 10 Z"></path>
+      <path d="M28 14 C28 14 24 8 18 6" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M32 14 C32 14 32 7 28 3" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M36 14 C36 14 40 8 46 6" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+    </svg>
+  </div>
+
+  <div class="flying-item coco2" aria-hidden="true">
+    <svg viewBox="0 0 64 64">
+      <path d="M32 10 C22 10 14 18 14 28 C14 42 24 54 32 54 C40 54 50 42 50 28 C50 18 42 10 32 10 Z"></path>
+      <path d="M28 14 C28 14 24 8 18 6" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M32 14 C32 14 32 7 28 3" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M36 14 C36 14 40 8 46 6" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"></path>
     </svg>
   </div>
 
@@ -151,7 +192,7 @@
         </div>
 
         <div class="grid gap-5">
-          <div class="rounded-[2rem] border border-black/10 bg-white p-5 shadow-sm">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-5 soft-shadow">
             <div class="mb-4 flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-[0.25em]">Die Hosts</span>
               <span class="rounded-full bg-black px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white">Podcast</span>
@@ -182,7 +223,7 @@
             </div>
           </div>
 
-          <div class="rounded-[2rem] border border-black/15 bg-black p-7 text-white shadow-sm">
+          <div class="rounded-[2rem] border border-black/15 bg-black p-7 text-white soft-shadow">
             <div class="text-xs font-bold uppercase tracking-[0.25em] text-white/60">Worum es geht</div>
             <p class="mt-4 text-2xl font-bold leading-tight">
               Kein glattgebügelter Auswanderer-Talk. Sondern ehrliche Gespräche über Entscheidungen, Zweifel, Kinder, Freiheit und den Preis für ein anderes Leben.
@@ -225,21 +266,21 @@
         </div>
 
         <div class="grid gap-5 md:grid-cols-3">
-          <div class="rounded-[2rem] border border-black/10 bg-white p-7">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-7 soft-shadow">
             <div class="text-xl font-black uppercase">Familie</div>
             <p class="mt-4 leading-7 text-black/75">
               Wie verändert ein neues Land den Familienalltag, die Beziehung, die Rollen und den Blick auf die Zukunft?
             </p>
           </div>
 
-          <div class="rounded-[2rem] border border-black/10 bg-white p-7">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-7 soft-shadow">
             <div class="text-xl font-black uppercase">Freiheit</div>
             <p class="mt-4 leading-7 text-black/75">
               Was bleibt, wenn Sicherheit wegfällt und man sich ehrlich fragen muss, wie man eigentlich leben will?
             </p>
           </div>
 
-          <div class="rounded-[2rem] border border-black/10 bg-white p-7">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-7 soft-shadow">
             <div class="text-xl font-black uppercase">Real Talk</div>
             <p class="mt-4 leading-7 text-black/75">
               Ohne Filter, ohne Auswanderer-Romantik – dafür mit Klartext, echten Erfahrungen und einer guten Portion Humor.
@@ -263,7 +304,7 @@
         </div>
 
         <div class="grid gap-5 lg:grid-cols-3">
-          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7">
+          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7 soft-shadow">
             <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
               Neustart
             </div>
@@ -273,7 +314,7 @@
             </p>
           </article>
 
-          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7">
+          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7 soft-shadow">
             <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
               Family Life
             </div>
@@ -283,7 +324,7 @@
             </p>
           </article>
 
-          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7">
+          <article class="rounded-[2rem] border border-black/10 bg-[#f7f3ee] p-7 soft-shadow">
             <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
               Freiheit
             </div>
@@ -305,7 +346,7 @@
         </div>
 
         <div class="grid gap-8 lg:grid-cols-2">
-          <div class="rounded-[2rem] border border-black/10 bg-white p-8">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-8 soft-shadow">
             <div class="mb-6 flex items-center gap-4">
               <img src="patrick.jpg" alt="Patrick" class="h-28 w-28 rounded-full border border-black/10 object-cover" />
               <div>
@@ -318,7 +359,7 @@
             </p>
           </div>
 
-          <div class="rounded-[2rem] border border-black/10 bg-white p-8">
+          <div class="rounded-[2rem] border border-black/10 bg-white p-8 soft-shadow">
             <div class="mb-6 flex items-center gap-4">
               <img src="du.jpg" alt="Christian" class="h-28 w-28 rounded-full border border-black/10 object-cover" />
               <div>
