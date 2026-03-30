@@ -9,10 +9,85 @@
     content="Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand."
   />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .heart {
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .bird {
+      position: fixed;
+      left: -120px;
+      width: 52px;
+      height: 52px;
+      pointer-events: none;
+      z-index: 20;
+      opacity: 0.8;
+    }
+
+    .bird svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .bird1 { top: 18%; animation: fly1 16s linear infinite; }
+    .bird2 { top: 34%; animation: fly2 21s linear infinite; }
+    .bird3 { top: 58%; animation: fly3 26s linear infinite; }
+
+    @keyframes fly1 {
+      0%   { transform: translateX(0) translateY(0) scale(0.95); opacity: 0; }
+      8%   { opacity: 0.8; }
+      45%  { transform: translateX(55vw) translateY(-24px) scale(1); }
+      100% { transform: translateX(120vw) translateY(12px) scale(0.95); opacity: 0; }
+    }
+
+    @keyframes fly2 {
+      0%   { transform: translateX(0) translateY(0) scale(0.9); opacity: 0; }
+      10%  { opacity: 0.7; }
+      50%  { transform: translateX(62vw) translateY(18px) scale(1.05); }
+      100% { transform: translateX(120vw) translateY(-18px) scale(0.9); opacity: 0; }
+    }
+
+    @keyframes fly3 {
+      0%   { transform: translateX(0) translateY(0) scale(1); opacity: 0; }
+      12%  { opacity: 0.65; }
+      48%  { transform: translateX(48vw) translateY(-34px) scale(1.08); }
+      100% { transform: translateX(120vw) translateY(24px) scale(1); opacity: 0; }
+    }
+  </style>
 </head>
 
 <body class="bg-[#f7f3ee] text-black antialiased">
 
+  <!-- Animated Birds -->
+  <div class="bird bird1" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none">
+      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+    </svg>
+  </div>
+  <div class="bird bird2" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none">
+      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+    </svg>
+  </div>
+  <div class="bird bird3" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none">
+      <path d="M6 36 C16 20, 26 18, 32 26 C38 18, 48 20, 58 36 C49 31, 40 31, 32 36 C24 31, 15 31, 6 36 Z" fill="black"/>
+    </svg>
+  </div>
+
+  <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-black/10 bg-[#28d7cf]">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
       <div>
@@ -32,7 +107,7 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="border-b border-black/10 bg-[#f7f3ee]">
       <div class="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-10 lg:py-24">
 
@@ -79,7 +154,7 @@
           <div class="rounded-[2rem] border border-black/10 bg-white p-5 shadow-sm">
             <div class="mb-4 flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-[0.25em]">Die Hosts</span>
-              <span class="rounded-full bg-black px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white">Podcast Cast</span>
+              <span class="rounded-full bg-black px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white">Podcast</span>
             </div>
 
             <div class="grid gap-4">
@@ -114,11 +189,10 @@
             </p>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- PODCAST -->
+    <!-- Podcast -->
     <section id="podcast" class="border-b border-black/10 bg-white">
       <div class="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
         <div>
@@ -142,7 +216,7 @@
       </div>
     </section>
 
-    <!-- WHY -->
+    <!-- Warum -->
     <section class="border-b border-black/10 bg-[#f7f3ee]">
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div class="mb-10">
@@ -175,7 +249,7 @@
       </div>
     </section>
 
-    <!-- FOLGEN -->
+    <!-- Folgen -->
     <section id="folgen" class="border-b border-black/10 bg-white">
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
@@ -222,7 +296,7 @@
       </div>
     </section>
 
-    <!-- HOSTS -->
+    <!-- Hosts -->
     <section id="hosts" class="border-b border-black/10 bg-[#f7f3ee]">
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div class="mb-10">
@@ -260,7 +334,7 @@
       </div>
     </section>
 
-    <!-- SPOTIFY EMBED / PLATTFORMEN -->
+    <!-- Plattformen -->
     <section id="plattformen" class="border-b border-black/10 bg-black text-white">
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div class="mb-10 text-center">
@@ -272,7 +346,6 @@
           <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
             <div class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-white/60">Spotify</div>
 
-            <!-- Sobald dein Spotify-Link da ist, nur den src-Link ersetzen -->
             <iframe
               style="border-radius:24px"
               src="https://open.spotify.com/embed/show/placeholder"
@@ -322,7 +395,7 @@
       </div>
     </section>
 
-    <!-- KONTAKT -->
+    <!-- Kontakt -->
     <section id="kontakt" class="bg-[#f7f3ee]">
       <div class="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1fr_auto] lg:px-10">
         <div>
@@ -353,67 +426,20 @@
       </div>
     </section>
 
-   <footer class="border-t border-black/10 bg-[#f7f3ee]">
-  <div class="mx-auto max-w-7xl px-6 py-10 text-center">
+    <!-- Footer -->
+    <footer class="border-t border-black/10 bg-[#f7f3ee]">
+      <div class="mx-auto max-w-7xl px-6 py-10 text-center">
+        <div class="mb-4 text-xs uppercase tracking-[0.4em] text-black/60">
+          Currywurst & Kokosmilch
+        </div>
 
-    <!-- Branding -->
-    <div class="mb-4 text-xs uppercase tracking-[0.4em] text-black/60">
-      Currywurst & Kokosmilch
-    </div>
+        <div class="flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-[0.2em]">
+          Made with <span class="heart">❤️</span> in Thailand
+        </div>
+      </div>
+    </footer>
 
-    <!-- Animated Text -->
-    <div class="text-sm font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-      Made with 
-      <span class="heart">❤️</span>
-      in Thailand
-    </div>
+  </main>
 
-  </div>
-</footer>
-
-<style>
-  .heart {
-    display: inline-block;
-    animation: pulse 1.4s infinite;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25); }
-    100% { transform: scale(1); }
-  }
-</style>
-
-    <!-- Vogel -->
-<div class="bird"></div>
-
-<style>
-.bird {
-  position: fixed;
-  top: 20%;
-  left: -80px;
-  width: 60px;
-  height: 60px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/5/5f/Black_bird_icon.svg') no-repeat center/contain;
-  opacity: 0.8;
-  pointer-events: none;
-  animation: flyAcross 12s linear infinite;
-}
-
-@keyframes flyAcross {
-  0% {
-    transform: translateX(0) translateY(0) scale(1);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(50vw) translateY(-40px) scale(1.1);
-  }
-  100% {
-    transform: translateX(110vw) translateY(20px) scale(1);
-    opacity: 0;
-  }
-}
-</style>
+</body>
+</html>
