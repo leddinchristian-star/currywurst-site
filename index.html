@@ -8,6 +8,7 @@
     name="description"
     content="Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand."
   />
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -17,358 +18,281 @@
 
     body {
       overflow-x: hidden;
-      background: #f7f3ee;
+      background: #f5f1ea;
       color: #111111;
-    }
-
-    .heart {
-      display: inline-block;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.18); }
-      100% { transform: scale(1); }
-    }
-
-    .float-item {
-      position: fixed;
-      left: -120px;
-      width: 58px;
-      height: 58px;
-      pointer-events: none;
-      z-index: 5;
-      opacity: 0.06;
-    }
-
-    .float-item svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      fill: #111111;
-    }
-
-    .curry-a { top: 14%; animation: flyA 22s linear infinite; }
-    .curry-b { top: 60%; animation: flyB 30s linear infinite; }
-    .coco-a  { top: 34%; animation: flyC 26s linear infinite; }
-    .coco-b  { top: 78%; animation: flyD 35s linear infinite; }
-
-    @keyframes flyA {
-      0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.06; }
-      50%  { transform: translateX(55vw) translateY(-16px) rotate(80deg); }
-      100% { transform: translateX(120vw) translateY(10px) rotate(160deg); opacity: 0; }
-    }
-
-    @keyframes flyB {
-      0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.05; }
-      50%  { transform: translateX(60vw) translateY(16px) rotate(-70deg); }
-      100% { transform: translateX(120vw) translateY(-12px) rotate(-140deg); opacity: 0; }
-    }
-
-    @keyframes flyC {
-      0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.06; }
-      50%  { transform: translateX(48vw) translateY(-26px) rotate(55deg); }
-      100% { transform: translateX(120vw) translateY(16px) rotate(110deg); opacity: 0; }
-    }
-
-    @keyframes flyD {
-      0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.05; }
-      50%  { transform: translateX(58vw) translateY(14px) rotate(-45deg); }
-      100% { transform: translateX(120vw) translateY(-22px) rotate(-90deg); opacity: 0; }
     }
 
     .hero-bg {
       position: relative;
-      min-height: 86vh;
+      min-height: 100vh;
       background:
-        linear-gradient(90deg, rgba(17,17,17,0.80) 0%, rgba(17,17,17,0.62) 35%, rgba(17,17,17,0.28) 65%, rgba(17,17,17,0.22) 100%),
-        url('hero.jpg') center center / cover no-repeat;
+        linear-gradient(90deg, rgba(17,17,17,0.82) 0%, rgba(17,17,17,0.64) 38%, rgba(17,17,17,0.22) 68%, rgba(17,17,17,0.12) 100%),
+        url('hero.webp') center center / cover no-repeat;
     }
 
-    .hero-bg::after {
+    .hero-bg::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(40,215,207,0.20), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(229,139,42,0.16), transparent 28%);
+        radial-gradient(circle at top right, rgba(40,215,207,0.10), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(229,139,42,0.10), transparent 26%);
       pointer-events: none;
     }
 
-    .editorial-line {
-      border-color: rgba(17,17,17,0.1);
+    .hero-fade {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, rgba(245,241,234,0), #f5f1ea 92%);
+      pointer-events: none;
+    }
+
+    .section-line {
+      border-color: rgba(17,17,17,0.10);
+    }
+
+    .glass-panel {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .quiet-grid {
+      background-image:
+        linear-gradient(rgba(17,17,17,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,0.04) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    .heart {
+      display: inline-block;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.14); }
     }
   </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased selection:bg-[#28d7cf] selection:text-black">
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-10">
+      <div class="glass-panel flex items-center justify-between rounded-full border border-white/15 px-5 py-4 text-white shadow-[0_10px_50px_rgba(0,0,0,0.16)]">
+        <div>
+          <div class="text-[11px] font-black uppercase tracking-[0.34em]">Currywurst & Kokosmilch</div>
+          <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
+        </div>
 
-  <!-- Subtle animated shapes -->
-  <div class="float-item curry-a" aria-hidden="true">
-    <svg viewBox="0 0 64 64">
-      <g transform="rotate(-18 32 32)">
-        <rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect>
-        <path d="M16 22 C22 18, 28 18, 34 22 C40 26, 46 26, 52 22" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-        <path d="M14 42 C20 38, 28 38, 34 42 C40 46, 46 46, 50 42" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      </g>
-    </svg>
-  </div>
-
-  <div class="float-item curry-b" aria-hidden="true">
-    <svg viewBox="0 0 64 64">
-      <g transform="rotate(10 32 32)">
-        <rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect>
-        <path d="M16 22 C22 18, 28 18, 34 22 C40 26, 46 26, 52 22" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-        <path d="M14 42 C20 38, 28 38, 34 42 C40 46, 46 46, 50 42" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      </g>
-    </svg>
-  </div>
-
-  <div class="float-item coco-a" aria-hidden="true">
-    <svg viewBox="0 0 64 64">
-      <path d="M32 10 C22 10 14 18 14 28 C14 42 24 54 32 54 C40 54 50 42 50 28 C50 18 42 10 32 10 Z"></path>
-      <path d="M28 14 C28 14 24 8 18 6" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      <path d="M32 14 C32 14 32 7 28 3" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      <path d="M36 14 C36 14 40 8 46 6" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-    </svg>
-  </div>
-
-  <div class="float-item coco-b" aria-hidden="true">
-    <svg viewBox="0 0 64 64">
-      <path d="M32 10 C22 10 14 18 14 28 C14 42 24 54 32 54 C40 54 50 42 50 28 C50 18 42 10 32 10 Z"></path>
-      <path d="M28 14 C28 14 24 8 18 6" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      <path d="M32 14 C32 14 32 7 28 3" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-      <path d="M36 14 C36 14 40 8 46 6" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"></path>
-    </svg>
-  </div>
-
-  <header class="sticky top-0 z-50 border-b border-black/10 bg-[#28d7cf]">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-      <div>
-        <div class="text-xs font-black uppercase tracking-[0.4em]">Currywurst & Kokosmilch</div>
-        <div class="text-sm opacity-80">Podcast · Familie · Auswandern · Thailand</div>
+        <nav class="hidden items-center gap-7 text-sm font-semibold md:flex">
+          <a href="#story" class="transition hover:opacity-60">Story</a>
+          <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
+          <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
+          <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
+          <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
+        </nav>
       </div>
-
-      <nav class="hidden gap-8 text-sm font-semibold md:flex">
-        <a href="#story" class="transition hover:opacity-60">Story</a>
-        <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
-        <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
-        <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
-        <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
-      </nav>
     </div>
   </header>
 
   <main>
-
-    <!-- Hero with big background image -->
-    <section class="hero-bg border-b border-black/10">
-      <div class="relative z-10 mx-auto flex min-h-[86vh] max-w-7xl items-end px-6 py-16 lg:px-10 lg:py-24">
-        <div class="max-w-5xl text-white">
-          <div class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] backdrop-blur">
+    <section class="hero-bg overflow-hidden border-b border-black/10">
+      <div class="relative z-10 mx-auto grid min-h-screen max-w-7xl items-end gap-10 px-6 pb-20 pt-36 lg:grid-cols-[1.02fr_0.98fr] lg:px-10 lg:pb-24 lg:pt-40">
+        <div class="max-w-3xl text-white">
+          <div class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white/90 backdrop-blur-sm">
             Made in Thailand. Erzählt ohne Filter.
           </div>
 
-          <h1 class="text-5xl font-black uppercase leading-[0.9] md:text-7xl lg:text-[7.2rem]">
-            Wir haben Deutschland verlassen.
-            <br>
-            Und genau darüber sprechen wir.
+          <h1 class="mt-8 text-5xl font-black uppercase leading-[0.9] md:text-7xl lg:text-[6.2rem]">
+            Ein Podcast über Auswandern, Familie und ein neues Leben.
           </h1>
 
-          <p class="mt-8 max-w-3xl text-lg leading-8 text-white/85 md:text-xl">
-            Currywurst & Kokosmilch ist ein Podcast über Familie, Auswandern, Freiheit, Zweifel, Neuanfang und das echte Leben zwischen Deutschland und Thailand.
+          <p class="mt-8 max-w-2xl text-lg leading-8 text-white/82 md:text-xl">
+            Ehrliche Gespräche über Zweifel, Freiheit, Alltag, Neuanfang und das echte Leben zwischen Deutschland und Thailand.
           </p>
 
           <div class="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#plattformen"
-              class="rounded-full bg-[#E58B2A] px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black transition hover:-translate-y-0.5"
-            >
+            <a href="#plattformen" class="rounded-full bg-[#E58B2A] px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
               Jetzt hören
             </a>
-
-            <a
-              href="https://www.instagram.com/currywurstkokosmilch/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="rounded-full border border-white/30 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white hover:text-black"
-            >
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/25 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black">
               Instagram
             </a>
           </div>
+        </div>
 
-          <div class="mt-10 flex items-center gap-5 text-white/90">
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <rect x="3" y="3" width="18" height="18" rx="5" stroke-width="2"/>
-                <circle cx="12" cy="12" r="4" stroke-width="2"/>
-                <circle cx="17" cy="7" r="1.5" fill="currentColor"/>
-              </svg>
-            </a>
-
-            <a href="#plattformen" aria-label="Spotify">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 17.34c-.2.33-.63.44-.96.24-2.63-1.6-5.94-1.96-9.83-1.08-.38.09-.76-.15-.85-.53-.09-.38.15-.76.53-.85 4.23-.95 7.89-.54 10.9 1.24.33.2.44.63.24.96zm1.37-2.99c-.25.4-.78.53-1.18.28-3.01-1.85-7.6-2.39-11.16-1.3-.45.13-.92-.12-1.05-.57-.13-.45.12-.92.57-1.05 3.97-1.2 8.96-.6 12.5 1.51.4.25.53.78.28 1.18zm.12-3.13c-3.61-2.15-9.56-2.35-13-.96-.53.2-1.12-.07-1.32-.6-.2-.53.07-1.12.6-1.32 3.95-1.5 10.5-1.21 14.74 1.27.48.28.64.9.36 1.38-.28.48-.9.64-1.38.36z"/>
-              </svg>
-            </a>
-
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
-              </svg>
-            </a>
-
-            <a href="mailto:currywurstkokosmilch@gmail.com" aria-label="E-Mail">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </a>
+        <div class="hidden items-end justify-end lg:flex">
+          <div class="w-full max-w-[620px] rounded-[2rem] border border-white/10 bg-white/8 p-4 shadow-[0_20px_80px_rgba(0,0,0,0.22)] backdrop-blur-sm">
+            <div class="overflow-hidden rounded-[1.6rem] border border-white/10 bg-black/10">
+              <img src="hosts.webp" alt="Die Hosts von Currywurst & Kokosmilch" class="h-[640px] w-full object-cover object-center" loading="eager" />
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-fade"></div>
     </section>
 
-    <section id="story" class="border-b border-black/10 bg-white">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-        <div class="max-w-4xl">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Unsere Story</div>
-          <h2 class="mt-4 text-4xl font-black uppercase leading-tight md:text-6xl">
-            Ein neuer Ort.
-            <br>
-            Ein neues Leben.
-            <br>
-            Und genug Stoff für ehrliche Gespräche.
+    <section id="story" class="section-line border-b bg-[#f5f1ea]">
+      <div class="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Unsere Story</div>
+          <h2 class="mt-5 text-4xl font-black uppercase leading-tight md:text-6xl">
+            Raus aus dem alten Leben. Rein in etwas Echtes.
           </h2>
+        </div>
 
-          <p class="mt-8 text-xl leading-9 text-black/70">
-            Wir reden über das, was beim Auswandern wirklich passiert: Entscheidungen, Zweifel, Familie, Chaos, Alltag, Fehler, Freiheit – und alles, was man vorher gern romantisiert.
+        <div class="max-w-3xl">
+          <p class="text-xl leading-9 text-black/70">
+            Currywurst & Kokosmilch ist kein Hochglanz-Auswanderer-Märchen. Wir sprechen über das, was wirklich passiert: Entscheidungen unter Druck, Familienalltag, Unsicherheiten, mutige Schritte und die Frage, wie sich Freiheit tatsächlich anfühlt.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-black/58">
+            Kein Filter. Keine Fassade. Sondern ehrliche Gespräche zwischen zwei Menschen, die Deutschland hinter sich gelassen haben und ihren eigenen Weg in Thailand gehen.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="hosts" class="border-b border-black/10">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-        <div class="mb-12">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Die Hosts</div>
-          <h2 class="mt-4 text-4xl font-black uppercase md:text-6xl">Zwei Perspektiven. Ein ehrlicher Podcast.</h2>
+    <section id="hosts" class="section-line border-b bg-white">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Die Hosts</div>
+            <h2 class="mt-5 text-4xl font-black uppercase md:text-6xl">Zwei Stimmen. Eine echte Geschichte.</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-black/58">
+            Zwei Perspektiven, zwei Charaktere und ein gemeinsames Thema: Wie verändert sich das Leben, wenn man wirklich losgeht?
+          </p>
         </div>
 
-        <div class="grid gap-14 lg:grid-cols-2">
-          <div>
-            <img src="patrick.jpg" alt="Patrick" class="h-[460px] w-full rounded-[2rem] object-cover">
-            <h3 class="mt-6 text-3xl font-black uppercase">Patrick</h3>
-            <p class="mt-3 max-w-xl text-lg leading-8 text-black/70">
-              Die ruhige Kante. Direkt, trocken, ehrlich. Patrick bringt Struktur, Klarheit und genau die Fragen rein, denen man sonst gern ausweicht.
-            </p>
-          </div>
+        <div class="grid gap-8 lg:grid-cols-2">
+          <article class="rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
+            <div class="overflow-hidden rounded-[1.5rem]">
+              <img src="patrick.webp" alt="Patrick" class="h-[480px] w-full object-cover" loading="lazy" />
+            </div>
+            <div class="px-2 pb-2 pt-7">
+              <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Host 01</div>
+              <h3 class="mt-3 text-3xl font-black uppercase">Patrick</h3>
+              <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
+                Patrick ist Lehrer für Deutsch, Sport und Religion – und jemand, der Gespräche sammelt wie andere Briefmarken. Unterhaltsam, sportlich und redselig bringt er Geschichten, Tiefgang und Beobachtungen mit, die aus einem kurzen Austausch schnell einen ganzen Abend machen können.
+              </p>
+              <p class="mt-4 max-w-xl text-base leading-8 text-black/58">
+                Besonders geprägt haben ihn seine Reisen, etwa seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm. Im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt – über Bildung, Beziehungen, Familie, Auswandern und den ganzen Wahnsinn zwischen Currywurst und Kokosmilch.
+              </p>
+            </div>
+          </article>
 
-          <div>
-            <img src="du.jpg" alt="Christian" class="h-[460px] w-full rounded-[2rem] object-cover">
-            <h3 class="mt-6 text-3xl font-black uppercase">Christian</h3>
-            <p class="mt-3 max-w-xl text-lg leading-8 text-black/70">
-              Der wilde Gegenpol. Emotional, direkt und mit viel Energie. Christian bringt Reibung, Geschichten und eine ordentliche Portion Humor mit.
-            </p>
-          </div>
+          <article class="rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
+            <div class="overflow-hidden rounded-[1.5rem]">
+              <img src="christian.webp" alt="Christian" class="h-[480px] w-full object-cover" loading="lazy" />
+            </div>
+            <div class="px-2 pb-2 pt-7">
+              <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#28d7cf]">Host 02</div>
+              <h3 class="mt-3 text-3xl font-black uppercase">Christian</h3>
+              <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
+                Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon – Maschinenbau, Millionenprojekte, Holzklasse und Jetlag inklusive. Heute blickt er auf vieles davon mit der Klarheit von jemandem, der erkannt hat: Das Hamsterrad war optional.
+              </p>
+              <p class="mt-4 max-w-xl text-base leading-8 text-black/58">
+                Im Podcast bringt er die Perspektive eines ehemaligen System-Insiders mit, der irgendwann die Notbremse gezogen hat. Er spricht über Arbeit, Freiheit, Familie, Erfolg und die unbequemen Fragen dahinter – mal nachdenklich, mal ziemlich direkt, aber immer ehrlich.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="folgen" class="border-b border-black/10 bg-white">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-        <div class="mb-12">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Folgen</div>
-          <h2 class="mt-4 text-4xl font-black uppercase md:text-6xl">Themen, über die wir sprechen.</h2>
+    <section id="folgen" class="section-line quiet-grid border-b bg-[#f5f1ea]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div class="mb-14">
+          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Folgen</div>
+          <h2 class="mt-5 text-4xl font-black uppercase md:text-6xl">Worüber wir sprechen.</h2>
         </div>
 
-        <div class="grid gap-10 md:grid-cols-3">
-          <div class="border-t border-black/10 pt-6">
-            <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Neustart</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Warum wir Deutschland hinter uns lassen</h3>
-            <p class="mt-4 leading-7 text-black/70">
-              Zwischen Sicherheitsdenken, Sehnsucht nach Freiheit und der Frage, wie ein neues Leben für eine Familie wirklich beginnt.
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#E58B2A]">Neustart</div>
+            <h3 class="mt-4 text-2xl font-black leading-tight">Warum wir Deutschland verlassen haben</h3>
+            <p class="mt-4 leading-8 text-black/65">
+              Über Sehnsucht, Druck, Sicherheit, innere Konflikte und die ehrlichen Gründe hinter einer großen Entscheidung.
             </p>
-          </div>
+          </article>
 
-          <div class="border-t border-black/10 pt-6">
-            <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Family Life</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Familie, Chaos und Thailand-Alltag</h3>
-            <p class="mt-4 leading-7 text-black/70">
-              Ehrliche Gespräche über Auswandern mit Kindern, neue Routinen, kleine Krisen und große Glücksmomente.
+          <article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#28d7cf]">Familie</div>
+            <h3 class="mt-4 text-2xl font-black leading-tight">Alltag mit Kindern zwischen Chaos und Freiheit</h3>
+            <p class="mt-4 leading-8 text-black/65">
+              Zwischen Schulfragen, neuen Routinen, kleinen Krisen und genau den Momenten, die das Ganze lohnenswert machen.
             </p>
-          </div>
+          </article>
 
-          <div class="border-t border-black/10 pt-6">
-            <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Freiheit</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Mehr Freiheit, weniger Fassade</h3>
-            <p class="mt-4 leading-7 text-black/70">
-              Was passiert, wenn man aufhört zu funktionieren und anfängt, das eigene Leben bewusst zu gestalten.
+          <article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#111111]">Freiheit</div>
+            <h3 class="mt-4 text-2xl font-black leading-tight">Weniger Fassade. Mehr echtes Leben.</h3>
+            <p class="mt-4 leading-8 text-black/65">
+              Was sich verändert, wenn man aufhört zu funktionieren und beginnt, das eigene Leben bewusst neu aufzubauen.
             </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="plattformen" class="border-b border-black/10 bg-[#111111] text-white">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-        <div class="mb-12">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/50">Plattformen</div>
-          <h2 class="mt-4 text-4xl font-black uppercase md:text-6xl">Hören. Folgen. Weitererzählen.</h2>
+    <section id="plattformen" class="section-line border-b bg-[#111111] text-white">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/45">Plattformen</div>
+            <h2 class="mt-5 text-4xl font-black uppercase md:text-6xl">Hören. Folgen. Dabeibleiben.</h2>
+          </div>
+          <p class="max-w-xl text-lg leading-8 text-white/62">
+            Podcast, Clips, Behind the Scenes und Updates rund um euren Weg zwischen Deutschland und Thailand.
+          </p>
         </div>
 
-        <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <div class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-white/50">Spotify</div>
+        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+            <div class="mb-5 text-sm font-bold uppercase tracking-[0.24em] text-white/45">Spotify</div>
 
-            <iframe
-              style="border-radius:28px"
-              src="https://open.spotify.com/embed/show/placeholder"
-              width="100%"
-              height="352"
-              frameborder="0"
-              allowfullscreen=""
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy">
-            </iframe>
+            <button onclick="loadSpotify()" id="spotifyButton" class="rounded-full bg-[#E58B2A] px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
+              Spotify laden
+            </button>
 
-            <p class="mt-4 text-sm text-white/50">
-              Sobald dein Podcast live ist, ersetzen wir hier den Platzhalter durch deinen echten Spotify-Embed-Link.
+            <div id="spotifyEmbed" class="mt-6"></div>
+
+            <p class="mt-5 text-sm leading-7 text-white/45">
+              Trage hier später deinen echten Spotify-Embed-Link ein. Durch Lazy Loading lädt die Seite deutlich schneller.
             </p>
           </div>
 
-          <div class="flex flex-col gap-8">
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="border-t border-white/20 pt-6">
+          <div class="grid gap-5">
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
               <div class="flex items-center justify-between gap-4">
                 <div>
                   <div class="text-2xl font-black uppercase">Instagram</div>
-                  <p class="mt-3 leading-7 text-white/70">Behind the Scenes, Clips, Updates und Einblicke in euren Podcast-Alltag.</p>
+                  <p class="mt-3 leading-7 text-white/65">Clips, Storys, Einblicke und echte Momente aus eurem Alltag.</p>
                 </div>
-                <span class="text-[#E58B2A]">↗</span>
+                <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
             </a>
 
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="border-t border-white/20 pt-6">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
               <div class="flex items-center justify-between gap-4">
                 <div>
                   <div class="text-2xl font-black uppercase">YouTube</div>
-                  <p class="mt-3 leading-7 text-white/70">Später für Clips, Video-Podcast, Reels-Schnipsel und Highlights.</p>
+                  <p class="mt-3 leading-7 text-white/65">Für Videopodcast, Highlights, Shorts und längere Einblicke.</p>
                 </div>
-                <span class="text-[#E58B2A]">↗</span>
+                <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
             </a>
 
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="border-t border-white/20 pt-6">
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
               <div class="flex items-center justify-between gap-4">
                 <div>
                   <div class="text-2xl font-black uppercase">Kontakt</div>
-                  <p class="mt-3 leading-7 text-white/70">Für Kooperationen, Gäste oder Anfragen direkt per Mail.</p>
+                  <p class="mt-3 leading-7 text-white/65">Für Kooperationen, Gäste, Presse oder persönliche Anfragen.</p>
                 </div>
-                <span class="text-[#E58B2A]">↗</span>
+                <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
             </a>
           </div>
@@ -376,30 +300,26 @@
       </div>
     </section>
 
-    <section id="kontakt">
-      <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <section id="kontakt" class="bg-[#f5f1ea]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
         <div class="max-w-4xl">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/50">Kontakt</div>
-          <h2 class="mt-4 text-4xl font-black uppercase leading-tight md:text-6xl">
-            Bereit für Podcast,
-            <br>
-            Gäste oder Kooperationen?
+          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Kontakt</div>
+          <h2 class="mt-5 text-4xl font-black uppercase leading-tight md:text-6xl">
+            Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
           </h2>
 
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/70">
-            Schreib uns direkt per Mail oder folge uns auf Instagram und YouTube für Updates, neue Folgen und Einblicke hinter die Kulissen.
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/64">
+            Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
           </p>
 
           <div class="mt-10 flex flex-wrap gap-4">
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="rounded-full bg-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white">
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="rounded-full bg-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5">
               E-Mail senden
             </a>
-
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.2em]">
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#111111] hover:text-white">
               Instagram
             </a>
-
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#E58B2A] px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#E58B2A] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
               YouTube
             </a>
           </div>
@@ -407,15 +327,39 @@
       </div>
     </section>
 
-    <footer class="border-t border-black/10">
-      <div class="mx-auto max-w-7xl px-6 py-10 text-center">
-        <div class="text-sm font-bold uppercase tracking-[0.2em]">
+    <footer class="border-t border-black/10 bg-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-center lg:px-10">
+        <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/80">
           Made with <span class="heart">❤️</span> in Thailand
         </div>
       </div>
     </footer>
-
   </main>
 
+  <script>
+    function loadSpotify() {
+      const container = document.getElementById('spotifyEmbed');
+      const button = document.getElementById('spotifyButton');
+
+      if (container.innerHTML.trim() !== '') return;
+
+      container.innerHTML = `
+        <iframe
+          style="border-radius: 24px"
+          src="https://open.spotify.com/embed/show/placeholder"
+          width="100%"
+          height="352"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      `;
+
+      button.textContent = 'Spotify geladen';
+      button.disabled = true;
+      button.classList.add('opacity-70', 'cursor-default');
+    }
+  </script>
 </body>
 </html>
