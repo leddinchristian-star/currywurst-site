@@ -5,82 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Currywurst & Kokosmilch – Podcast über Auswandern, Familie & Freiheit</title>
   <meta name="description" content="Currywurst & Kokosmilch ist der Podcast über Auswandern, Familie, Freiheit, Zweifel, Neuanfang und das echte Leben zwischen Deutschland und Thailand." />
-  <script src="https://cdn.tailwindcss.com">function openLegal(type) {
-  const modal = document.getElementById('legalModal');
-  const panel = document.getElementById('legalPanel');
-  const title = document.getElementById('legalTitle');
-  const content = document.getElementById('legalContent');
-
-  if (type === 'impressum') {
-    title.textContent = 'Impressum';
-    content.innerHTML = `
-      <strong>Angaben gemäß § 5 TMG</strong><br><br>
-      Takoma Digital LLC<br>
-      Sheridan, Wyoming, USA<br><br>
-      E-Mail: info@takoma-digital.com<br><br>
-      Verantwortlich für den Inhalt:<br>
-      Takoma Digital LLC
-    `;
-  }
-
-  if (type === 'datenschutz') {
-    title.textContent = 'Datenschutz';
-    content.innerHTML = `
-      <strong>Datenschutzerklärung (Kurzfassung)</strong><br><br>
-      Diese Website dient ausschließlich der Bereitstellung von Informationen zu unserem Podcast.<br><br>
-      Personenbezogene Daten werden nur verarbeitet, wenn Sie diese aktiv über das Newsletter-Formular angeben.<br><br>
-      Für den Versand des Newsletters nutzen wir den Dienst Brevo (Sendinblue SAS, Frankreich). Dabei können Daten auf Servern innerhalb der EU gespeichert werden.<br><br>
-      Sie können sich jederzeit über den Abmeldelink im Newsletter austragen.<br><br>
-      Weitere Informationen erhalten Sie auf Anfrage per E-Mail.
-    `;;
-  }
-
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  modal.setAttribute('aria-hidden', 'false');
-  requestAnimationFrame(() => panel.classList.add('is-open'));
-}
-
-function closeLegal() {
-  const modal = document.getElementById('legalModal');
-  const panel = document.getElementById('legalPanel');
-  panel.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-  setTimeout(() => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  }, 220);
-}
-
-document.getElementById('legalModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'legalModal') closeLegal();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLegal();
-});
-
-</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-    .legal-backdrop {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .legal-panel {
-      transform: translateY(18px) scale(0.98);
-      opacity: 0;
-      transition: transform 0.28s ease, opacity 0.28s ease;
-    }
-
-    .legal-panel.is-open {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
     html { scroll-behavior: smooth; }
 
     body {
@@ -334,13 +264,6 @@ document.addEventListener('keydown', (e) => {
       transform: scale(1.05);
     }
 
-    .legal-card {
-      border: 1px solid rgba(17,17,17,0.08);
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
     .heart {
       display: inline-block;
       animation: pulse 1.6s ease-in-out infinite;
@@ -349,6 +272,22 @@ document.addEventListener('keydown', (e) => {
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.14); }
+    }
+
+    .legal-backdrop {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .legal-panel {
+      transform: translateY(18px) scale(0.98);
+      opacity: 0;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+
+    .legal-panel.is-open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
     }
 
     @media (max-width: 767px) {
@@ -388,27 +327,12 @@ document.addEventListener('keydown', (e) => {
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .hero-depth { transition: none !important; transform: none !important; }
+      .reveal, .hero-depth {
+        transition: none !important;
+        transform: none !important;
+      }
     }
   </style>
-  <!-- Consent-ready (inactive by default) -->
-  <script>
-    // Consent State (default: no tracking)
-    window.consent = { analytics: false, marketing: false };
-
-    function enableMarketing() {
-      window.consent.marketing = true;
-      // Example: load Meta Pixel only after consent
-      (function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
-      t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)})(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'YOUR_PIXEL_ID');
-      fbq('track', 'PageView');
-    }
-  </script>
 </head>
 
 <body class="antialiased selection:bg-[#28d7cf] selection:text-black">
@@ -457,8 +381,6 @@ document.addEventListener('keydown', (e) => {
           <a href="#newsletter" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Insider</a>
           <a href="#cta" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Launch</a>
           <a href="#kontakt" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Kontakt</a>
-          <a href="#impressum" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Impressum</a>
-          <a href="#datenschutz" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Datenschutz</a>
         </nav>
       </div>
     </div>
@@ -802,135 +724,57 @@ document.addEventListener('keydown', (e) => {
       </div>
     </section>
 
-    <section id="kontakt" class="bg-[#28d7cf]">
-  <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
-    <div class="max-w-4xl">
-      <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
-      <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl leading-tight text-black md:text-6xl">
-        Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
-      </h2>
+    <section id="kontakt" class="section-space bg-[#28d7cf]">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
+        <div class="max-w-4xl">
+          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
+          <h2 class="display-font mt-5 text-3xl font-black uppercase leading-tight text-black sm:text-4xl md:text-6xl">
+            Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
+          </h2>
 
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75 leading-relaxed">
-        Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
-      </p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75">
+            Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
+          </p>
 
-      <div class="mobile-stack mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-        <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-          E-Mail senden
-        </a>
-        <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-          Instagram
-        </a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-          YouTube
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section id="impressum" class="section-space border-t border-black/10 bg-white">
-      <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="legal-card rounded-[2rem] p-8 sm:p-10">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Impressum</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl">Angaben gemäß § 5 TMG</h2>
-
-          <div class="mt-8 space-y-6 text-black/75 leading-8">
-            <p>
-              Takoma Digital LLC<br>
-              30 N Gould St, Ste N<br>
-              Sheridan, WY 82801<br>
-              USA
-            </p>
-
-            <p>
-              E-Mail: info@takoma-digital.com<br>
-              Telefon: +49 156 79623326
-            </p>
-
-            <p class="text-sm text-black/55">
-              Registered in the State of Wyoming<br>
-              Filing No.: 2025-001826621
-            </p>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4">
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+              E-Mail senden
+            </a>
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+              Instagram
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+              YouTube
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="datenschutz" class="section-space border-t border-black/10 bg-[#f8f5ef]">
-      <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="legal-card rounded-[2rem] p-8 sm:p-10">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/45">Datenschutz</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl">Datenschutzerklärung</h2>
+    <footer class="border-t border-black/10 bg-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 text-center lg:px-10">
+        <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/75">
+          Made with <span class="heart">❤️</span> in Thailand
+        </div>
 
-          <div class="mt-8 space-y-6 text-black/75 leading-8">
-            <p>
-              Diese Website wird über Vercel gehostet. Beim Aufruf der Website werden technisch notwendige Informationen wie IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs automatisch verarbeitet, um die Seite sicher und stabil bereitzustellen.
-            </p>
-
-            <p>
-              Wenn du uns per E-Mail kontaktierst, werden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage verwendet.
-            </p>
-
-            <p>
-              Wenn du dich für unseren Newsletter anmeldest, verwenden wir deine E-Mail-Adresse ausschließlich, um dir Informationen rund um den Podcast zu senden. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Du kannst dich jederzeit über den Abmeldelink im Newsletter wieder austragen.
-            </p>
-
-            <p>
-              Diese Website enthält Links zu externen Plattformen wie Instagram und YouTube. Für die Inhalte und Datenschutzbestimmungen dieser Plattformen sind ausschließlich die jeweiligen Anbieter verantwortlich.
-            </p>
-
-            <p>
-              Verantwortlicher im Sinne der datenschutzrechtlichen Vorschriften ist:<br>
-              Takoma Digital LLC<br>
-              30 N Gould St, Ste N<br>
-              Sheridan, WY 82801<br>
-              USA<br>
-              E-Mail: info@takoma-digital.com
-            </p>
-
-            <p class="text-sm text-black/55">Stand: 2026</p>
-          </div>
+        <div class="flex justify-center gap-6 text-xs font-semibold uppercase tracking-[0.2em]">
+          <button onclick="openLegal('impressum')" class="hover:opacity-60">Impressum</button>
+          <button onclick="openLegal('datenschutz')" class="hover:opacity-60">Datenschutz</button>
         </div>
       </div>
-    </section>
-
-    <!-- Consent Banner (hidden by default, ready for future use) -->
-<div id="consentBanner" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 hidden max-w-xl w-[92%] bg-white rounded-xl shadow-xl border border-black/10 p-4">
-  <div class="text-sm text-black/80 mb-3">
-    Diese Website nutzt optionale Dienste (z. B. Marketing/Tracking). Du kannst selbst entscheiden.
-  </div>
-  <div class="flex gap-2 justify-end">
-    <button onclick="document.getElementById('consentBanner').classList.add('hidden')" class="px-4 py-2 text-sm">Ablehnen</button>
-    <button onclick="enableMarketing(); document.getElementById('consentBanner').classList.add('hidden')" class="bg-black text-white px-4 py-2 text-sm rounded">Akzeptieren</button>
-  </div>
-</div>
-
-<footer class="border-t border-black/10 bg-white">
-  <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 text-center lg:px-10">
-    <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/75">
-      Made with <span class="heart">❤️</span> in Thailand
-    </div>
-
-    <div class="flex justify-center gap-6 text-xs font-semibold uppercase tracking-[0.2em]">
-      <button onclick="openLegal('impressum')" class="hover:opacity-60">Impressum</button>
-      <button onclick="openLegal('datenschutz')" class="hover:opacity-60">Datenschutz</button>
-    </div>
-  </div>
-</footer>
-
-<!-- Legal Modal -->
-<div id="legalModal" class="legal-backdrop fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4" aria-hidden="true">
-  <div id="legalPanel" class="legal-panel max-w-2xl w-full bg-white rounded-2xl p-6 text-left overflow-y-auto max-h-[80vh] shadow-[0_30px_100px_rgba(0,0,0,0.28)]">
-    <div class="flex justify-between items-center mb-4">
-      <h3 id="legalTitle" class="text-lg font-bold uppercase">Impressum</h3>
-      <button onclick="closeLegal()" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-black text-xl transition hover:bg-black/5" aria-label="Schließen">✕</button>
-    </div>
-
-    <div id="legalContent" class="text-sm leading-7 text-black/80"></div>
-  </div>
-</div>
+    </footer>
   </main>
+
+  <div id="legalModal" class="legal-backdrop fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4" aria-hidden="true">
+    <div id="legalPanel" class="legal-panel max-w-2xl w-full bg-white rounded-2xl p-6 text-left overflow-y-auto max-h-[80vh] shadow-[0_30px_100px_rgba(0,0,0,0.28)]">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="legalTitle" class="text-lg font-bold uppercase">Impressum</h3>
+        <button onclick="closeLegal()" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-black text-xl transition hover:bg-black/5" aria-label="Schließen">✕</button>
+      </div>
+
+      <div id="legalContent" class="text-sm leading-7 text-black/80"></div>
+    </div>
+  </div>
 
   <script>
     const menuButton = document.getElementById('menuButton');
@@ -982,6 +826,70 @@ document.addEventListener('keydown', (e) => {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    function openLegal(type) {
+      const modal = document.getElementById('legalModal');
+      const panel = document.getElementById('legalPanel');
+      const title = document.getElementById('legalTitle');
+      const content = document.getElementById('legalContent');
+
+      if (type === 'impressum') {
+        title.textContent = 'Impressum';
+        content.innerHTML = `
+          <strong>Angaben gemäß § 5 TMG</strong><br><br>
+          Takoma Digital LLC<br>
+          30 N Gould St, Ste N<br>
+          Sheridan, WY 82801<br>
+          USA<br><br>
+          E-Mail: info@takoma-digital.com<br>
+          Telefon: +49 156 79623326<br><br>
+          Registered in the State of Wyoming<br>
+          Filing No.: 2025-001826621
+        `;
+      }
+
+      if (type === 'datenschutz') {
+        title.textContent = 'Datenschutz';
+        content.innerHTML = `
+          <strong>Datenschutzerklärung (Kurzfassung)</strong><br><br>
+          Diese Website wird über Vercel gehostet. Beim Aufruf der Website werden technisch notwendige Informationen wie IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs automatisch verarbeitet, um die Seite sicher und stabil bereitzustellen.<br><br>
+          Wenn du uns per E-Mail kontaktierst, werden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage verwendet.<br><br>
+          Wenn du dich für unseren Newsletter anmeldest, verwenden wir deine E-Mail-Adresse ausschließlich, um dir Informationen rund um den Podcast zu senden. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Du kannst dich jederzeit über den Abmeldelink im Newsletter wieder austragen.<br><br>
+          Diese Website enthält Links zu externen Plattformen wie Instagram und YouTube. Für die Inhalte und Datenschutzbestimmungen dieser Plattformen sind ausschließlich die jeweiligen Anbieter verantwortlich.<br><br>
+          Verantwortlicher im Sinne der datenschutzrechtlichen Vorschriften ist:<br>
+          Takoma Digital LLC<br>
+          30 N Gould St, Ste N<br>
+          Sheridan, WY 82801<br>
+          USA<br>
+          E-Mail: info@takoma-digital.com<br><br>
+          Stand: 2026
+        `;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modal.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+    }
+
+    function closeLegal() {
+      const modal = document.getElementById('legalModal');
+      const panel = document.getElementById('legalPanel');
+      panel.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 220);
+    }
+
+    document.getElementById('legalModal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'legalModal') closeLegal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLegal();
+    });
   </script>
 </body>
 </html>
