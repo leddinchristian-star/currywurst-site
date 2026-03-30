@@ -26,12 +26,13 @@
   if (type === 'datenschutz') {
     title.textContent = 'Datenschutz';
     content.innerHTML = `
-      <strong>Datenschutzerklärung</strong><br><br>
-      Diese Website dient der Bereitstellung von Informationen zu unserem Podcast.<br><br>
-      Personenbezogene Daten werden nur erhoben, wenn Sie diese freiwillig über das Newsletter-Formular angeben.<br><br>
-      Die Verarbeitung erfolgt über den Anbieter Brevo (ehemals Sendinblue).<br><br>
-      Weitere Informationen finden Sie in den Datenschutzrichtlinien von Brevo.
-    `;
+      <strong>Datenschutzerklärung (Kurzfassung)</strong><br><br>
+      Diese Website dient ausschließlich der Bereitstellung von Informationen zu unserem Podcast.<br><br>
+      Personenbezogene Daten werden nur verarbeitet, wenn Sie diese aktiv über das Newsletter-Formular angeben.<br><br>
+      Für den Versand des Newsletters nutzen wir den Dienst Brevo (Sendinblue SAS, Frankreich). Dabei können Daten auf Servern innerhalb der EU gespeichert werden.<br><br>
+      Sie können sich jederzeit über den Abmeldelink im Newsletter austragen.<br><br>
+      Weitere Informationen erhalten Sie auf Anfrage per E-Mail.
+    `;;
   }
 
   modal.classList.remove('hidden');
@@ -390,6 +391,24 @@ document.addEventListener('keydown', (e) => {
       .reveal, .hero-depth { transition: none !important; transform: none !important; }
     }
   </style>
+  <!-- Consent-ready (inactive by default) -->
+  <script>
+    // Consent State (default: no tracking)
+    window.consent = { analytics: false, marketing: false };
+
+    function enableMarketing() {
+      window.consent.marketing = true;
+      // Example: load Meta Pixel only after consent
+      (function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
+      t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)})(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+    }
+  </script>
 </head>
 
 <body class="antialiased selection:bg-[#28d7cf] selection:text-black">
@@ -783,32 +802,32 @@ document.addEventListener('keydown', (e) => {
       </div>
     </section>
 
-    <section id="kontakt" class="section-space bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="max-w-4xl">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase leading-tight text-black sm:text-4xl md:text-6xl">
-            Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
-          </h2>
+    <section id="kontakt" class="bg-[#28d7cf]">
+  <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
+    <div class="max-w-4xl">
+      <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
+      <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl leading-tight text-black md:text-6xl">
+        Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
+      </h2>
 
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75">
-            Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
-          </p>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75 leading-relaxed">
+        Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
+      </p>
 
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              E-Mail senden
-            </a>
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              Instagram
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              YouTube
-            </a>
-          </div>
-        </div>
+      <div class="mobile-stack mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+        <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+          E-Mail senden
+        </a>
+        <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+          Instagram
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+          YouTube
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <section id="impressum" class="section-space border-t border-black/10 bg-white">
       <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10 reveal">
@@ -876,7 +895,18 @@ document.addEventListener('keydown', (e) => {
       </div>
     </section>
 
-    <footer class="border-t border-black/10 bg-white">
+    <!-- Consent Banner (hidden by default, ready for future use) -->
+<div id="consentBanner" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 hidden max-w-xl w-[92%] bg-white rounded-xl shadow-xl border border-black/10 p-4">
+  <div class="text-sm text-black/80 mb-3">
+    Diese Website nutzt optionale Dienste (z. B. Marketing/Tracking). Du kannst selbst entscheiden.
+  </div>
+  <div class="flex gap-2 justify-end">
+    <button onclick="document.getElementById('consentBanner').classList.add('hidden')" class="px-4 py-2 text-sm">Ablehnen</button>
+    <button onclick="enableMarketing(); document.getElementById('consentBanner').classList.add('hidden')" class="bg-black text-white px-4 py-2 text-sm rounded">Akzeptieren</button>
+  </div>
+</div>
+
+<footer class="border-t border-black/10 bg-white">
   <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 text-center lg:px-10">
     <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/75">
       Made with <span class="heart">❤️</span> in Thailand
