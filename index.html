@@ -8,10 +8,55 @@
     name="description"
     content="Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand."
   />
-
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
+    @media (max-width: 767px) {
+      .glass-panel {
+        padding: 0.9rem 1rem;
+        border-radius: 1.2rem;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(180deg, rgba(17,17,17,0.78) 0%, rgba(17,17,17,0.58) 42%, rgba(17,17,17,0.32) 100%),
+          url('hero.jpg') center center / cover no-repeat;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      .float-item {
+        width: 42px;
+        height: 42px;
+        opacity: 0.06;
+      }
+
+      .platform-card {
+        padding: 1.15rem;
+        border-radius: 1.35rem;
+      }
+
+      .brand-icon {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .mobile-stack {
+        gap: 1rem;
+      }
+    }
     html {
       scroll-behavior: smooth;
     }
@@ -20,14 +65,20 @@
       overflow-x: hidden;
       background: #f5f1ea;
       color: #111111;
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
     }
 
     .hero-bg {
       position: relative;
       min-height: 100vh;
       background:
-        linear-gradient(90deg, rgba(17,17,17,0.82) 0%, rgba(17,17,17,0.64) 38%, rgba(17,17,17,0.22) 68%, rgba(17,17,17,0.12) 100%),
+        linear-gradient(90deg, rgba(17,17,17,0.82) 0%, rgba(17,17,17,0.64) 36%, rgba(17,17,17,0.24) 68%, rgba(17,17,17,0.16) 100%),
         url('hero.jpg') center center / cover no-repeat;
+      isolation: isolate;
     }
 
     .hero-bg::before {
@@ -35,18 +86,29 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(40,215,207,0.10), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(229,139,42,0.10), transparent 26%);
+        radial-gradient(circle at top right, rgba(40,215,207,0.12), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(229,139,42,0.12), transparent 24%);
       pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.10));
+      pointer-events: none;
+      z-index: 0;
     }
 
     .hero-fade {
       position: absolute;
       inset-inline: 0;
       bottom: 0;
-      height: 180px;
+      height: 200px;
       background: linear-gradient(to bottom, rgba(245,241,234,0), #f5f1ea 92%);
       pointer-events: none;
+      z-index: 1;
     }
 
     .section-line {
@@ -55,15 +117,31 @@
 
     .glass-panel {
       background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.16);
+    }
+
+    .noise::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      pointer-events: none;
+      background-image:
+        radial-gradient(rgba(255,255,255,0.9) 0.5px, transparent 0.7px),
+        radial-gradient(rgba(0,0,0,0.6) 0.5px, transparent 0.8px);
+      background-position: 0 0, 12px 12px;
+      background-size: 24px 24px;
+      mix-blend-mode: soft-light;
+      z-index: 0;
     }
 
     .quiet-grid {
       background-image:
-        linear-gradient(rgba(17,17,17,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(17,17,17,0.04) 1px, transparent 1px);
-      background-size: 26px 26px;
+        linear-gradient(rgba(17,17,17,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
     .heart {
@@ -75,13 +153,140 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.14); }
     }
+
+    .float-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .float-item {
+      position: absolute;
+      left: -120px;
+      width: 58px;
+      height: 58px;
+      opacity: 0.08;
+      filter: blur(0.2px);
+    }
+
+    .float-item svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: #111111;
+    }
+
+    .curry-a { top: 24%; animation: flyA 15s ease-in-out 1 forwards; }
+    .curry-b { top: 62%; animation: flyB 18s ease-in-out 1 forwards; animation-delay: 1.2s; }
+    .coco-a  { top: 44%; animation: flyC 16s ease-in-out 1 forwards; animation-delay: 0.6s; }
+
+    @keyframes flyA {
+      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.92); opacity: 0; }
+      12% { opacity: 0.08; }
+      50% { transform: translateX(52vw) translateY(-18px) rotate(110deg) scale(1); opacity: 0.08; }
+      88% { opacity: 0.04; }
+      100% { transform: translateX(118vw) translateY(10px) rotate(180deg) scale(0.96); opacity: 0; }
+    }
+
+    @keyframes flyB {
+      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.94); opacity: 0; }
+      12% { opacity: 0.08; }
+      50% { transform: translateX(58vw) translateY(16px) rotate(-100deg) scale(1); opacity: 0.08; }
+      88% { opacity: 0.04; }
+      100% { transform: translateX(118vw) translateY(-12px) rotate(-180deg) scale(0.96); opacity: 0; }
+    }
+
+    @keyframes flyC {
+      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.9); opacity: 0; }
+      12% { opacity: 0.08; }
+      50% { transform: translateX(55vw) translateY(-10px) rotate(85deg) scale(1.02); opacity: 0.08; }
+      88% { opacity: 0.04; }
+      100% { transform: translateX(118vw) translateY(14px) rotate(145deg) scale(0.96); opacity: 0; }
+    }
+
+    .hero-copy {
+      transform: translateY(12px);
+      opacity: 0;
+      animation: heroReveal 1.2s cubic-bezier(.2,.8,.2,1) 0.15s forwards;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes heroReveal {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .shine-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine-button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 70%;
+      height: 100%;
+      transform: skewX(-20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .shine-button:hover::after {
+      left: 140%;
+    }
+
+    .soft-card {
+      box-shadow: 0 12px 36px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .soft-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.08);
+    }
+
+    .platform-card {
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
   </style>
 </head>
 
 <body class="antialiased selection:bg-[#28d7cf] selection:text-black">
   <header class="fixed inset-x-0 top-0 z-50">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
     <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-10">
-      <div class="glass-panel flex items-center justify-between rounded-full border border-white/15 px-5 py-4 text-white shadow-[0_10px_50px_rgba(0,0,0,0.16)]">
+      <div class="glass-panel flex items-center justify-between rounded-full border border-white/15 px-5 py-4 text-white">
         <div>
           <div class="text-[11px] font-black uppercase tracking-[0.34em]">Currywurst & Kokosmilch</div>
           <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
@@ -94,37 +299,75 @@
           <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
           <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
         </nav>
+
+        <button
+          id="menuButton"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          aria-label="Menü öffnen"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/15 md:hidden"
+        >
+          <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="mt-3 hidden overflow-hidden rounded-[1.4rem] border border-white/12 bg-black/70 p-3 text-white shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl md:hidden">
+        <nav class="flex flex-col">
+          <a href="#story" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Story</a>
+          <a href="#hosts" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Hosts</a>
+          <a href="#folgen" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Folgen</a>
+          <a href="#plattformen" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Plattformen</a>
+          <a href="#kontakt" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Kontakt</a>
+        </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero-bg overflow-hidden border-b border-black/10">
-      <div class="relative z-10 mx-auto grid min-h-screen max-w-7xl items-end gap-10 px-6 pb-20 pt-36  lg:px-10 lg:pb-24 lg:pt-40">
-        <div class="max-w-3xl text-white">
-          <div class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white/90 backdrop-blur-sm">
-            Made in Thailand. Erzählt ohne Filter.
-          </div>
-
-          <h1 class="mt-8 text-5xl font-black uppercase leading-[0.9] md:text-7xl lg:text-[6.2rem]">
-            Ein Podcast über Auswandern, Familie und ein neues Leben.
-          </h1>
-
-          <p class="mt-8 max-w-2xl text-lg leading-8 text-white/82 md:text-xl">
-            Ehrliche Gespräche über Zweifel, Freiheit, Alltag, Neuanfang und das echte Leben zwischen Deutschland und Thailand.
-          </p>
-
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a href="#plattformen" class="rounded-full bg-[#E58B2A] px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
-              Jetzt hören
-            </a>
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/25 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black">
-              Instagram
-            </a>
-          </div>
+    <section class="hero-bg noise overflow-hidden border-b border-black/10">
+      <div class="float-layer" aria-hidden="true">
+        <div class="float-item curry-a">
+          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
         </div>
+        <div class="float-item curry-b">
+          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
+        </div>
+        <div class="float-item coco-a">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"></circle></svg>
+        </div>
+      </div>
 
-        
+      <div class="relative z-10 mx-auto min-h-screen max-w-7xl px-5 pb-16 pt-32 sm:px-6 lg:px-10 lg:pb-24 lg:pt-44">
+        <div class="flex min-h-[78vh] items-end">
+          <div class="hero-copy max-w-4xl text-white">
+            <div class="max-w-[92vw] sm:max-w-none">
+            <div class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 backdrop-blur-sm sm:px-5 sm:py-2.5 sm:text-[11px] sm:tracking-[0.34em]">
+              Made in Thailand. Erzählt ohne Filter.
+            </div>
+
+            <h1 class="display-font mt-8 max-w-5xl text-[2.7rem] font-black uppercase leading-[0.9] tracking-[-0.04em] sm:mt-10 sm:text-5xl md:text-7xl lg:text-[7rem]">
+              Ein Podcast über Auswandern, Familie und ein neues Leben.
+            </h1>
+
+            <p class="mt-7 max-w-3xl text-[1rem] leading-8 text-white/84 sm:mt-10 sm:text-lg sm:leading-9 md:text-[1.35rem]">
+              Ehrliche Gespräche über Zweifel, Freiheit, Alltag, Neuanfang und das echte Leben zwischen Deutschland und Thailand.
+            </p>
+
+            <div class="mobile-stack mt-9 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-4">
+              <a href="#plattformen" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+                Jetzt hören
+              </a>
+              <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/25 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
+                Instagram
+              </a>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -132,10 +375,10 @@
     </section>
 
     <section id="story" class="section-line border-b bg-[#28d7cf]">
-      <div class="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 py-18 sm:px-6 sm:py-24 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
         <div>
           <div class="text-xs font-bold uppercase tracking-[0.3em] text-black">Unsere Story</div>
-          <h2 class="mt-5 text-4xl font-black uppercase leading-tight md:text-6xl">
+          <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl leading-tight md:text-6xl">
             Raus aus dem alten Leben. Rein in etwas Echtes.
           </h2>
         </div>
@@ -152,25 +395,25 @@
     </section>
 
     <section id="hosts" class="section-line border-b bg-white">
-      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+        <div class="mb-10 flex flex-col gap-5 sm:mb-14 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.3em] text-black">Die Hosts</div>
-            <h2 class="mt-5 text-4xl font-black uppercase md:text-6xl">Zwei Stimmen. Eine echte Geschichte.</h2>
+            <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl md:text-6xl">Zwei Stimmen. Eine echte Geschichte.</h2>
           </div>
           <p class="max-w-xl text-lg leading-8 text-black/80">
             Zwei Perspektiven, zwei Charaktere und ein gemeinsames Thema: Wie verändert sich das Leben, wenn man wirklich losgeht?
           </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-2">
-          <article class="rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
+        <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
+          <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
             <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="patrick.jpg" alt="Patrick" class="h-[480px] w-full object-cover" loading="lazy" />
+              <img src="patrick.jpg" alt="Patrick" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
             </div>
             <div class="px-2 pb-2 pt-7">
               <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Host 01</div>
-              <h3 class="mt-3 text-3xl font-black uppercase">Patrick</h3>
+              <h3 class="display-font mt-3 text-3xl font-black uppercase">Patrick</h3>
               <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
                 Patrick ist Lehrer für Deutsch, Sport und Religion – und jemand, der Gespräche sammelt wie andere Briefmarken. Unterhaltsam, sportlich und redselig bringt er Geschichten, Tiefgang und Beobachtungen mit, die aus einem kurzen Austausch schnell einen ganzen Abend machen können.
               </p>
@@ -180,13 +423,13 @@
             </div>
           </article>
 
-          <article class="rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
+          <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
             <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="du.jpg" alt="Christian" class="h-[480px] w-full object-cover" loading="lazy" />
+              <img src="du.jpg" alt="Christian" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
             </div>
             <div class="px-2 pb-2 pt-7">
               <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#28d7cf]">Host 02</div>
-              <h3 class="mt-3 text-3xl font-black uppercase">Christian</h3>
+              <h3 class="display-font mt-3 text-3xl font-black uppercase">Christian</h3>
               <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
                 Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon – Maschinenbau, Millionenprojekte, Holzklasse und Jetlag inklusive. Heute blickt er auf vieles davon mit der Klarheit von jemandem, der erkannt hat: Das Hamsterrad war optional.
               </p>
@@ -200,29 +443,33 @@
     </section>
 
     <section id="folgen" class="section-line border-b bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
         <div class="mb-14">
           <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Folgen</div>
-          <h2 class="mt-5 text-4xl font-black uppercase md:text<article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl text-black md:text-6xl">Worüber wir sprechen.</h2>
+        </div>
+
+        <div class="grid gap-4 sm:gap-6 md:grid-cols-3">
+          <article class="soft-card rounded-[1.5rem] border border-black/8 bg-white/90 p-6 backdrop-blur-sm sm:rounded-[1.8rem] sm:p-8">
             <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#E58B2A]">Neustart</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Warum wir Deutschland verlassen haben</h3>
-            <p class="mt-4 leading-8 text-black/65">
+            <h3 class="display-font mt-4 text-2xl font-black leading-tight">Warum wir Deutschland verlassen haben</h3>
+            <p class="mt-4 leading-8 text-black/80">
               Über Sehnsucht, Druck, Sicherheit, innere Konflikte und die ehrlichen Gründe hinter einer großen Entscheidung.
             </p>
           </article>
 
-          <article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#28d7cf]">Familie</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Alltag mit Kindern zwischen Chaos und Freiheit</h3>
-            <p class="mt-4 leading-8 text-black/65">
+          <article class="soft-card rounded-[1.5rem] border border-black/8 bg-[#E58B2A] p-6 sm:rounded-[1.8rem] sm:p-8">
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Familie</div>
+            <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Alltag mit Kindern zwischen Chaos und Freiheit</h3>
+            <p class="mt-4 leading-8 text-black/85">
               Zwischen Schulfragen, neuen Routinen, kleinen Krisen und genau den Momenten, die das Ganze lohnenswert machen.
             </p>
           </article>
 
-          <article class="rounded-[1.8rem] border border-black/8 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#111111]">Freiheit</div>
-            <h3 class="mt-4 text-2xl font-black leading-tight">Weniger Fassade. Mehr echtes Leben.</h3>
-            <p class="mt-4 leading-8 text-black/65">
+          <article class="soft-card rounded-[1.5rem] border border-black/8 bg-[#E58B2A] p-6 sm:rounded-[1.8rem] sm:p-8">
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Freiheit</div>
+            <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Weniger Fassade. Mehr echtes Leben.</h3>
+            <p class="mt-4 leading-8 text-black/85">
               Was sich verändert, wenn man aufhört zu funktionieren und beginnt, das eigene Leben bewusst neu aufzubauen.
             </p>
           </article>
@@ -231,22 +478,22 @@
     </section>
 
     <section id="plattformen" class="section-line border-b bg-[#111111] text-white">
-      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+        <div class="mb-10 flex flex-col gap-5 sm:mb-14 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/45">Plattformen</div>
-            <h2 class="mt-5 text-4xl font-black uppercase md:text-6xl">Hören. Folgen. Dabeibleiben.</h2>
+            <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl md:text-6xl">Hören. Folgen. Dabeibleiben.</h2>
           </div>
           <p class="max-w-xl text-lg leading-8 text-white/62">
             Podcast, Clips, Behind the Scenes und Updates rund um euren Weg zwischen Deutschland und Thailand.
           </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+        <div class="grid gap-5 sm:gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:rounded-[2rem] sm:p-6">
             <div class="mb-5 text-sm font-bold uppercase tracking-[0.24em] text-white/45">Spotify</div>
 
-            <button onclick="loadSpotify()" id="spotifyButton" class="rounded-full bg-[#E58B2A] px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
+            <button onclick="loadSpotify()" id="spotifyButton" class="shine-button rounded-full bg-[#E58B2A] px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
               Spotify laden
             </button>
 
@@ -257,32 +504,56 @@
             </p>
           </div>
 
-          <div class="grid gap-5">
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
-              <div class="flex items-center justify-between gap-4">
-                <div>
-                  <div class="text-2xl font-black uppercase">Instagram</div>
-                  <p class="mt-3 leading-7 text-white/65">Clips, Storys, Einblicke und echte Momente aus eurem Alltag.</p>
+          <div class="grid gap-4 sm:gap-5">
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
+              <div class="flex items-center justify-between gap-4 sm:gap-5">
+                <div class="flex items-start gap-4 sm:items-center sm:gap-5">
+                  <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <circle cx="17" cy="7" r="1.4" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="display-font text-xl font-black uppercase sm:text-2xl">Instagram</div>
+                    <p class="mt-3 leading-7 text-white/65">Clips, Storys, Einblicke und echte Momente aus eurem Alltag.</p>
+                  </div>
                 </div>
                 <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
             </a>
 
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
-              <div class="flex items-center justify-between gap-4">
-                <div>
-                  <div class="text-2xl font-black uppercase">YouTube</div>
-                  <p class="mt-3 leading-7 text-white/65">Für Videopodcast, Highlights, Shorts und längere Einblicke.</p>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
+              <div class="flex items-center justify-between gap-4 sm:gap-5">
+                <div class="flex items-start gap-4 sm:items-center sm:gap-5">
+                  <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="display-font text-xl font-black uppercase sm:text-2xl">YouTube</div>
+                    <p class="mt-3 leading-7 text-white/65">Für Videopodcast, Highlights, Shorts und längere Einblicke.</p>
+                  </div>
                 </div>
                 <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
             </a>
 
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="rounded-[1.8rem] border border-white/10 bg-white/5 p-7 transition hover:bg-white/8">
-              <div class="flex items-center justify-between gap-4">
-                <div>
-                  <div class="text-2xl font-black uppercase">Kontakt</div>
-                  <p class="mt-3 leading-7 text-white/65">Für Kooperationen, Gäste, Presse oder persönliche Anfragen.</p>
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
+              <div class="flex items-center justify-between gap-4 sm:gap-5">
+                <div class="flex items-start gap-4 sm:items-center sm:gap-5">
+                  <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 7l9 6 9-6"></path>
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="display-font text-xl font-black uppercase sm:text-2xl">Kontakt</div>
+                    <p class="mt-3 leading-7 text-white/65">Für Kooperationen, Gäste, Presse oder persönliche Anfragen.</p>
+                  </div>
                 </div>
                 <span class="text-2xl text-[#E58B2A]">↗</span>
               </div>
@@ -293,27 +564,25 @@
     </section>
 
     <section id="kontakt" class="bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
         <div class="max-w-4xl">
           <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
-          <h2 class="mt-5 text-4xl font-black uppercase leading-tight md:text-6xl text-black">
+          <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl leading-tight text-black md:text-6xl">
             Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
           </h2>
 
           <p class="mt-6 max-w-2xl text-lg leading-8 text-black/80">
             Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
-          </p>">
-            Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
           </p>
 
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="rounded-full bg-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5">
+          <div class="mobile-stack mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
               E-Mail senden
             </a>
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#111111] hover:text-white">
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
               Instagram
             </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#E58B2A] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:-translate-y-0.5">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
               YouTube
             </a>
           </div>
@@ -354,6 +623,41 @@
       button.disabled = true;
       button.classList.add('opacity-70', 'cursor-default');
     }
+
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+    const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+    function closeMobileMenu() {
+      if (!menuButton || !mobileMenu) return;
+      mobileMenu.classList.add('hidden');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuIconOpen?.classList.remove('hidden');
+      menuIconClose?.classList.add('hidden');
+    }
+
+    function toggleMobileMenu() {
+      if (!menuButton || !mobileMenu) return;
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuIconOpen?.classList.add('hidden');
+        menuIconClose?.classList.remove('hidden');
+      }
+    }
+
+    menuButton?.addEventListener('click', toggleMobileMenu);
+    mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) closeMobileMenu();
+    });
   </script>
 </body>
 </html>
+
