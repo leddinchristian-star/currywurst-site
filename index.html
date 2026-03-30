@@ -1,36 +1,330 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Currywurst & Kokosmilch</title>
+  <meta
+    name="description"
+    content="Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand."
+  />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#28d7cf] text-black">
+<body class="bg-[#28d7cf] text-black antialiased">
 
-<div class="min-h-screen">
+  <header class="sticky top-0 z-50 border-b border-black/10 bg-[#28d7cf]/90 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-[0.35em]">Currywurst & Kokosmilch</div>
+        <div class="text-sm opacity-70">Podcast · Familie · Auswandern · Thailand</div>
+      </div>
 
-  <header class="p-6">
-    <h1 class="text-5xl font-black uppercase">Currywurst & Kokosmilch</h1>
-    <p class="mt-2">Podcast · Familie · Auswandern</p>
+      <nav class="hidden gap-8 text-sm font-medium md:flex">
+        <a href="#podcast" class="transition hover:opacity-60">Podcast</a>
+        <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
+        <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
+        <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
+        <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="p-6 grid md:grid-cols-2 gap-6">
+  <main>
 
-    <div class="bg-white/40 p-6 rounded-2xl">
-      <img src="patrick.jpg" class="rounded-full w-40 h-40 object-cover mx-auto">
-      <h2 class="text-2xl font-bold text-center mt-4">Patrick</h2>
-      <p class="text-center mt-2"></p>
-    </div>
+    <section class="relative overflow-hidden border-b border-black/10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.32),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.08),transparent_30%)]"></div>
 
-    <div class="bg-white/40 p-6 rounded-2xl">
-      <img src="du.jpg" class="rounded-full w-40 h-40 object-cover mx-auto">
-      <h2 class="text-2xl font-bold text-center mt-4">Christian</h2>
-      <p class="text-center mt-2"></p>
-    </div>
+      <div class="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:px-10 lg:py-24">
+        <div class="flex flex-col justify-center">
+          <div class="mb-4 inline-flex w-fit rounded-full border border-black/15 bg-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em]">
+            Ehrlich. Laut. Emotional.
+          </div>
 
-  </section>
+          <h1 class="max-w-4xl text-5xl font-black uppercase leading-[0.9] md:text-7xl lg:text-[7rem]">
+            Currywurst <br /> & Kokosmilch
+          </h1>
 
-</div>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/80 md:text-xl">
+            Der Podcast über Auswandern, Familie, Freiheit und das echte Leben zwischen Deutschland und Thailand.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#folgen"
+              class="rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:-translate-y-0.5"
+            >
+              Jetzt reinhören
+            </a>
+            <a
+              href="#kontakt"
+              class="rounded-full border border-black px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] transition hover:bg-white/40"
+            >
+              Kooperation anfragen
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-5">
+          <div class="rounded-[2rem] border border-black/15 bg-white/25 p-5 shadow-2xl backdrop-blur-sm">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-[0.25em]">Die Hosts</span>
+              <span class="rounded-full bg-black px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white">Podcast Cast</span>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="rounded-[1.5rem] border border-black/10 bg-[#fff7ef] p-4">
+                <div class="mb-4 flex items-center gap-3">
+                  <img src="patrick.jpg" alt="Patrick" class="h-16 w-16 rounded-full border border-black/10 object-cover" />
+                  <div>
+                    <div class="text-xl font-black uppercase">Patrick</div>
+                    <div class="text-sm opacity-70">Die ruhige Kante</div>
+                  </div>
+                </div>
+                <p class="text-sm leading-6 text-black/80">
+                  Direkt, trocken, ehrlich. Patrick bringt Struktur ins Chaos und stellt die Fragen, die man sonst lieber wegdrückt.
+                </p>
+              </div>
+
+              <div class="rounded-[1.5rem] border border-black/10 bg-[#fff7ef] p-4">
+                <div class="mb-4 flex items-center gap-3">
+                  <img src="du.jpg" alt="Christian" class="h-16 w-16 rounded-full border border-black/10 object-cover" />
+                  <div>
+                    <div class="text-xl font-black uppercase">Christian</div>
+                    <div class="text-sm opacity-70">Der wilde Gegenpol</div>
+                  </div>
+                </div>
+                <p class="text-sm leading-6 text-black/80">
+                  Emotional, direkt und voller Energie. Christian bringt Reibung, echte Erfahrungen und die persönliche Perspektive ins Gespräch.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-black/15 bg-black p-6 text-white shadow-2xl">
+            <div class="text-xs font-bold uppercase tracking-[0.25em] text-white/70">Worum es geht</div>
+            <p class="mt-4 text-2xl font-bold leading-tight">
+              Kein glattgebügelter Auswanderer-Talk. Sondern ehrliche Gespräche über Entscheidungen, Zweifel, Kinder, Freiheit und den Preis für ein anderes Leben.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="podcast" class="border-b border-black/10 bg-[#21cfc7]">
+      <div class="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-[0.3em]">Über den Podcast</div>
+          <h2 class="mt-4 text-4xl font-black uppercase leading-tight md:text-5xl">
+            Zwischen Currywurst und Kokosmilch liegt ein komplett neues Leben.
+          </h2>
+        </div>
+
+        <div class="space-y-5 text-lg leading-8 text-black/80">
+          <p>
+            Currywurst & Kokosmilch ist ein Podcast über Neuanfang, Familie, Auswandern und das echte Leben zwischen zwei Welten.
+          </p>
+          <p>
+            Es geht um ehrliche Entscheidungen, große Veränderungen, kleine Krisen, Freiheit, Zweifel und um den Mut, das eigene Leben neu zu denken.
+          </p>
+          <p>
+            Kein Hochglanz-Gelaber, sondern direkte Gespräche mit Persönlichkeit, Kante und Humor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/10 bg-[#28d7cf]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div class="mb-8">
+          <div class="text-xs font-bold uppercase tracking-[0.3em]">Warum man einschaltet</div>
+          <h2 class="mt-3 text-4xl font-black uppercase md:text-5xl">Ehrlich statt geschniegelt</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="rounded-[2rem] border border-black/15 bg-white/35 p-6 backdrop-blur-sm">
+            <div class="text-xl font-black uppercase">Familie</div>
+            <p class="mt-4 leading-7 text-black/80">
+              Wie verändert Auswandern das Familienleben, den Alltag, die Rollen und die Zukunft der Kinder?
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-black/15 bg-white/35 p-6 backdrop-blur-sm">
+            <div class="text-xl font-black uppercase">Freiheit</div>
+            <p class="mt-4 leading-7 text-black/80">
+              Was bedeutet Freiheit wirklich, wenn man Sicherheit, Gewohnheiten und alte Strukturen hinter sich lässt?
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-black/15 bg-white/35 p-6 backdrop-blur-sm">
+            <div class="text-xl font-black uppercase">Real Talk</div>
+            <p class="mt-4 leading-7 text-black/80">
+              Ohne Filter, ohne Fassade, ohne Auswanderer-Romantik. Dafür mit ehrlichen Gedanken, Konflikten und echten Learnings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="folgen" class="border-b border-black/10 bg-[#fff7ef]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-[0.3em]">Aktuelle Themen</div>
+            <h2 class="mt-3 text-4xl font-black uppercase md:text-5xl">Neue Folgen</h2>
+          </div>
+          <a href="#kontakt" class="text-sm font-bold uppercase tracking-[0.2em] underline underline-offset-4">
+            Alle Plattformen verlinken
+          </a>
+        </div>
+
+        <div class="grid gap-5 lg:grid-cols-3">
+          <article class="rounded-[2rem] border border-black/15 bg-white p-6 shadow-sm transition hover:-translate-y-1">
+            <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
+              Neustart
+            </div>
+            <h3 class="text-2xl font-black leading-tight">Warum wir Deutschland hinter uns lassen</h3>
+            <p class="mt-4 text-base leading-7 text-black/75">
+              Zwischen Sicherheitsdenken, Sehnsucht nach Freiheit und der Frage, wie ein neues Leben für eine Familie wirklich beginnt.
+            </p>
+            <a href="#plattformen" class="mt-6 inline-block rounded-full bg-black px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white">
+              Folge anhören
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-black/15 bg-white p-6 shadow-sm transition hover:-translate-y-1">
+            <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
+              Family Life
+            </div>
+            <h3 class="text-2xl font-black leading-tight">Familie, Chaos und Thailand-Alltag</h3>
+            <p class="mt-4 text-base leading-7 text-black/75">
+              Ehrliche Gespräche über Auswandern mit Kindern, neue Routinen, kleine Krisen und große Glücksmomente.
+            </p>
+            <a href="#plattformen" class="mt-6 inline-block rounded-full bg-black px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white">
+              Folge anhören
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-black/15 bg-white p-6 shadow-sm transition hover:-translate-y-1">
+            <div class="mb-4 inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
+              Freiheit
+            </div>
+            <h3 class="text-2xl font-black leading-tight">Mehr Freiheit, weniger Fassade</h3>
+            <p class="mt-4 text-base leading-7 text-black/75">
+              Was passiert, wenn man aufhört zu funktionieren und anfängt, das eigene Leben bewusst zu gestalten.
+            </p>
+            <a href="#plattformen" class="mt-6 inline-block rounded-full bg-black px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white">
+              Folge anhören
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hosts" class="border-b border-black/10 bg-[#28d7cf]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div class="mb-10 text-xs font-bold uppercase tracking-[0.3em]">Die Hosts</div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="rounded-[2rem] border border-black/10 bg-white/35 p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-4">
+              <img src="patrick.jpg" alt="Patrick" class="h-28 w-28 rounded-full border border-black/10 object-cover" />
+              <div>
+                <h3 class="text-3xl font-black uppercase">Patrick</h3>
+                <p class="text-sm uppercase tracking-[0.2em] text-black/60">Die ruhige Kante</p>
+              </div>
+            </div>
+            <p class="text-lg leading-8 text-black/80">
+              Klar, wach, bodenständig. Patrick bringt Struktur in wilde Gedanken und sorgt dafür, dass die Gespräche Substanz behalten.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-black/10 bg-white/35 p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-4">
+              <img src="du.jpg" alt="Christian" class="h-28 w-28 rounded-full border border-black/10 object-cover" />
+              <div>
+                <h3 class="text-3xl font-black uppercase">Christian</h3>
+                <p class="text-sm uppercase tracking-[0.2em] text-black/60">Der wilde Gegenpol</p>
+              </div>
+            </div>
+            <p class="text-lg leading-8 text-black/80">
+              Direkt, emotional und mit echtem Drive. Christian bringt Perspektive, persönliche Geschichten und die Energie für Gespräche, die hängen bleiben.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plattformen" class="border-b border-black/10 bg-black text-white">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div class="mb-8">
+          <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/60">Immer dabei</div>
+          <h2 class="mt-3 text-4xl font-black uppercase md:text-5xl">Hören. Folgen. Weitererzählen.</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="rounded-[2rem] border border-white/15 bg-white/5 p-6">
+            <div class="text-2xl font-black uppercase">Spotify</div>
+            <div class="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Neue Folgen jede Woche</div>
+            <div class="mt-8 text-lg text-white/85">Hier kommt später dein Spotify-Link rein.</div>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/15 bg-white/5 p-6">
+            <div class="text-2xl font-black uppercase">Apple Podcasts</div>
+            <div class="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Für iPhone & Mac</div>
+            <div class="mt-8 text-lg text-white/85">Hier kommt später dein Apple-Podcast-Link rein.</div>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/15 bg-white/5 p-6">
+            <div class="text-2xl font-black uppercase">YouTube</div>
+            <div class="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Clips, Highlights & Folgen</div>
+            <div class="mt-8 text-lg text-white/85">Hier kommt später dein YouTube-Link rein.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/10 bg-[#fff7ef]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-[0.3em]">Für Partner & Gäste</div>
+            <h2 class="mt-3 text-4xl font-black uppercase md:text-5xl">Kooperationen mit Haltung</h2>
+          </div>
+
+          <div class="space-y-5 text-lg leading-8 text-black/80">
+            <p>
+              Der Podcast eignet sich für starke Gesprächspartner, relevante Marken, Gastformate und ehrliche Kooperationen mit Persönlichkeit.
+            </p>
+            <p>
+              Besonders passend für Themen rund um Familie, Reisen, Auswandern, Selbstbestimmung, Bildung, Alltag im Ausland und neue Lebensmodelle.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="bg-[#28d7cf]">
+      <div class="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1fr_auto] lg:px-10">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-[0.3em]">Kontakt</div>
+          <h2 class="mt-3 text-4xl font-black uppercase md:text-5xl">Bereit für Podcast, Gäste oder Kooperationen?</h2>
+          <p class="mt-5 max-w-2xl text-lg leading-8 text-black/80">
+            Verlinke hier Spotify, Apple Podcasts, YouTube, Instagram, Newsletter und ein Kontaktformular oder Medien-Kit.
+          </p>
+        </div>
+
+        <div class="flex items-end">
+          <a
+            href="mailto:hallo@currywurstundkokosmilch.de"
+            class="rounded-full bg-black px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white"
+          >
+            Anfrage senden
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
