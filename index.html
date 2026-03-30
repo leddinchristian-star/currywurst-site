@@ -14,6 +14,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Cinematic enhancements */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    .parallax { transform: translateY(var(--py, 0)); will-change: transform; }
+
+    .noise-overlay { position: absolute; inset: 0; pointer-events: none; opacity: .06; background-image: radial-gradient(rgba(0,0,0,.5) 1px, transparent 1px); background-size: 120px 120px; mix-blend-mode: overlay; }
+
+    .hero-depth { transform: translateY(var(--hd, 0)); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .parallax, .hero-depth { transition: none !important; transform: none !important; }
+    }
     @media (max-width: 767px) {
       .glass-panel {
         padding: 0.9rem 1rem;
@@ -330,7 +343,8 @@
   </header>
 
   <main>
-    <section class="hero-bg noise overflow-hidden border-b border-black/10">
+    <section class="hero-bg relative overflow-hidden">
+      <div class="noise-overlay"></div> noise overflow-hidden border-b border-black/10">
       <div class="float-layer" aria-hidden="true">
         <div class="float-item curry-a">
           <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
@@ -345,7 +359,7 @@
 
       <div class="relative z-10 mx-auto min-h-screen max-w-7xl px-5 pb-16 pt-32 sm:px-6 lg:px-10 lg:pb-24 lg:pt-44">
         <div class="flex min-h-[78vh] items-end">
-          <div class="hero-copy max-w-4xl text-white">
+          <div class="hero-copy max-w-4xl text-white hero-depth reveal">
             <div class="max-w-[92vw] sm:max-w-none">
             <div class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 backdrop-blur-sm sm:px-5 sm:py-2.5 sm:text-[11px] sm:tracking-[0.34em]">
               Made in Thailand. Erzählt ohne Filter.
@@ -387,21 +401,22 @@
           <p class="text-xl leading-9 text-black">
             Currywurst & Kokosmilch ist kein Hochglanz-Auswanderer-Märchen. Wir sprechen über das, was wirklich passiert: Entscheidungen unter Druck, Familienalltag, Unsicherheiten, mutige Schritte und die Frage, wie sich Freiheit tatsächlich anfühlt.
           </p>
-          <p class="mt-6 text-lg leading-8 text-black/80">
+          <p class="mt-6 text-lg leading-8 text-black/75 leading-relaxed">
             Kein Filter. Keine Fassade. Sondern ehrliche Gespräche zwischen zwei Menschen, die Deutschland hinter sich gelassen haben und ihren eigenen Weg in Thailand gehen.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="hosts" class="section-line border-b bg-white">
-      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+    <section id="hosts" class="relative text-black" style="background: linear-gradient(135deg, #28d7cf 0%, #1fbfb7 40%, #17a9a2 100%);">
+      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
         <div class="mb-10 flex flex-col gap-5 sm:mb-14 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.3em] text-black">Die Hosts</div>
             <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl md:text-6xl">Zwei Stimmen. Eine echte Geschichte.</h2>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-black/80">
+          <p class="max-w-xl text-lg leading-8 text-black/75 leading-relaxed">
             Zwei Perspektiven, zwei Charaktere und ein gemeinsames Thema: Wie verändert sich das Leben, wenn man wirklich losgeht?
           </p>
         </div>
@@ -409,7 +424,7 @@
         <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
           <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
             <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="patrick.jpg" alt="Patrick" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
+              <img src="patrick.jpg" alt="Patrick" class="h-[340px] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-[420px] lg:h-[480px]" loading="lazy" />
             </div>
             <div class="px-2 pb-2 pt-7">
               <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Host 01</div>
@@ -417,7 +432,7 @@
               <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
                 Patrick ist Lehrer für Deutsch, Sport und Religion – und jemand, der Gespräche sammelt wie andere Briefmarken. Unterhaltsam, sportlich und redselig bringt er Geschichten, Tiefgang und Beobachtungen mit, die aus einem kurzen Austausch schnell einen ganzen Abend machen können.
               </p>
-              <p class="mt-4 max-w-xl text-base leading-8 text-black/80">
+              <p class="mt-4 max-w-xl text-base leading-8 text-black/75 leading-relaxed">
                 Besonders geprägt haben ihn seine Reisen, etwa seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm. Im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt – über Bildung, Beziehungen, Familie, Auswandern und den ganzen Wahnsinn zwischen Currywurst und Kokosmilch.
               </p>
             </div>
@@ -425,7 +440,7 @@
 
           <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
             <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="du.jpg" alt="Christian" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
+              <img src="du.jpg" alt="Christian" class="h-[340px] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-[420px] lg:h-[480px]" loading="lazy" />
             </div>
             <div class="px-2 pb-2 pt-7">
               <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#28d7cf]">Host 02</div>
@@ -433,7 +448,7 @@
               <p class="mt-4 max-w-xl text-lg leading-8 text-black/68">
                 Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon – Maschinenbau, Millionenprojekte, Holzklasse und Jetlag inklusive. Heute blickt er auf vieles davon mit der Klarheit von jemandem, der erkannt hat: Das Hamsterrad war optional.
               </p>
-              <p class="mt-4 max-w-xl text-base leading-8 text-black/80">
+              <p class="mt-4 max-w-xl text-base leading-8 text-black/75 leading-relaxed">
                 Im Podcast bringt er die Perspektive eines ehemaligen System-Insiders mit, der irgendwann die Notbremse gezogen hat. Er spricht über Arbeit, Freiheit, Familie, Erfolg und die unbequemen Fragen dahinter – mal nachdenklich, mal ziemlich direkt, aber immer ehrlich.
               </p>
             </div>
@@ -443,23 +458,23 @@
     </section>
 
     <section id="folgen" class="section-line border-b bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
         <div class="mb-14">
           <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Folgen</div>
           <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl text-black md:text-6xl">Worüber wir sprechen.</h2>
         </div>
 
-        <div class="grid gap-4 sm:gap-6 md:grid-cols-3">
-          <article class="soft-card rounded-[1.5rem] border border-black/8 bg-white/90 p-6 backdrop-blur-sm sm:rounded-[1.8rem] sm:p-8">
+        <div class="grid gap-8 lg:grid-cols-2 reveal">
+          <article class="soft-card group relative overflow-hidden rounded-[1.8rem] border border-black/10 bg-white/90 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] sm:rounded-[1.8rem] sm:p-8">
             <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#E58B2A]">Neustart</div>
             <h3 class="display-font mt-4 text-2xl font-black leading-tight">Warum wir Deutschland verlassen haben</h3>
-            <p class="mt-4 leading-8 text-black/80">
+            <p class="mt-4 leading-8 text-black/75 leading-relaxed">
               Über Sehnsucht, Druck, Sicherheit, innere Konflikte und die ehrlichen Gründe hinter einer großen Entscheidung.
             </p>
           </article>
 
           <article class="soft-card rounded-[1.5rem] border border-black/8 bg-[#E58B2A] p-6 sm:rounded-[1.8rem] sm:p-8">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Familie</div>
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/75 leading-relaxed">Familie</div>
             <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Alltag mit Kindern zwischen Chaos und Freiheit</h3>
             <p class="mt-4 leading-8 text-black/85">
               Zwischen Schulfragen, neuen Routinen, kleinen Krisen und genau den Momenten, die das Ganze lohnenswert machen.
@@ -467,7 +482,7 @@
           </article>
 
           <article class="soft-card rounded-[1.5rem] border border-black/8 bg-[#E58B2A] p-6 sm:rounded-[1.8rem] sm:p-8">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Freiheit</div>
+            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/75 leading-relaxed">Freiheit</div>
             <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Weniger Fassade. Mehr echtes Leben.</h3>
             <p class="mt-4 leading-8 text-black/85">
               Was sich verändert, wenn man aufhört zu funktionieren und beginnt, das eigene Leben bewusst neu aufzubauen.
@@ -478,7 +493,7 @@
     </section>
 
     <section id="plattformen" class="section-line border-b bg-[#111111] text-white">
-      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
         <div class="mb-10 flex flex-col gap-5 sm:mb-14 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/45">Plattformen</div>
@@ -564,14 +579,14 @@
     </section>
 
     <section id="kontakt" class="bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10">
+      <div class="mx-auto max-w-7xl px-5 py-18 sm:px-6 sm:py-24 lg:px-10 reveal">
         <div class="max-w-4xl">
           <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
           <h2 class="display-font mt-4 text-3xl font-black uppercase sm:mt-5 sm:text-4xl leading-tight text-black md:text-6xl">
             Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
           </h2>
 
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/80">
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75 leading-relaxed">
             Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
           </p>
 
@@ -592,7 +607,7 @@
 
     <footer class="border-t border-black/10 bg-white">
       <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-center lg:px-10">
-        <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/80">
+        <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/75 leading-relaxed">
           Made with <span class="heart">❤️</span> in Thailand
         </div>
       </div>
@@ -600,6 +615,25 @@
   </main>
 
   <script>
+    // Reveal on scroll + Parallax
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    const parallaxEls = document.querySelectorAll('.parallax');
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      const hd = Math.min(40, y * 0.08);
+      document.querySelectorAll('.hero-depth').forEach(el=> el.style.setProperty('--hd', hd+'px'));
+      parallaxEls.forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        const offset = (rect.top - window.innerHeight/2) * -0.05;
+        el.style.setProperty('--py', offset+'px');
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     function loadSpotify() {
       const container = document.getElementById('spotifyEmbed');
       const button = document.getElementById('spotifyButton');
@@ -660,4 +694,3 @@
   </script>
 </body>
 </html>
-
