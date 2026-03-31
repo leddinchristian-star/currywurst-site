@@ -26,11 +26,9 @@
       --white: #f8f7f3;
       --yellow: #ffd400;
       --yellow-soft: #ffe770;
-      --cyan: #7ff2ff;
-      --card-dark: rgba(255,255,255,0.05);
-      --card-border: rgba(255,255,255,0.09);
-      --glass: rgba(10,10,10,0.52);
-      --text-soft: rgba(255,255,255,0.80);
+      --turquoise: #00aeb7;
+      --turquoise-dark: #00949c;
+      --text-soft: rgba(255,255,255,0.82);
     }
 
     * { box-sizing: border-box; }
@@ -38,11 +36,13 @@
     body {
       margin: 0;
       overflow-x: hidden;
-      background: #000;
       color: var(--white);
       font-family: 'Inter', sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.56) 28%, rgba(0,0,0,0.18) 56%, rgba(0,0,0,0.12) 100%),
+        url('hero-clean.png') center center / cover no-repeat fixed;
     }
 
     h1, h2, h3, .display-font {
@@ -50,6 +50,33 @@
     }
 
     a { color: inherit; text-decoration: none; }
+
+    .site-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,212,0,0.08), transparent 20%),
+        radial-gradient(circle at 83% 20%, rgba(0,174,183,0.10), transparent 18%),
+        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.48));
+    }
+
+    .noise-overlay-global {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .05;
+      background-image: radial-gradient(rgba(255,255,255,.22) 0.7px, transparent 0.7px);
+      background-size: 4px 4px;
+      mix-blend-mode: soft-light;
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+    }
 
     .reveal {
       opacity: 0;
@@ -65,54 +92,29 @@
     .section-space {
       padding-top: 7rem;
       padding-bottom: 7rem;
+      background: transparent;
     }
 
     .hero {
       position: relative;
       min-height: 100vh;
       overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.58) 28%, rgba(0,0,0,0.18) 56%, rgba(0,0,0,0.14) 100%),
-        url('hero-clean.png') center center / cover no-repeat;
-      background-attachment: fixed;
+      background: transparent;
       isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 20%, rgba(255,212,0,0.10), transparent 22%),
-        radial-gradient(circle at 80% 78%, rgba(127,242,255,0.10), transparent 24%),
-        linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.48) 24%, rgba(0,0,0,0.18) 52%, rgba(0,0,0,0.08) 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .noise-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: .055;
-      background-image: radial-gradient(rgba(255,255,255,.22) 0.7px, transparent 0.7px);
-      background-size: 4px 4px;
-      mix-blend-mode: soft-light;
-      z-index: 1;
     }
 
     .hero-fade {
       position: absolute;
       inset-inline: 0;
       bottom: 0;
-      height: 260px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0), #050505 92%);
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.22) 70%, rgba(0,0,0,0.46) 100%);
       pointer-events: none;
       z-index: 1;
     }
 
     .glass-nav {
-      background: rgba(10,10,10,0.42);
+      background: rgba(10,10,10,0.36);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(255,255,255,0.10);
@@ -143,13 +145,13 @@
     .hero-copy-box {
       display: inline-block;
       max-width: 760px;
-      background: rgba(8,8,8,0.30);
+      background: rgba(8,8,8,0.22);
       border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 2rem;
       padding: 2.15rem 2.1rem 2.2rem;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.30);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.24);
     }
 
     .hero-kicker {
@@ -159,13 +161,15 @@
       margin-bottom: 1rem;
       padding: 0.55rem 0.9rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.10);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .hero-kicker-dot {
@@ -232,7 +236,7 @@
       min-height: 42px;
       padding: 0.72rem 0.98rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.10);
       font-size: 11px;
       font-weight: 900;
@@ -270,7 +274,7 @@
       background: var(--yellow);
       border: 2px solid var(--yellow);
       color: #111;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.18), 0 0 0 0 rgba(255,212,0,0.0);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
     }
 
     .cta-primary:hover {
@@ -307,7 +311,7 @@
       min-height: 54px;
       padding: 0 1rem 0 0.95rem;
       border-radius: 999px;
-      background: rgba(8,8,8,0.48);
+      background: rgba(8,8,8,0.36);
       border: 1px solid rgba(255,255,255,0.12);
       color: #fff;
       box-shadow: 0 14px 32px rgba(0,0,0,0.18);
@@ -322,7 +326,7 @@
 
     .logo-btn:hover {
       transform: translateY(-2px);
-      background: rgba(0,0,0,0.70);
+      background: rgba(0,0,0,0.52);
       border-color: rgba(255,255,255,0.22);
       box-shadow: 0 18px 38px rgba(0,0,0,0.24);
     }
@@ -407,26 +411,10 @@
       100% { transform: translateX(118vw) translateY(14px) rotate(145deg) scale(0.96); opacity: 0; }
     }
 
-    .section-dark {
+    .section-clear {
       position: relative;
-      background: #060606;
+      background: transparent;
       color: #fff;
-    }
-
-    .section-dark::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255,212,0,0.04), transparent 16%),
-        radial-gradient(circle at 86% 74%, rgba(127,242,255,0.05), transparent 18%);
-      pointer-events: none;
-    }
-
-    .section-light {
-      position: relative;
-      background: #f4efe6;
-      color: #111;
     }
 
     .container {
@@ -443,7 +431,7 @@
       font-weight: 900;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      opacity: .62;
+      color: rgba(255,255,255,0.64);
       margin-bottom: 1rem;
     }
 
@@ -455,13 +443,15 @@
       font-weight: 900;
       text-transform: uppercase;
       text-wrap: balance;
+      color: #fff;
+      text-shadow: 0 8px 28px rgba(0,0,0,0.18);
     }
 
     .section-text {
       max-width: 840px;
       font-size: 1.08rem;
       line-height: 1.85;
-      opacity: .82;
+      color: rgba(255,255,255,0.82);
     }
 
     .story-grid,
@@ -476,78 +466,58 @@
     .topics-grid { grid-template-columns: repeat(3, 1fr); }
     .platform-grid { grid-template-columns: 1fr 1fr; }
 
-    .card-dark,
-    .card-light {
+    .card-glass {
       border-radius: 1.9rem;
       padding: 1.85rem;
-      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
-    }
-
-    .card-dark:hover,
-    .card-light:hover {
-      transform: translateY(-4px);
-    }
-
-    .card-dark {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, background .24s ease;
+      background: rgba(10,10,10,0.20);
+      border: 1px solid rgba(255,255,255,0.10);
       color: #fff;
       box-shadow: 0 18px 42px rgba(0,0,0,0.14);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    .card-dark:hover {
-      border-color: rgba(255,255,255,0.14);
+    .card-glass:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(10,10,10,0.28);
       box-shadow: 0 24px 52px rgba(0,0,0,0.18);
     }
 
-    .card-light {
-      background: rgba(255,255,255,0.82);
-      border: 1px solid rgba(17,17,17,0.06);
-      color: #111;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.06);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .card-light:hover {
-      box-shadow: 0 24px 52px rgba(0,0,0,0.10);
-    }
-
-    .card-dark h3,
-    .card-light h3 {
+    .card-glass h3 {
       margin: 0 0 0.8rem;
       font-size: 1.65rem;
       line-height: 1.04;
       font-weight: 900;
       letter-spacing: -0.04em;
       text-transform: uppercase;
+      color: #fff;
     }
 
-    .card-dark p,
-    .card-light p {
+    .card-glass p {
       margin: 0;
       line-height: 1.8;
-      opacity: .84;
+      color: rgba(255,255,255,0.84);
     }
 
     .newsletter-box {
       margin-top: 2.6rem;
       border-radius: 2rem;
       padding: 2.15rem;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(8,8,8,0.22);
+      border: 1px solid rgba(255,255,255,0.10);
       box-shadow: 0 24px 56px rgba(0,0,0,0.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .footer {
-      background: #000;
-      color: rgba(255,255,255,0.76);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+      color: rgba(255,255,255,0.92);
+      border-top: 1px solid rgba(255,255,255,0.16);
       padding: 1.8rem 1.25rem 2.4rem;
+      box-shadow: 0 -14px 40px rgba(0,0,0,0.14);
     }
 
     .footer-inner {
@@ -568,6 +538,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
     }
 
     .heart {
@@ -645,7 +616,7 @@
     }
 
     @media (max-width: 1180px) {
-      .hero {
+      body {
         background-attachment: scroll;
       }
 
@@ -710,11 +681,8 @@
         padding-bottom: 5rem;
       }
 
-      .hero {
-        background-position: 64% center;
-      }
-
-      .hero-copy-box {
+      .hero-copy-box,
+      .newsletter-box {
         padding: 1.25rem 1.1rem 1.4rem;
       }
 
@@ -761,103 +729,323 @@
         animation: none !important;
         transform: none !important;
       }
-
-      .hero {
-        background-attachment: scroll;
-      }
     }
   </style>
 </head>
 
 <body>
-  <header class="fixed inset-x-0 top-0 z-50">
-    <div class="mx-auto max-w-[1600px] px-4 pt-4 sm:px-6 lg:px-8">
-      <div class="glass-nav flex items-center justify-between rounded-full px-5 py-4 text-white">
-        <div>
-          <div class="brand-top">Currywurst & Kokosmilch</div>
-          <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
-        </div>
+  <div class="site-overlay"></div>
+  <div class="noise-overlay-global"></div>
 
-        <nav class="hidden items-center gap-7 text-sm font-semibold xl:flex">
-          <a href="#story" class="transition hover:opacity-60">Story</a>
-          <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
-          <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
-          <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
-          <a href="#newsletter" class="transition hover:opacity-60">Insider</a>
-          <a href="#launch" class="transition hover:opacity-60">Launch</a>
-          <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
-        </nav>
-
-        <button
-          id="menuButton"
-          type="button"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-          aria-label="Menü öffnen"
-          class="mobile-menu-button"
-        >
-          <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-          <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-      </div>
-
-      <div id="mobileMenu" class="mobile-menu">
-        <a href="#story">Story</a>
-        <a href="#hosts">Hosts</a>
-        <a href="#folgen">Folgen</a>
-        <a href="#plattformen">Plattformen</a>
-        <a href="#newsletter">Insider</a>
-        <a href="#launch">Launch</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="noise-overlay"></div>
-
-      <div class="float-layer" aria-hidden="true">
-        <div class="float-item curry-a">
-          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
-        </div>
-        <div class="float-item curry-b">
-          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
-        </div>
-        <div class="float-item coco-a">
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"></circle></svg>
-        </div>
-      </div>
-
-      <div class="hero-layout">
-        <div class="hero-left">
-          <div class="hero-copy-box reveal">
-            <div class="hero-kicker">
-              <span class="hero-kicker-dot"></span>
-              Podcast-Launch in Vorbereitung
-            </div>
-
+  <div class="page">
+    <header class="fixed inset-x-0 top-0 z-50">
+      <div class="mx-auto max-w-[1600px] px-4 pt-4 sm:px-6 lg:px-8">
+        <div class="glass-nav flex items-center justify-between rounded-full px-5 py-4 text-white">
+          <div>
             <div class="brand-top">Currywurst & Kokosmilch</div>
-            <div class="eyebrow">Zwischen Deutschland & Thailand</div>
+            <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
+          </div>
 
-            <h1 class="hero-title">
-              <span>Currywurst</span>
-              <span class="accent">& Kokosmilch</span>
-            </h1>
+          <nav class="hidden items-center gap-7 text-sm font-semibold xl:flex">
+            <a href="#story" class="transition hover:opacity-60">Story</a>
+            <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
+            <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
+            <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
+            <a href="#newsletter" class="transition hover:opacity-60">Insider</a>
+            <a href="#launch" class="transition hover:opacity-60">Launch</a>
+            <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
+          </nav>
 
-            <p class="subline">
-              Der Podcast über Auswandern, Familie, Freiheit, Zweifel, Chaos und die Geschichten, über die man entweder lachen oder kurz alles hinterfragen muss.
-            </p>
+          <button
+            id="menuButton"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Menü öffnen"
+            class="mobile-menu-button"
+          >
+            <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
 
-            <div class="hero-stats">
-              <div class="hero-stat">Ehrlich</div>
-              <div class="hero-stat">Direkt</div>
-              <div class="hero-stat">Zwischen Deutschland & Thailand</div>
+        <div id="mobileMenu" class="mobile-menu">
+          <a href="#story">Story</a>
+          <a href="#hosts">Hosts</a>
+          <a href="#folgen">Folgen</a>
+          <a href="#plattformen">Plattformen</a>
+          <a href="#newsletter">Insider</a>
+          <a href="#launch">Launch</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="float-layer" aria-hidden="true">
+          <div class="float-item curry-a">
+            <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
+          </div>
+          <div class="float-item curry-b">
+            <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
+          </div>
+          <div class="float-item coco-a">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"></circle></svg>
+          </div>
+        </div>
+
+        <div class="hero-layout">
+          <div class="hero-left">
+            <div class="hero-copy-box reveal">
+              <div class="hero-kicker">
+                <span class="hero-kicker-dot"></span>
+                Podcast-Launch in Vorbereitung
+              </div>
+
+              <div class="brand-top">Currywurst & Kokosmilch</div>
+              <div class="eyebrow">Zwischen Deutschland & Thailand</div>
+
+              <h1 class="hero-title">
+                <span>Currywurst</span>
+                <span class="accent">& Kokosmilch</span>
+              </h1>
+
+              <p class="subline">
+                Der Podcast über Auswandern, Familie, Freiheit, Zweifel, Chaos und die Geschichten, über die man entweder lachen oder kurz alles hinterfragen muss.
+              </p>
+
+              <div class="hero-stats">
+                <div class="hero-stat">Ehrlich</div>
+                <div class="hero-stat">Direkt</div>
+                <div class="hero-stat">Zwischen Deutschland & Thailand</div>
+              </div>
+
+              <div class="hero-cta-row">
+                <button
+                  type="button"
+                  data-tally-open="PdlMGB"
+                  data-tally-layout="modal"
+                  data-tally-width="700"
+                  data-tally-overlay="1"
+                  data-tally-emoji-text="👋"
+                  data-tally-emoji-animation="wave"
+                  class="cta-primary"
+                >
+                  Beim Launch dabei sein
+                </button>
+
+                <a href="#story" class="cta-secondary">Mehr erfahren</a>
+              </div>
+
+              <div class="logo-buttons">
+                <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
+                  <span class="logo-icon logo-instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <span>Instagram</span>
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
+                  <span class="logo-icon logo-youtube">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
+                    </svg>
+                  </span>
+                  <span>YouTube</span>
+                </a>
+
+                <a href="#plattformen" class="logo-btn" aria-label="Spotify">
+                  <span class="logo-icon logo-spotify">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
+                    </svg>
+                  </span>
+                  <span>Spotify bald</span>
+                </a>
+
+                <a href="mailto:currywurstkokosmilch@gmail.com" class="logo-btn" aria-label="Kontakt per E-Mail">
+                  <span class="logo-icon logo-mail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2">
+                      <path d="M3 7l9 6 9-6"></path>
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    </svg>
+                  </span>
+                  <span>Kontakt</span>
+                </a>
+              </div>
+
+              <div class="hero-note">
+                Kein Spam. Nur echte Updates, sobald die erste Folge live ist.
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div class="hero-fade"></div>
+      </section>
+
+      <section id="story" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Story</div>
+          <h2 class="section-title">Kein Auswanderer-Märchen. Sondern echtes Leben.</h2>
+          <p class="section-text">
+            Currywurst & Kokosmilch ist der Podcast über Neuanfang, Familie, Zweifel, Freiheit und den ganz normalen Wahnsinn zwischen Deutschland und Thailand. Ehrlich, direkt und ohne Hochglanzfassade.
+          </p>
+
+          <div class="story-grid">
+            <article class="card-glass">
+              <h3>Warum dieser Podcast?</h3>
+              <p>
+                Weil viele nur das schöne Bild sehen – aber selten die Gedanken dahinter. Wir reden über Entscheidungen, Druck, Alltag, Mut, Beziehungen und das, was wirklich passiert, wenn man ein anderes Leben aufbaut.
+              </p>
+            </article>
+
+            <article class="card-glass">
+              <h3>Was dich erwartet</h3>
+              <p>
+                Gespräche mit Tiefe, Humor, ehrliche Einblicke, Familienchaos, neue Perspektiven und genau die Momente, in denen man merkt: Das hier ist nicht perfekt – aber echt.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="hosts" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Hosts</div>
+          <h2 class="section-title">Zwei Stimmen. Zwei Blickwinkel. Eine Geschichte.</h2>
+          <p class="section-text">
+            Zwei Typen, zwei Perspektiven und eine gemeinsame Reise zwischen Sicherheit, Aufbruch und echtem Leben. Mal tief, mal absurd, mal sehr direkt – aber nie langweilig.
+          </p>
+
+          <div class="story-grid">
+            <article class="card-glass">
+              <h3>Patrick</h3>
+              <p>
+                Gesprächig, neugierig, sportlich und immer mit einem Auge für die Geschichte hinter der Geschichte. Im Podcast bringt Patrick Energie, Tiefgang und genau die Fragen mit, die Gespräche spannend machen.
+              </p>
+            </article>
+
+            <article class="card-glass">
+              <h3>Christian</h3>
+              <p>
+                Direkt, reflektiert und mit einem klaren Blick auf Arbeit, Freiheit, Familie und Veränderung. Christian spricht über das, was viele denken – aber nicht immer aussprechen.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="folgen" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Folgen</div>
+          <h2 class="section-title">Worüber wir sprechen</h2>
+          <p class="section-text">
+            Von Auswandern bis Familienalltag, von Druck bis Freiheit, von Identität bis Neuanfang – mit echten Geschichten statt austauschbarer Phrasen.
+          </p>
+
+          <div class="topics-grid">
+            <article class="card-glass">
+              <h3>Neustart</h3>
+              <p>Warum wir Deutschland verlassen haben und was man sich vorher selten ehrlich eingesteht.</p>
+            </article>
+
+            <article class="card-glass">
+              <h3>Familie</h3>
+              <p>Zwischen Kindern, Alltag, neuen Routinen und dem Versuch, alles irgendwie zusammenzuhalten.</p>
+            </article>
+
+            <article class="card-glass">
+              <h3>Freiheit</h3>
+              <p>Was Freiheit wirklich bedeutet, wenn sie nicht nur gut klingt, sondern Konsequenzen hat.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="plattformen" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Plattformen</div>
+          <h2 class="section-title">Hören. Folgen. Dabeibleiben.</h2>
+          <p class="section-text">
+            Folge uns auf den Plattformen, auf denen neue Folgen, Clips, Behind-the-Scenes und Updates rund um den Podcast erscheinen.
+          </p>
+
+          <div class="platform-grid">
+            <article class="card-glass">
+              <h3>Instagram & YouTube</h3>
+              <p>
+                Auf Instagram und YouTube findest du Updates, Einblicke, Teaser und alles, was hinter dem Podcast passiert.
+              </p>
+
+              <div class="logo-buttons">
+                <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
+                  <span class="logo-icon logo-instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <span>Instagram</span>
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
+                  <span class="logo-icon logo-youtube">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
+                    </svg>
+                  </span>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="card-glass">
+              <h3>Spotify folgt bald</h3>
+              <p>
+                Der Spotify-Player wird eingebunden, sobald die erste Folge veröffentlicht ist. Bis dahin kannst du dich schon eintragen und bekommst direkt Bescheid.
+              </p>
+
+              <div class="logo-buttons">
+                <a href="#newsletter" class="logo-btn" aria-label="Zum Insider Bereich">
+                  <span class="logo-icon logo-spotify">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
+                    </svg>
+                  </span>
+                  <span>Launch Update</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="newsletter" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Insider</div>
+          <h2 class="section-title">Erste Folge nicht verpassen</h2>
+          <p class="section-text">
+            Trag dich ein und erhalte eine Nachricht, sobald die erste Folge live ist. Plus ehrliche Updates und Einblicke rund um Currywurst & Kokosmilch.
+          </p>
+
+          <div class="newsletter-box">
+            <h3 style="margin:0 0 .7rem;font-size:1.8rem;line-height:1.04;text-transform:uppercase;letter-spacing:-0.04em;font-weight:900;color:#fff;">
+              Sei von Anfang an dabei
+            </h3>
+            <p style="margin:0;max-width:760px;line-height:1.8;color:rgba(255,255,255,0.82);">
+              Kein Spam. Keine tägliche Flut. Nur die Nachricht, auf die es ankommt: wenn der Podcast startet.
+            </p>
 
             <div class="hero-cta-row">
               <button
@@ -870,218 +1058,26 @@
                 data-tally-emoji-animation="wave"
                 class="cta-primary"
               >
-                Beim Launch dabei sein
+                Jetzt eintragen
               </button>
 
-              <a href="#story" class="cta-secondary">Mehr erfahren</a>
-            </div>
-
-            <div class="logo-buttons">
-              <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
-                <span class="logo-icon logo-instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
-                  </svg>
-                </span>
-                <span>Instagram</span>
+              <a href="https://tally.so/r/PdlMGB" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+                Formular direkt öffnen
               </a>
-
-              <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
-                <span class="logo-icon logo-youtube">
-                  <svg viewBox="0 0 24 24" fill="white">
-                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
-                  </svg>
-                </span>
-                <span>YouTube</span>
-              </a>
-
-              <a href="#plattformen" class="logo-btn" aria-label="Spotify">
-                <span class="logo-icon logo-spotify">
-                  <svg viewBox="0 0 24 24" fill="white">
-                    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
-                  </svg>
-                </span>
-                <span>Spotify bald</span>
-              </a>
-
-              <a href="mailto:currywurstkokosmilch@gmail.com" class="logo-btn" aria-label="Kontakt per E-Mail">
-                <span class="logo-icon logo-mail">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2">
-                    <path d="M3 7l9 6 9-6"></path>
-                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  </svg>
-                </span>
-                <span>Kontakt</span>
-              </a>
-            </div>
-
-            <div class="hero-note">
-              Kein Spam. Nur echte Updates, sobald die erste Folge live ist.
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="hero-fade"></div>
-    </section>
-
-    <section id="story" class="section-dark section-space">
-      <div class="container reveal">
-        <div class="section-label">Story</div>
-        <h2 class="section-title">Kein Auswanderer-Märchen. Sondern echtes Leben.</h2>
-        <p class="section-text">
-          Currywurst & Kokosmilch ist der Podcast über Neuanfang, Familie, Zweifel, Freiheit und den ganz normalen Wahnsinn zwischen Deutschland und Thailand. Ehrlich, direkt und ohne Hochglanzfassade.
-        </p>
-
-        <div class="story-grid">
-          <article class="card-dark">
-            <h3>Warum dieser Podcast?</h3>
-            <p>
-              Weil viele nur das schöne Bild sehen – aber selten die Gedanken dahinter. Wir reden über Entscheidungen, Druck, Alltag, Mut, Beziehungen und das, was wirklich passiert, wenn man ein anderes Leben aufbaut.
-            </p>
-          </article>
-
-          <article class="card-dark">
-            <h3>Was dich erwartet</h3>
-            <p>
-              Gespräche mit Tiefe, Humor, ehrliche Einblicke, Familienchaos, neue Perspektiven und genau die Momente, in denen man merkt: Das hier ist nicht perfekt – aber echt.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="hosts" class="section-light section-space">
-      <div class="container reveal">
-        <div class="section-label">Hosts</div>
-        <h2 class="section-title">Zwei Stimmen. Zwei Blickwinkel. Eine Geschichte.</h2>
-        <p class="section-text">
-          Zwei Typen, zwei Perspektiven und eine gemeinsame Reise zwischen Sicherheit, Aufbruch und echtem Leben. Mal tief, mal absurd, mal sehr direkt – aber nie langweilig.
-        </p>
-
-        <div class="story-grid">
-          <article class="card-light">
-            <h3>Patrick</h3>
-            <p>
-              Gesprächig, neugierig, sportlich und immer mit einem Auge für die Geschichte hinter der Geschichte. Im Podcast bringt Patrick Energie, Tiefgang und genau die Fragen mit, die Gespräche spannend machen.
-            </p>
-          </article>
-
-          <article class="card-light">
-            <h3>Christian</h3>
-            <p>
-              Direkt, reflektiert und mit einem klaren Blick auf Arbeit, Freiheit, Familie und Veränderung. Christian spricht über das, was viele denken – aber nicht immer aussprechen.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="folgen" class="section-dark section-space">
-      <div class="container reveal">
-        <div class="section-label">Folgen</div>
-        <h2 class="section-title">Worüber wir sprechen</h2>
-        <p class="section-text">
-          Von Auswandern bis Familienalltag, von Druck bis Freiheit, von Identität bis Neuanfang – mit echten Geschichten statt austauschbarer Phrasen.
-        </p>
-
-        <div class="topics-grid">
-          <article class="card-dark">
-            <h3>Neustart</h3>
-            <p>Warum wir Deutschland verlassen haben und was man sich vorher selten ehrlich eingesteht.</p>
-          </article>
-
-          <article class="card-dark">
-            <h3>Familie</h3>
-            <p>Zwischen Kindern, Alltag, neuen Routinen und dem Versuch, alles irgendwie zusammenzuhalten.</p>
-          </article>
-
-          <article class="card-dark">
-            <h3>Freiheit</h3>
-            <p>Was Freiheit wirklich bedeutet, wenn sie nicht nur gut klingt, sondern Konsequenzen hat.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="plattformen" class="section-light section-space">
-      <div class="container reveal">
-        <div class="section-label">Plattformen</div>
-        <h2 class="section-title">Hören. Folgen. Dabeibleiben.</h2>
-        <p class="section-text">
-          Folge uns auf den Plattformen, auf denen neue Folgen, Clips, Behind-the-Scenes und Updates rund um den Podcast erscheinen.
-        </p>
-
-        <div class="platform-grid">
-          <article class="card-light">
-            <h3>Instagram & YouTube</h3>
-            <p>
-              Auf Instagram und YouTube findest du Updates, Einblicke, Teaser und alles, was hinter dem Podcast passiert.
-            </p>
-
-            <div class="logo-buttons">
-              <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
-                <span class="logo-icon logo-instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
-                  </svg>
-                </span>
-                <span>Instagram</span>
-              </a>
-
-              <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
-                <span class="logo-icon logo-youtube">
-                  <svg viewBox="0 0 24 24" fill="white">
-                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
-                  </svg>
-                </span>
-                <span>YouTube</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="card-light">
-            <h3>Spotify folgt bald</h3>
-            <p>
-              Der Spotify-Player wird eingebunden, sobald die erste Folge veröffentlicht ist. Bis dahin kannst du dich schon eintragen und bekommst direkt Bescheid.
-            </p>
-
-            <div class="logo-buttons">
-              <a href="#newsletter" class="logo-btn" aria-label="Zum Insider Bereich">
-                <span class="logo-icon logo-spotify">
-                  <svg viewBox="0 0 24 24" fill="white">
-                    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
-                  </svg>
-                </span>
-                <span>Launch Update</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="newsletter" class="section-dark section-space">
-      <div class="container reveal">
-        <div class="section-label">Insider</div>
-        <h2 class="section-title">Erste Folge nicht verpassen</h2>
-        <p class="section-text">
-          Trag dich ein und erhalte eine Nachricht, sobald die erste Folge live ist. Plus ehrliche Updates und Einblicke rund um Currywurst & Kokosmilch.
-        </p>
-
-        <div class="newsletter-box">
-          <h3 style="margin:0 0 .7rem;font-size:1.8rem;line-height:1.04;text-transform:uppercase;letter-spacing:-0.04em;font-weight:900;">
-            Sei von Anfang an dabei
-          </h3>
-          <p style="margin:0;max-width:760px;line-height:1.8;opacity:.82;">
-            Kein Spam. Keine tägliche Flut. Nur die Nachricht, auf die es ankommt: wenn der Podcast startet.
+      <section id="launch" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Launch</div>
+          <h2 class="section-title">Folge uns von Anfang an</h2>
+          <p class="section-text">
+            Ehrliche Gespräche, echtes Leben und Momente, die dich zum Nachdenken bringen – und manchmal einfach nur zum Lachen. Trag dich ein oder abonnier direkt den Kanal.
           </p>
 
-          <div class="hero-cta-row">
+          <div class="hero-cta-row" style="margin-top:2rem;">
             <button
               type="button"
               data-tally-open="PdlMGB"
@@ -1092,110 +1088,81 @@
               data-tally-emoji-animation="wave"
               class="cta-primary"
             >
-              Jetzt eintragen
+              Für Updates eintragen
             </button>
 
-            <a href="https://tally.so/r/PdlMGB" target="_blank" rel="noopener noreferrer" class="cta-secondary">
-              Formular direkt öffnen
+            <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+              YouTube abonnieren
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="launch" class="section-light section-space">
-      <div class="container reveal">
-        <div class="section-label">Launch</div>
-        <h2 class="section-title">Folge uns von Anfang an</h2>
-        <p class="section-text">
-          Ehrliche Gespräche, echtes Leben und Momente, die dich zum Nachdenken bringen – und manchmal einfach nur zum Lachen. Trag dich ein oder abonnier direkt den Kanal.
-        </p>
+      <section id="kontakt" class="section-clear section-space">
+        <div class="container reveal">
+          <div class="section-label">Kontakt</div>
+          <h2 class="section-title">Bereit für ehrliche Gespräche, Gäste oder Kooperationen?</h2>
+          <p class="section-text">
+            Schreib uns direkt per Mail oder folge uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Updates und alles, was hinter den Kulissen passiert.
+          </p>
 
-        <div class="hero-cta-row" style="margin-top:2rem;">
-          <button
-            type="button"
-            data-tally-open="PdlMGB"
-            data-tally-layout="modal"
-            data-tally-width="700"
-            data-tally-overlay="1"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
-            class="cta-primary"
-          >
-            Für Updates eintragen
-          </button>
+          <div class="logo-buttons" style="margin-top:2rem;">
+            <a href="mailto:currywurstkokosmilch@gmail.com" class="logo-btn" aria-label="Kontakt per E-Mail">
+              <span class="logo-icon logo-mail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2">
+                  <path d="M3 7l9 6 9-6"></path>
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                </svg>
+              </span>
+              <span>E-Mail senden</span>
+            </a>
 
-          <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="cta-secondary">
-            YouTube abonnieren
-          </a>
+            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
+              <span class="logo-icon logo-instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
+                </svg>
+              </span>
+              <span>Instagram</span>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
+              <span class="logo-icon logo-youtube">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
+                </svg>
+              </span>
+              <span>YouTube</span>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="kontakt" class="section-dark section-space">
-      <div class="container reveal">
-        <div class="section-label">Kontakt</div>
-        <h2 class="section-title">Bereit für ehrliche Gespräche, Gäste oder Kooperationen?</h2>
-        <p class="section-text">
-          Schreib uns direkt per Mail oder folge uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Updates und alles, was hinter den Kulissen passiert.
-        </p>
+      <footer class="footer">
+        <div class="footer-inner">
+          <div style="font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">
+            Made with <span class="heart">❤️</span> in Thailand
+          </div>
 
-        <div class="logo-buttons" style="margin-top:2rem;">
-          <a href="mailto:currywurstkokosmilch@gmail.com" class="logo-btn" aria-label="Kontakt per E-Mail">
-            <span class="logo-icon logo-mail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2">
-                <path d="M3 7l9 6 9-6"></path>
-                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-              </svg>
-            </span>
-            <span>E-Mail senden</span>
-          </a>
-
-          <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="Instagram">
-            <span class="logo-icon logo-instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                <circle cx="12" cy="12" r="4"></circle>
-                <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
-              </svg>
-            </span>
-            <span>Instagram</span>
-          </a>
-
-          <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="logo-btn" aria-label="YouTube">
-            <span class="logo-icon logo-youtube">
-              <svg viewBox="0 0 24 24" fill="white">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
-              </svg>
-            </span>
-            <span>YouTube</span>
-          </a>
+          <div class="footer-links">
+            <a href="#" onclick="openLegal('impressum'); return false;">Impressum</a>
+            <a href="#" onclick="openLegal('datenschutz'); return false;">Datenschutz</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </footer>
+    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div style="font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">
-          Made with <span class="heart">❤️</span> in Thailand
+    <div id="legalModal" class="legal-backdrop" aria-hidden="true">
+      <div class="legal-panel">
+        <div class="legal-panel-head">
+          <h3 id="legalTitle" class="legal-title">Impressum</h3>
+          <button onclick="closeLegal()" class="legal-close" aria-label="Schließen">✕</button>
         </div>
 
-        <div class="footer-links">
-          <a href="#" onclick="openLegal('impressum'); return false;">Impressum</a>
-          <a href="#" onclick="openLegal('datenschutz'); return false;">Datenschutz</a>
-        </div>
+        <div id="legalContent" class="legal-content"></div>
       </div>
-    </footer>
-  </main>
-
-  <div id="legalModal" class="legal-backdrop" aria-hidden="true">
-    <div class="legal-panel">
-      <div class="legal-panel-head">
-        <h3 id="legalTitle" class="legal-title">Impressum</h3>
-        <button onclick="closeLegal()" class="legal-close" aria-label="Schließen">✕</button>
-      </div>
-
-      <div id="legalContent" class="legal-content"></div>
     </div>
   </div>
 
