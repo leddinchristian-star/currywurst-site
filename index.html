@@ -500,6 +500,7 @@
 
               <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4">
                 <button
+                  type="button"
                   data-tally-open="PdlMGB"
                   data-tally-emoji-text="👋"
                   data-tally-emoji-animation="wave"
@@ -823,6 +824,7 @@
 
         <div class="mt-6 flex justify-center">
           <button
+            type="button"
             data-tally-open="PdlMGB"
             data-tally-emoji-text="👋"
             data-tally-emoji-animation="wave"
@@ -850,6 +852,7 @@
 
         <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
           <button
+            type="button"
             data-tally-open="PdlMGB"
             data-tally-emoji-text="👋"
             data-tally-emoji-animation="wave"
@@ -1028,34 +1031,6 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLegal();
-    });
-
-    function initTallyPopupOptions() {
-      if (!window.Tally) return;
-
-      const buttons = document.querySelectorAll('[data-tally-open="PdlMGB"]');
-      buttons.forEach((btn) => {
-        btn.addEventListener('click', function () {
-          setTimeout(() => {
-            if (window.Tally && window.Tally.openPopup) {
-              window.Tally.openPopup('PdlMGB', {
-                layout: 'modal',
-                width: 700,
-                overlay: true,
-                emoji: {
-                  text: '👋',
-                  animation: 'wave'
-                },
-                autoClose: 5000
-              });
-            }
-          }, 0);
-        });
-      });
-    }
-
-    window.addEventListener('load', () => {
-      initTallyPopupOptions();
     });
   </script>
 </body>
