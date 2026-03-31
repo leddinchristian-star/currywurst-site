@@ -28,7 +28,7 @@
       --yellow-soft: #ffe770;
       --turquoise: #00aeb7;
       --turquoise-dark: #00949c;
-      --text-soft: rgba(255,255,255,0.82);
+      --text-soft: rgba(255,255,255,0.84);
     }
 
     * { box-sizing: border-box; }
@@ -40,10 +40,7 @@
       font-family: 'Inter', sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.44) 28%, rgba(0,0,0,0.14) 58%, rgba(0,0,0,0.08) 100%),
-        url('hero-clean.png') center center / cover no-repeat fixed;
-      background-color: #050505;
+      background: #050505;
     }
 
     h1, h2, h3, .display-font {
@@ -51,10 +48,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
-    button {
-      font-family: inherit;
-    }
+    button { font-family: inherit; }
 
     .site-overlay {
       position: fixed;
@@ -62,9 +56,8 @@
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(circle at 18% 20%, rgba(255,212,0,0.05), transparent 22%),
-        radial-gradient(circle at 83% 20%, rgba(0,174,183,0.07), transparent 20%),
-        linear-gradient(to bottom, rgba(0,0,0,0.14), rgba(0,0,0,0.34));
+        radial-gradient(circle at 18% 20%, rgba(255,212,0,0.04), transparent 22%),
+        radial-gradient(circle at 83% 20%, rgba(0,174,183,0.05), transparent 20%);
     }
 
     .noise-overlay-global {
@@ -72,7 +65,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-      opacity: .04;
+      opacity: .035;
       background-image: radial-gradient(rgba(255,255,255,.22) 0.7px, transparent 0.7px);
       background-size: 4px 4px;
       mix-blend-mode: soft-light;
@@ -104,8 +97,29 @@
       position: relative;
       min-height: 100vh;
       overflow: hidden;
-      background: transparent;
       isolation: isolate;
+      background: #050505;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.38) 28%, rgba(0,0,0,0.14) 58%, rgba(0,0,0,0.10) 100%),
+        url('hero-clean.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center 24%;
+    }
+
+    .hero-soft-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.18) 42%, rgba(0,0,0,0.32) 100%);
     }
 
     .hero-fade {
@@ -113,9 +127,9 @@
       inset-inline: 0;
       bottom: 0;
       height: 220px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.16) 70%, rgba(0,0,0,0.36) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.16) 70%, rgba(0,0,0,0.42) 100%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
     }
 
     .glass-nav {
@@ -150,10 +164,10 @@
     .hero-copy-box {
       display: inline-block;
       max-width: 760px;
-      background: rgba(8,8,8,0.18);
+      background: rgba(8,8,8,0.16);
       border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 2rem;
       padding: 2.15rem 2.1rem 2.2rem;
       box-shadow: 0 24px 70px rgba(0,0,0,0.18);
@@ -185,25 +199,8 @@
       box-shadow: 0 0 16px rgba(255,212,0,0.85);
     }
 
-    .brand-top {
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
-    }
-
-    .eyebrow {
-      margin-top: 0.95rem;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.84);
-    }
-
     .hero-title {
-      margin: 1.2rem 0 0;
+      margin: 0;
       font-size: clamp(3.4rem, 8vw, 7.6rem);
       line-height: 0.88;
       letter-spacing: -0.075em;
@@ -699,23 +696,22 @@
     }
 
     @media (max-width: 1180px) {
-      body {
-        background:
-          linear-gradient(to bottom, rgba(0,0,0,0.46) 0%, rgba(0,0,0,0.24) 34%, rgba(0,0,0,0.34) 100%),
-          url('hero-clean.png') center top / contain no-repeat;
-        background-color: #050505;
+      .hero-media {
+        background-image:
+          linear-gradient(to bottom, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.08) 28%, rgba(0,0,0,0.26) 100%),
+          url('hero-clean.png');
+        background-size: cover;
+        background-position: center 18%;
       }
 
-      .site-overlay {
+      .hero-soft-overlay {
         background:
-          radial-gradient(circle at 18% 18%, rgba(255,212,0,0.04), transparent 22%),
-          radial-gradient(circle at 82% 18%, rgba(0,174,183,0.05), transparent 20%),
-          linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
+          linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.10) 42%, rgba(0,0,0,0.24) 100%);
       }
 
       .hero {
         min-height: auto;
-        padding-top: 2rem;
+        padding-top: 1.5rem;
       }
 
       .hero-layout {
@@ -725,7 +721,7 @@
 
       .hero-left {
         width: 100%;
-        padding-top: 18rem;
+        padding-top: 19rem;
       }
 
       .story-grid,
@@ -780,11 +776,25 @@
       }
 
       .hero {
-        padding-top: 1rem;
+        min-height: auto;
+        padding-top: 0.5rem;
+      }
+
+      .hero-media {
+        background-image:
+          linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.02) 20%, rgba(0,0,0,0.20) 56%, rgba(0,0,0,0.34) 100%),
+          url('hero-clean.png');
+        background-size: cover;
+        background-position: center 12%;
+      }
+
+      .hero-soft-overlay {
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.06) 38%, rgba(0,0,0,0.20) 100%);
       }
 
       .hero-left {
-        padding-top: 14rem;
+        padding-top: 20rem;
       }
 
       .hero-copy-box,
@@ -796,14 +806,6 @@
 
       .hero-title {
         font-size: clamp(2.65rem, 17vw, 4.4rem);
-      }
-
-      .brand-top {
-        font-size: 10px;
-      }
-
-      .eyebrow {
-        font-size: 11px;
       }
 
       .subline {
@@ -829,6 +831,16 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .hero-media {
+        background-position: center 10%;
+      }
+
+      .hero-left {
+        padding-top: 19.5rem;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal,
       .float-item,
@@ -850,7 +862,7 @@
       <div class="mx-auto max-w-[1600px] px-4 pt-4 sm:px-6 lg:px-8">
         <div class="glass-nav flex items-center justify-between rounded-full px-5 py-4 text-white">
           <div>
-            <div class="brand-top">Currywurst & Kokosmilch</div>
+            <div class="text-[12px] font-black uppercase tracking-[0.34em] text-white/95">Currywurst & Kokosmilch</div>
             <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
           </div>
 
@@ -895,6 +907,9 @@
 
     <main>
       <section class="hero">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-soft-overlay" aria-hidden="true"></div>
+
         <div class="float-layer" aria-hidden="true">
           <div class="float-item curry-a">
             <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
@@ -914,9 +929,6 @@
                 <span class="hero-kicker-dot"></span>
                 Podcast-Launch in Vorbereitung
               </div>
-
-              <div class="brand-top">Currywurst & Kokosmilch</div>
-              <div class="eyebrow">Zwischen Deutschland & Thailand</div>
 
               <h1 class="hero-title">
                 <span>Currywurst</span>
