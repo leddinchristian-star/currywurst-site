@@ -3,979 +3,910 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Currywurst & Kokosmilch – Podcast über Auswandern, Familie & Freiheit</title>
+  <title>Currywurst & Kokosmilch – Podcast über Auswandern, Familie & Thailand</title>
   <meta
     name="description"
     content="Currywurst & Kokosmilch ist der Podcast über Auswandern, Familie, Freiheit, Zweifel, Neuanfang und das echte Leben zwischen Deutschland und Thailand."
   />
   <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://tally.so/widgets/embed.js"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
 
   <style>
     html { scroll-behavior: smooth; }
 
+    :root {
+      --bg-lime: #d7ff1f;
+      --bg-orange: #ff7a00;
+      --bg-cyan: #6feeff;
+      --bg-dark: #0b0b0b;
+      --text-dark: #050505;
+      --text-light: #f7f7f2;
+      --muted: rgba(255,255,255,0.72);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
+      margin: 0;
       overflow-x: hidden;
-      background: #f5f1ea;
-      color: #111111;
       font-family: 'Inter', sans-serif;
+      background: #000;
+      color: var(--text-light);
     }
 
-    h1, h2, h3, .display-font {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    a { text-decoration: none; color: inherit; }
+
+    .page-shell {
+      width: 100%;
+      min-height: 100vh;
+      background: #000;
     }
 
-    .section-space {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hero-bg {
+    .hero {
       position: relative;
       min-height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(17,17,17,0.84) 0%, rgba(17,17,17,0.64) 38%, rgba(17,17,17,0.26) 68%, rgba(17,17,17,0.16) 100%),
-        url('hero.jpg') center center / cover no-repeat;
-      isolation: isolate;
       overflow: hidden;
-      border-bottom: 1px solid rgba(17,17,17,0.10);
-    }
-
-    .hero-bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(40,215,207,0.12), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(229,139,42,0.12), transparent 24%);
-      pointer-events: none;
-      z-index: 0;
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.08), transparent 24%),
+        radial-gradient(circle at 75% 78%, rgba(0,0,0,0.12), transparent 22%),
+        linear-gradient(90deg, #ff7a00 0%, #ffb347 42%, #8df0ff 100%);
+      color: #111;
     }
 
-    .hero-bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.10));
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .noise-overlay {
+    .grain {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      opacity: .06;
-      background-image: radial-gradient(rgba(0,0,0,.5) 1px, transparent 1px);
-      background-size: 120px 120px;
-      mix-blend-mode: overlay;
-      z-index: 1;
+      opacity: .12;
+      background-image:
+        radial-gradient(rgba(0,0,0,.35) 1px, transparent 1px);
+      background-size: 4px 4px;
+      mix-blend-mode: multiply;
     }
 
-    .hero-fade {
-      position: absolute;
-      inset-inline: 0;
-      bottom: 0;
-      height: 200px;
-      background: linear-gradient(to bottom, rgba(245,241,234,0), #f5f1ea 92%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .glass-panel {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.16);
-    }
-
-    .hero-copy {
-      transform: translateY(12px);
-      opacity: 0;
-      animation: heroReveal 1.2s cubic-bezier(.2,.8,.2,1) 0.15s forwards;
+    .hero-inner {
       position: relative;
-      z-index: 3;
-    }
-
-    @keyframes heroReveal {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .hero-depth {
-      transform: translateY(var(--hd, 0));
-    }
-
-    .float-layer {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
       z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 100vh;
+      padding: 34px 42px 38px;
+      gap: 24px;
     }
 
-    .float-item {
-      position: absolute;
-      left: -120px;
-      width: 58px;
-      height: 58px;
-      opacity: 0.08;
-      filter: blur(0.2px);
+    .brand-top {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 8vh;
     }
 
-    .float-item svg {
-      width: 100%;
-      height: 100%;
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(3.6rem, 9vw, 8rem);
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+      max-width: 760px;
+    }
+
+    .hero-title span {
       display: block;
-      fill: #111111;
     }
 
-    .curry-a { top: 24%; animation: flyA 15s ease-in-out infinite; }
-    .curry-b { top: 62%; animation: flyB 18s ease-in-out infinite; animation-delay: 1.2s; }
-    .coco-a  { top: 44%; animation: flyC 16s ease-in-out infinite; animation-delay: 0.6s; }
-
-    @keyframes flyA {
-      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.92); opacity: 0; }
-      12% { opacity: 0.08; }
-      50% { transform: translateX(52vw) translateY(-18px) rotate(110deg) scale(1); opacity: 0.08; }
-      88% { opacity: 0.04; }
-      100% { transform: translateX(118vw) translateY(10px) rotate(180deg) scale(0.96); opacity: 0; }
+    .hero-title .accent {
+      color: #ffe100;
     }
 
-    @keyframes flyB {
-      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.94); opacity: 0; }
-      12% { opacity: 0.08; }
-      50% { transform: translateX(58vw) translateY(16px) rotate(-100deg) scale(1); opacity: 0.08; }
-      88% { opacity: 0.04; }
-      100% { transform: translateX(118vw) translateY(-12px) rotate(-180deg) scale(0.96); opacity: 0; }
+    .subline {
+      margin-top: 26px;
+      max-width: 580px;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      line-height: 1.6;
+      font-weight: 600;
+      color: rgba(17,17,17,0.82);
     }
 
-    @keyframes flyC {
-      0% { transform: translateX(0) translateY(0) rotate(0deg) scale(0.9); opacity: 0; }
-      12% { opacity: 0.08; }
-      50% { transform: translateX(55vw) translateY(-10px) rotate(85deg) scale(1.02); opacity: 0.08; }
-      88% { opacity: 0.04; }
-      100% { transform: translateX(118vw) translateY(14px) rotate(145deg) scale(0.96); opacity: 0; }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
     }
 
-    .shine-button {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shine-button::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 70%;
-      height: 100%;
-      transform: skewX(-20deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
-      transition: left 0.8s ease;
-    }
-
-    .shine-button:hover::after {
-      left: 140%;
-    }
-
-    .soft-card {
-      box-shadow: 0 12px 36px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .soft-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 46px rgba(0,0,0,0.08);
-    }
-
-    .platform-card {
-      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .platform-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.16);
-    }
-
-    .platform-card .card-arrow,
-    .platform-card .card-cta {
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .platform-card .card-cta {
-      opacity: 0;
-      transform: translateX(-8px);
-    }
-
-    .platform-card:hover .card-arrow {
-      transform: translateX(4px);
-    }
-
-    .platform-card:hover .card-cta {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .brand-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 9999px;
+    .cta-primary,
+    .cta-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      flex-shrink: 0;
-      transition: all 0.35s ease;
+      min-height: 56px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      cursor: pointer;
     }
 
-    .brand-icon svg {
-      width: 24px;
-      height: 24px;
+    .cta-primary {
+      background: #111;
+      color: #fff;
+      border: 2px solid #111;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      background: #000;
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: #111;
+      border: 2px solid rgba(17,17,17,0.22);
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      background: #000;
+    }
+
+    .social-link svg {
+      width: 22px;
+      height: 22px;
       display: block;
     }
 
-    .platform-card:hover .brand-icon.instagram {
-      box-shadow: 0 0 18px rgba(221,42,123,0.6), 0 0 36px rgba(129,52,175,0.4);
-      transform: scale(1.05);
+    .bottom-note {
+      margin-top: 34px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(17,17,17,0.72);
     }
 
-    .platform-card:hover .brand-icon.youtube {
-      box-shadow: 0 0 18px rgba(255,0,0,0.6), 0 0 36px rgba(255,0,0,0.35);
-      transform: scale(1.05);
+    .right-col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      min-width: 0;
     }
 
-    .platform-card:hover .brand-icon.spotify {
-      box-shadow: 0 0 18px rgba(29,185,84,0.6), 0 0 36px rgba(29,185,84,0.35);
-      transform: scale(1.05);
+    .desktop-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+      padding-top: 22px;
     }
 
-    .platform-card:hover .brand-icon.mail {
-      box-shadow: 0 0 18px rgba(255,255,255,0.24), 0 0 36px rgba(255,255,255,0.16);
-      transform: scale(1.05);
+    .desktop-nav a {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      transition: opacity .2s ease, transform .2s ease;
     }
 
-    .heart {
-      display: inline-block;
-      animation: pulse 1.6s ease-in-out infinite;
+    .desktop-nav a:hover {
+      opacity: .72;
+      transform: translateX(-4px);
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.14); }
-    }
-
-    .legal-backdrop {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .legal-panel {
-      transform: translateY(18px) scale(0.98);
-      opacity: 0;
-      transition: transform 0.28s ease, opacity 0.28s ease;
-    }
-
-    .legal-panel.is-open {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-
-    .newsletter-embed-wrap {
-      margin-top: 2.5rem;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 1.75rem;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .newsletter-embed-wrap iframe {
-      display: block;
+    .hero-visual-wrap {
       width: 100%;
-      min-height: 560px;
-      background: white;
-      border: 0;
-    }
-
-    .spotify-placeholder {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 1.6rem;
-      background:
-        radial-gradient(circle at top right, rgba(29,185,84,0.14), transparent 30%),
-        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
-    }
-
-    .spotify-placeholder::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-      transform: translateX(-100%);
-      animation: shimmer 3.4s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes shimmer {
-      100% { transform: translateX(100%); }
-    }
-
-    .fake-player-bar {
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
-      overflow: hidden;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex: 1;
       position: relative;
     }
 
-    .fake-player-bar span {
+    .hero-visual {
+      position: relative;
+      width: min(820px, 100%);
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: auto;
       display: block;
-      height: 100%;
-      width: 36%;
-      border-radius: 999px;
-      background: #1DB954;
+      object-fit: contain;
+      filter: drop-shadow(0 34px 50px rgba(0,0,0,0.18));
     }
 
-    @media (max-width: 767px) {
-      .glass-panel {
-        padding: 0.9rem 1rem;
-        border-radius: 1.2rem;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+    .contact-pill {
+      position: absolute;
+      right: -8px;
+      top: 56%;
+      transform: translateY(-50%);
+      background: rgba(17,17,17,0.88);
+      color: #fff;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 20px 16px;
+      border-radius: 18px;
+      box-shadow: 0 20px 42px rgba(0,0,0,0.22);
+      transition: .25s ease;
+    }
+
+    .contact-pill:hover {
+      background: #000;
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+    .floating-badge {
+      position: absolute;
+      left: 0;
+      bottom: 48px;
+      transform: rotate(-8deg);
+      background: rgba(255,255,255,0.22);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 18px 20px;
+      border-radius: 22px;
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.15);
+      max-width: 270px;
+    }
+
+    .mobile-topbar {
+      display: none;
+    }
+
+    .section-dark {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 96px 24px;
+    }
+
+    .section-light {
+      background: #f5f0e7;
+      color: #111;
+      padding: 96px 24px;
+    }
+
+    .container {
+      width: min(1240px, calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: .62;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0 0 22px;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .section-text {
+      max-width: 780px;
+      font-size: 1.12rem;
+      line-height: 1.8;
+      opacity: .82;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 42px;
+    }
+
+    .card {
+      border-radius: 28px;
+      padding: 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.16);
+    }
+
+    .card-light {
+      border-radius: 28px;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid rgba(17,17,17,0.06);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.06);
+    }
+
+    .card h3,
+    .card-light h3 {
+      margin: 0 0 14px;
+      font-size: 1.7rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+
+    .card p,
+    .card-light p {
+      margin: 0;
+      line-height: 1.8;
+      opacity: .8;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .newsletter-box {
+      margin-top: 42px;
+      border-radius: 30px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.18);
+    }
+
+    .newsletter-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .footer {
+      background: #000;
+      color: rgba(255,255,255,0.76);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 24px 38px;
+    }
+
+    .footer-inner {
+      width: min(1240px, calc(100% - 24px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 999;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .modal-panel {
+      width: min(760px, 100%);
+      max-height: 82vh;
+      overflow: auto;
+      background: #fff;
+      color: #111;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.34);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,0.12);
+      background: transparent;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-content {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(17,17,17,0.82);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 22px 20px 28px;
+        gap: 18px;
       }
 
-      .hero-bg {
-        background:
-          linear-gradient(180deg, rgba(17,17,17,0.80) 0%, rgba(17,17,17,0.60) 42%, rgba(17,17,17,0.34) 100%),
-          url('hero.jpg') center center / cover no-repeat;
+      .desktop-nav {
+        display: none;
       }
 
-      .float-item {
-        width: 42px;
-        height: 42px;
-        opacity: 0.06;
+      .mobile-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
       }
 
-      .brand-icon {
+      .brand-top {
+        margin-bottom: 0;
+      }
+
+      .hero-visual-wrap {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        justify-content: center;
+        width: min(760px, 100%);
+      }
+
+      .contact-pill {
+        display: none;
+      }
+
+      .floating-badge {
+        position: static;
+        transform: none;
+        margin-top: 18px;
+        max-width: 100%;
+      }
+
+      .story-grid,
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 17vw, 5rem);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+      }
+
+      .subline {
+        font-size: 1rem;
+      }
+
+      .social-link {
         width: 44px;
         height: 44px;
       }
 
-      .brand-icon svg {
-        width: 20px;
-        height: 20px;
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
       }
 
-      .section-space {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+      .section-dark,
+      .section-light {
+        padding: 74px 18px;
       }
 
-      .newsletter-embed-wrap iframe {
-        min-height: 640px;
+      .newsletter-box,
+      .card,
+      .card-light {
+        padding: 22px;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .hero-depth {
-        transition: none !important;
-        transform: none !important;
-      }
-      .spotify-placeholder::before {
-        animation: none !important;
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
+<body>
+  <div class="page-shell">
+    <section class="hero" id="start">
+      <div class="grain"></div>
 
-<body class="antialiased selection:bg-[#28d7cf] selection:text-black">
-  <header class="fixed inset-x-0 top-0 z-50">
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
-    <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-10">
-      <div class="glass-panel flex items-center justify-between rounded-full border border-white/15 px-5 py-4 text-white">
-        <div>
-          <div class="text-[11px] font-black uppercase tracking-[0.34em]">Currywurst & Kokosmilch</div>
-          <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
-        </div>
-
-        <nav class="hidden items-center gap-7 text-sm font-semibold md:flex">
-          <a href="#story" class="transition hover:opacity-60">Story</a>
-          <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
-          <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
-          <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
-          <a href="#newsletter" class="transition hover:opacity-60">Insider</a>
-          <a href="#cta" class="transition hover:opacity-60">Launch</a>
-          <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
-        </nav>
-
-        <button
-          id="menuButton"
-          type="button"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-          aria-label="Menü öffnen"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/15 md:hidden"
-        >
-          <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-          <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-      </div>
-
-      <div id="mobileMenu" class="mt-3 hidden overflow-hidden rounded-[1.4rem] border border-white/12 bg-black/70 p-3 text-white shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl md:hidden">
-        <nav class="flex flex-col">
-          <a href="#story" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Story</a>
-          <a href="#hosts" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Hosts</a>
-          <a href="#folgen" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Folgen</a>
-          <a href="#plattformen" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Plattformen</a>
-          <a href="#newsletter" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Insider</a>
-          <a href="#cta" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Launch</a>
-          <a href="#kontakt" class="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/90 transition hover:bg-white/10">Kontakt</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero-bg">
-      <div class="noise-overlay"></div>
-
-      <div class="float-layer" aria-hidden="true">
-        <div class="float-item curry-a">
-          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
-        </div>
-        <div class="float-item curry-b">
-          <svg viewBox="0 0 64 64"><rect x="10" y="25" rx="10" ry="10" width="44" height="14"></rect></svg>
-        </div>
-        <div class="float-item coco-a">
-          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"></circle></svg>
-        </div>
-      </div>
-
-      <div class="relative z-10 mx-auto min-h-screen max-w-7xl px-5 pb-16 pt-32 sm:px-6 lg:px-10 lg:pb-24 lg:pt-44">
-        <div class="flex min-h-[78vh] items-end">
-          <div class="hero-copy hero-depth max-w-5xl text-white">
-            <div class="max-w-[92vw] sm:max-w-none">
-              <div class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 backdrop-blur-sm sm:px-5 sm:py-2.5 sm:text-[11px] sm:tracking-[0.34em]">
-                Made in Thailand. Erzählt ohne Filter.
-              </div>
-
-              <h1 class="display-font mt-8 max-w-6xl text-[2.9rem] font-black uppercase leading-[0.9] tracking-[-0.05em] sm:mt-10 sm:text-5xl md:text-7xl lg:text-[7rem]">
-                Zwischen Freiheit, Familie, Wahnsinn und viel zu viel Stoff zum Lachen.
-              </h1>
-
-              <p class="mt-7 max-w-3xl text-[1rem] leading-8 text-white/84 sm:mt-10 sm:text-lg sm:leading-9 md:text-[1.35rem]">
-                Currywurst & Kokosmilch ist der Podcast über Auswandern, Beziehungen, Kinder, Zweifel, Neuanfang und das echte Leben zwischen Deutschland und Thailand.
-              </p>
-
-              <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4">
-                <button
-                  type="button"
-                  data-tally-open="PdlMGB"
-                  data-tally-emoji-text="👋"
-                  data-tally-emoji-animation="wave"
-                  class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]"
-                >
-                  Ich bin dabei
-                </button>
-
-                <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/25 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-                  Instagram folgen
-                </a>
-                <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/25 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-                  YouTube ansehen
-                </a>
-                <a href="#spotify-preview" class="rounded-full border border-white/25 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-                  Spotify bald
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-fade"></div>
-    </section>
-
-    <section id="story" class="section-space border-b border-black/10 bg-[#28d7cf]">
-      <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 reveal">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black">Unsere Story</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase leading-tight sm:text-4xl md:text-6xl">
-            Raus aus dem alten Leben. Rein in etwas Echtes.
-          </h2>
-        </div>
-
-        <div class="max-w-3xl">
-          <p class="text-xl leading-9 text-black">
-            Currywurst & Kokosmilch ist kein Hochglanz-Auswanderer-Märchen. Wir sprechen über das, was wirklich passiert: Entscheidungen unter Druck, Familienalltag, Unsicherheiten, mutige Schritte und die Frage, wie sich Freiheit tatsächlich anfühlt.
-          </p>
-          <p class="mt-6 text-lg leading-8 text-black/75">
-            Kein Filter. Keine Fassade. Sondern ehrliche Gespräche zwischen zwei Menschen, die Deutschland hinter sich gelassen haben und ihren eigenen Weg in Thailand gehen.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="hosts" class="section-space relative text-black" style="background: linear-gradient(135deg, #28d7cf 0%, #1fbfb7 40%, #17a9a2 100%);">
-      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="hero-inner">
+        <div class="left-col">
           <div>
-            <div class="text-xs font-bold uppercase tracking-[0.3em] text-black">Die Hosts</div>
-            <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl md:text-6xl">Zwei Stimmen. Eine echte Geschichte.</h2>
+            <div class="mobile-topbar">
+              <div class="brand-top">Currywurst & Kokosmilch</div>
+              <a href="#newsletter" class="cta-secondary" style="min-height:44px;padding:0 18px;font-size:11px;">Insider</a>
+            </div>
+
+            <div class="brand-top">Currywurst & Kokosmilch</div>
+
+            <div class="eyebrow">Zwischen Deutschland & Thailand</div>
+
+            <h1 class="hero-title">
+              <span>Currywurst</span>
+              <span class="accent">& Kokosmilch</span>
+            </h1>
+
+            <p class="subline">
+              Ehrlich. Direkt. Zwischen Auswandern, Familie, Freiheit, Chaos und den Geschichten, über die man entweder lachen oder kurz alles hinterfragen muss.
+            </p>
+
+            <div class="hero-cta-row">
+              <button
+                type="button"
+                data-tally-open="PdlMGB"
+                data-tally-layout="modal"
+                data-tally-width="700"
+                data-tally-overlay="1"
+                data-tally-emoji-text="👋"
+                data-tally-emoji-animation="wave"
+                class="cta-primary"
+              >
+                Jetzt benachrichtigen lassen
+              </button>
+
+              <a href="#story" class="cta-secondary">Mehr erfahren</a>
+            </div>
+
+            <div class="social-row">
+              <a class="social-link" href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17" cy="7" r="1"></circle>
+                </svg>
+              </a>
+
+              <a class="social-link" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69A4.83 4.83 0 0 1 16 5.26V14a5 5 0 1 1-5-5c.34 0 .67.03 1 .1v2.45a2.6 2.6 0 0 0-1-.2 2.65 2.65 0 1 0 2.65 2.65V2h2.35a4.85 4.85 0 0 0 3.59 4.69z"/>
+                </svg>
+              </a>
+
+              <a class="social-link" href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.5 15.5v-7L15.8 12l-6.3 3.5Z"/>
+                </svg>
+              </a>
+
+              <a class="social-link" href="#plattformen" aria-label="Spotify">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.5 17.3a.75.75 0 0 1-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 0 1-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.36.21.46.68.23 1.08Zm1.47-3.28a.94.94 0 0 1-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 0 1-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.58.85.32 1.3Zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 1 1-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 0 1-.6 2.06Z"/>
+                </svg>
+              </a>
+            </div>
+
+            <div class="bottom-note">
+              Kein Spam. Keine leeren Versprechen. Nur echte Updates zum Podcast-Start.
+            </div>
           </div>
-          <p class="max-w-xl text-lg leading-8 text-black/75">
-            Zwei Perspektiven, zwei Charaktere und ein gemeinsames Thema: Wie verändert sich das Leben, wenn man wirklich losgeht?
-          </p>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-2">
-          <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
-            <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="patrick.jpg" alt="Patrick" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
+        <div class="right-col">
+          <nav class="desktop-nav">
+            <a href="#start">Start</a>
+            <a href="#story">Story</a>
+            <a href="#hosts">Hosts</a>
+            <a href="#folgen">Folgen</a>
+            <a href="#plattformen">Plattformen</a>
+            <a href="#newsletter">Insider</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
+
+          <div class="hero-visual-wrap">
+            <div class="hero-visual">
+              <img src="hero-masken.png" alt="Currywurst & Kokosmilch Hero Motiv mit Masken" />
+              <a class="contact-pill" href="#kontakt">Kontakt</a>
             </div>
-            <div class="px-2 pb-2 pt-7">
-              <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#E58B2A]">Host 01</div>
-              <h3 class="display-font mt-3 text-3xl font-black uppercase">Patrick</h3>
-              <p class="mt-4 max-w-xl text-lg leading-8 text-black/70">
-                Patrick ist Lehrer für Deutsch, Sport und Religion – und jemand, der Gespräche sammelt wie andere Briefmarken. Unterhaltsam, sportlich und redselig bringt er Geschichten, Tiefgang und Beobachtungen mit, die aus einem kurzen Austausch schnell einen ganzen Abend machen können.
-              </p>
-              <p class="mt-4 max-w-xl text-base leading-8 text-black/75">
-                Besonders geprägt haben ihn seine Reisen, etwa seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm. Im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt – über Bildung, Beziehungen, Familie, Auswandern und den ganzen Wahnsinn zwischen Currywurst und Kokosmilch.
-              </p>
-            </div>
-          </article>
-
-          <article class="soft-card rounded-[2rem] border border-black/8 bg-[#f8f5ef] p-5">
-            <div class="overflow-hidden rounded-[1.5rem]">
-              <img src="du.jpg" alt="Christian" class="h-[340px] w-full object-cover sm:h-[420px] lg:h-[480px]" loading="lazy" />
-            </div>
-            <div class="px-2 pb-2 pt-7">
-              <div class="text-xs font-bold uppercase tracking-[0.25em] text-[#111111]">Host 02</div>
-              <h3 class="display-font mt-3 text-3xl font-black uppercase">Christian</h3>
-              <p class="mt-4 max-w-xl text-lg leading-8 text-black/70">
-                Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon – Maschinenbau, Millionenprojekte, Holzklasse und Jetlag inklusive. Heute blickt er auf vieles davon mit der Klarheit von jemandem, der erkannt hat: Das Hamsterrad war optional.
-              </p>
-              <p class="mt-4 max-w-xl text-base leading-8 text-black/75">
-                Im Podcast bringt er die Perspektive eines ehemaligen System-Insiders mit, der irgendwann die Notbremse gezogen hat. Er spricht über Arbeit, Freiheit, Familie, Erfolg und die unbequemen Fragen dahinter – mal nachdenklich, mal ziemlich direkt, aber immer ehrlich.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="folgen" class="section-space border-b border-black/10 bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="mb-14">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Folgen</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase text-black sm:text-4xl md:text-6xl">Worüber wir sprechen.</h2>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-3">
-          <article class="soft-card rounded-[1.8rem] border border-black/10 bg-white/90 p-6 backdrop-blur-sm sm:p-8">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-[#E58B2A]">Neustart</div>
-            <h3 class="display-font mt-4 text-2xl font-black leading-tight">Warum wir Deutschland verlassen haben</h3>
-            <p class="mt-4 leading-8 text-black/75">
-              Über Sehnsucht, Druck, Sicherheit, innere Konflikte und die ehrlichen Gründe hinter einer großen Entscheidung.
-            </p>
-          </article>
-
-          <article class="soft-card rounded-[1.8rem] border border-black/8 bg-[#E58B2A] p-6 sm:p-8">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Familie</div>
-            <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Alltag mit Kindern zwischen Chaos und Freiheit</h3>
-            <p class="mt-4 leading-8 text-black/85">
-              Zwischen Schulfragen, neuen Routinen, kleinen Krisen und genau den Momenten, die das Ganze lohnenswert machen.
-            </p>
-          </article>
-
-          <article class="soft-card rounded-[1.8rem] border border-black/8 bg-[#E58B2A] p-6 sm:p-8">
-            <div class="text-xs font-bold uppercase tracking-[0.24em] text-black/80">Freiheit</div>
-            <h3 class="display-font mt-4 text-2xl font-black leading-tight text-black">Weniger Fassade. Mehr echtes Leben.</h3>
-            <p class="mt-4 leading-8 text-black/85">
-              Was sich verändert, wenn man aufhört zu funktionieren und beginnt, das eigene Leben bewusst neu aufzubauen.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="plattformen" class="section-space border-b border-black/10 bg-[#111111] text-white">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <div class="text-xs font-bold uppercase tracking-[0.3em] text-white/45">Plattformen</div>
-            <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl md:text-6xl">Hören. Folgen. Dabeibleiben.</h2>
-          </div>
-          <p class="max-w-xl text-lg leading-8 text-white/62">
-            Podcast, Clips, Behind the Scenes und Updates rund um euren Weg zwischen Deutschland und Thailand.
-          </p>
-        </div>
-
-        <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:rounded-[2rem] sm:p-6">
-            <div class="mb-5 flex items-center justify-between gap-4">
-              <div>
-                <div class="text-sm font-bold uppercase tracking-[0.24em] text-white/45">Spotify Preview</div>
-                <div class="mt-2 display-font text-2xl font-black uppercase text-white">Player folgt bald</div>
-              </div>
-              <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/70">
-                Coming Soon
-              </span>
-            </div>
-
-            <div id="spotify-preview" class="spotify-placeholder p-6 sm:p-8">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <div class="text-xs font-bold uppercase tracking-[0.22em] text-white/60">Currywurst & Kokosmilch</div>
-                  <h3 class="display-font mt-3 max-w-md text-3xl font-black uppercase leading-tight text-white sm:text-4xl">
-                    Spotify wird eingebunden, sobald die erste Folge live ist.
-                  </h3>
-                </div>
-                <span class="inline-flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-[#1DB954]/20 backdrop-blur-sm">
-                  <svg viewBox="0 0 24 24" class="h-7 w-7 fill-white" aria-hidden="true">
-                    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
-                  </svg>
-                </span>
-              </div>
-
-              <p class="mt-5 max-w-xl text-base leading-8 text-white/82 sm:text-lg">
-                Hier erscheint später euer echter Spotify-Player. Bis dahin sieht der Bereich bereits hochwertig aus, ohne auf eine nicht vorhandene erste Folge zu verlinken.
-              </p>
-
-              <div class="mt-6 rounded-[1.4rem] border border-white/10 bg-black/20 p-5">
-                <div class="flex items-center gap-4">
-                  <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/8">
-                    <svg viewBox="0 0 24 24" class="h-8 w-8 fill-white/85">
-                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
-                    </svg>
-                  </div>
-                  <div class="min-w-0 flex-1">
-                    <div class="text-sm font-bold uppercase tracking-[0.18em] text-white/55">Episode 01</div>
-                    <div class="mt-1 truncate text-lg font-semibold text-white">Coming soon</div>
-                    <div class="mt-3 fake-player-bar"><span></span></div>
-                    <div class="mt-2 flex items-center justify-between text-xs text-white/45">
-                      <span>00:00</span>
-                      <span>Noch nicht veröffentlicht</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-6 grid gap-3 sm:grid-cols-3">
-                <div class="rounded-2xl border border-white/10 bg-black/15 px-4 py-4">
-                  <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Status</div>
-                  <div class="mt-2 text-sm font-semibold text-white">Noch nicht verbunden</div>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-black/15 px-4 py-4">
-                  <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Player</div>
-                  <div class="mt-2 text-sm font-semibold text-white">Design vorbereitet</div>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-black/15 px-4 py-4">
-                  <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">Launch</div>
-                  <div class="mt-2 text-sm font-semibold text-white">Mit Folge 1 aktiv</div>
-                </div>
-              </div>
-            </div>
-
-            <p class="mt-5 text-sm leading-7 text-white/45">
-              Sobald eure erste Folge online ist, ersetzt du diesen Platzhalter einfach durch den echten Spotify-Embed-Code.
-            </p>
           </div>
 
-          <div class="grid gap-5">
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <span class="brand-icon instagram" aria-hidden="true" style="background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4); border:none; color:white;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                      <circle cx="12" cy="12" r="4"></circle>
-                      <circle cx="17" cy="7" r="1.4" fill="white" stroke="none"></circle>
-                    </svg>
-                  </span>
-                  <div>
-                    <div class="text-sm font-bold">Instagram</div>
-                    <div class="text-xs text-white/60">Behind the Scenes & Updates</div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-white/80">
-                  <span class="card-cta">Jetzt ansehen</span>
-                  <span class="card-arrow">→</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <span class="brand-icon youtube" aria-hidden="true" style="background:#FF0000; border:none; color:white;">
-                    <svg viewBox="0 0 24 24" fill="white">
-                      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7L15.8 12l-6.2 3.5Z"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <div class="text-sm font-bold">YouTube</div>
-                    <div class="text-xs text-white/60">Videos & Podcast-Content</div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-white/80">
-                  <span class="card-cta">Jetzt ansehen</span>
-                  <span class="card-arrow">→</span>
-                </div>
-              </div>
-            </a>
-
-            <div class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <span class="brand-icon spotify" aria-hidden="true" style="background:#1DB954; border:none; color:white;">
-                    <svg viewBox="0 0 24 24" fill="white">
-                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.45 17.3a.75.75 0 01-1.03.24c-2.83-1.73-6.4-2.12-10.6-1.15a.75.75 0 01-.34-1.46c4.58-1.07 8.55-.63 11.74 1.29.35.21.46.68.23 1.08zm1.47-3.28a.94.94 0 01-1.29.3c-3.24-2-8.18-2.58-12-1.4a.94.94 0 01-.55-1.8c4.32-1.33 9.77-.68 13.52 1.6.44.27.57.85.32 1.3zm.13-3.42C15.1 8.2 8.98 7.86 5.2 9.02a1.12 1.12 0 11-.66-2.14c4.35-1.33 11.22-1.07 15.58 1.66a1.12 1.12 0 01-.6 2.06z"/>
-                    </svg>
-                  </span>
-                  <div>
-                    <div class="text-sm font-bold">Spotify</div>
-                    <div class="text-xs text-white/60">Player kommt mit Folge 1</div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-white/80">
-                  <span class="card-cta">Bald live</span>
-                  <span class="card-arrow">→</span>
-                </div>
-              </div>
-            </div>
-
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="platform-card rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:rounded-[1.8rem] sm:p-7">
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <span class="brand-icon mail" aria-hidden="true" style="background:#ffffff; border:none; color:#111111;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2">
-                      <path d="M3 7l9 6 9-6"></path>
-                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                    </svg>
-                  </span>
-                  <div>
-                    <div class="text-sm font-bold">Kontakt</div>
-                    <div class="text-xs text-white/60">E-Mail schreiben</div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-white/80">
-                  <span class="card-cta">Jetzt ansehen</span>
-                  <span class="card-arrow">→</span>
-                </div>
-              </div>
-            </a>
+          <div class="floating-badge">
+            Echte Stories aus Thailand.<br />
+            Echter Podcast.<br />
+            Echter Start.
           </div>
         </div>
       </div>
     </section>
 
-    <section id="newsletter" class="section-space border-b border-black/10 bg-black text-white">
-      <div class="mx-auto max-w-4xl px-5 text-center sm:px-6 lg:px-10 reveal">
-        <p class="text-sm font-bold uppercase tracking-[0.3em] text-white/45">Insider Liste</p>
-        <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl md:text-6xl">
-          Sei beim Start dabei.
-        </h2>
-        <p class="mt-6 text-lg leading-8 text-white/70">
-          Trage dich direkt hier ein und erhalte neue Folgen, ehrliche Einblicke und Updates aus Thailand direkt in dein Postfach.
+    <section id="story" class="section-dark">
+      <div class="container">
+        <div class="section-label">Story</div>
+        <h2 class="section-title">Kein Auswanderer-Märchen. Sondern echtes Leben.</h2>
+        <p class="section-text">
+          Currywurst & Kokosmilch ist der Podcast über Neuanfang, Familie, Zweifel, Freiheit und den ganz normalen Wahnsinn zwischen Deutschland und Thailand. Ehrlich, direkt und ohne Hochglanzfassade.
         </p>
 
-        <div class="newsletter-embed-wrap">
-          <iframe
-            data-tally-src="https://tally.so/r/PdlMGB?transparentBackground=1"
-            title="Currywurst & Kokosmilch Newsletter Formular"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            loading="lazy">
-          </iframe>
-        </div>
+        <div class="story-grid">
+          <div class="card">
+            <h3>Warum dieser Podcast?</h3>
+            <p>
+              Weil viele nur das schöne Bild sehen – aber selten die Gedanken dahinter. Wir reden über Entscheidungen, Druck, Alltag, Mut, Beziehungen und das, was wirklich passiert, wenn man ein anderes Leben aufbaut.
+            </p>
+          </div>
 
-        <div class="mt-6 flex justify-center">
-          <button
-            type="button"
-            data-tally-open="PdlMGB"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
-            class="rounded-full border border-white/20 px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
-          >
-            Jetzt direkt eintragen
-          </button>
-        </div>
-
-        <p class="mt-5 text-sm text-white/40">
-          Kein Spam. Jederzeit abmeldbar.
-        </p>
-      </div>
-    </section>
-
-    <section id="cta" class="section-space border-b border-black/10 bg-white">
-      <div class="mx-auto max-w-3xl px-5 text-center sm:px-6 lg:px-10 reveal">
-        <p class="text-sm font-bold uppercase tracking-[0.3em] text-black/45">Verpass nicht den Start</p>
-        <h2 class="display-font mt-5 text-3xl font-black uppercase sm:text-4xl md:text-6xl">
-          Folge uns von Anfang an.
-        </h2>
-        <p class="mt-6 text-lg leading-8 text-black/65">
-          Ehrliche Gespräche, echtes Leben und Momente, die dich zum Nachdenken bringen – und manchmal einfach nur zum Lachen. Trag dich ein oder abonnier direkt den Kanal.
-        </p>
-
-        <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <button
-            type="button"
-            data-tally-open="PdlMGB"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
-            class="shine-button rounded-full bg-[#1DB954] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5"
-          >
-            Für Updates eintragen
-          </button>
-
-          <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#FF0000] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5">
-            YouTube abonnieren
-          </a>
+          <div class="card">
+            <h3>Was dich erwartet</h3>
+            <p>
+              Gespräche mit Tiefe, Humor, ehrliche Einblicke, Familienchaos, neue Perspektiven und genau die Momente, in denen man merkt: Das hier ist nicht perfekt – aber echt.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="kontakt" class="section-space bg-[#28d7cf]">
-      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 reveal">
-        <div class="max-w-4xl">
-          <div class="text-xs font-bold uppercase tracking-[0.3em] text-black/70">Kontakt</div>
-          <h2 class="display-font mt-5 text-3xl font-black uppercase leading-tight text-black sm:text-4xl md:text-6xl">
-            Bereit für Gäste, Kooperationen oder ehrliche Gespräche?
-          </h2>
+    <section id="hosts" class="section-light">
+      <div class="container">
+        <div class="section-label">Hosts</div>
+        <h2 class="section-title">Zwei Stimmen. Zwei Blickwinkel. Eine Geschichte.</h2>
+        <p class="section-text">
+          Zwei Typen, zwei Perspektiven und eine gemeinsame Reise zwischen Sicherheit, Aufbruch und echtem Leben. Mal tief, mal absurd, mal sehr direkt – aber nie langweilig.
+        </p>
 
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-black/75">
-            Schreib uns direkt per Mail oder begleite uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Storys und alles, was hinter den Kulissen passiert.
+        <div class="story-grid">
+          <div class="card-light">
+            <h3>Patrick</h3>
+            <p>
+              Gesprächig, neugierig, sportlich und immer mit einem Auge für die Geschichte hinter der Geschichte. Im Podcast bringt Patrick Energie, Tiefgang und genau die Fragen mit, die Gespräche spannend machen.
+            </p>
+          </div>
+
+          <div class="card-light">
+            <h3>Christian</h3>
+            <p>
+              Direkt, reflektiert und mit einem klaren Blick auf Arbeit, Freiheit, Familie und Veränderung. Christian spricht über das, was viele denken – aber nicht immer aussprechen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="folgen" class="section-dark">
+      <div class="container">
+        <div class="section-label">Folgen</div>
+        <h2 class="section-title">Worüber wir sprechen</h2>
+        <p class="section-text">
+          Von Auswandern bis Familienalltag, von Druck bis Freiheit, von Identität bis Neuanfang – mit echten Geschichten statt austauschbarer Phrasen.
+        </p>
+
+        <div class="topics-grid">
+          <div class="card">
+            <h3>Neustart</h3>
+            <p>Warum wir Deutschland verlassen haben und was man sich vorher selten ehrlich eingesteht.</p>
+          </div>
+
+          <div class="card">
+            <h3>Familie</h3>
+            <p>Zwischen Kindern, Alltag, neuen Routinen und dem Versuch, alles irgendwie zusammenzuhalten.</p>
+          </div>
+
+          <div class="card">
+            <h3>Freiheit</h3>
+            <p>Was Freiheit wirklich bedeutet, wenn sie nicht nur gut klingt, sondern Konsequenzen hat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plattformen" class="section-light">
+      <div class="container">
+        <div class="section-label">Plattformen</div>
+        <h2 class="section-title">Hören. Folgen. Dabeibleiben.</h2>
+        <p class="section-text">
+          Folge uns auf den Plattformen, auf denen neue Folgen, Clips, Behind-the-Scenes und Updates rund um den Podcast erscheinen.
+        </p>
+
+        <div class="story-grid">
+          <div class="card-light">
+            <h3>Instagram & YouTube</h3>
+            <p>
+              Auf Instagram und YouTube findest du Updates, Einblicke, Teaser und alles, was hinter dem Podcast passiert.
+            </p>
+            <div class="newsletter-actions">
+              <a class="cta-primary" href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a class="cta-secondary" href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
+          </div>
+
+          <div class="card-light">
+            <h3>Spotify folgt bald</h3>
+            <p>
+              Der Spotify-Player wird eingebunden, sobald die erste Folge veröffentlicht ist. Bis dahin kannst du dich schon eintragen und bekommst direkt Bescheid.
+            </p>
+            <div class="newsletter-actions">
+              <a class="cta-primary" href="#newsletter">Zum Insider-Bereich</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="section-dark">
+      <div class="container">
+        <div class="section-label">Insider</div>
+        <h2 class="section-title">Erste Folge nicht verpassen</h2>
+        <p class="section-text">
+          Trag dich ein und erhalte eine Nachricht, sobald die erste Folge live ist. Plus ehrliche Updates und Einblicke rund um Currywurst & Kokosmilch.
+        </p>
+
+        <div class="newsletter-box">
+          <h3 style="margin:0 0 12px;font-size:1.8rem;line-height:1.05;text-transform:uppercase;letter-spacing:-0.04em;font-weight:900;">
+            Sei von Anfang an dabei
+          </h3>
+          <p style="margin:0;max-width:760px;line-height:1.8;opacity:.82;">
+            Kein Spam. Keine tägliche Flut. Nur die Nachricht, auf die es ankommt: wenn der Podcast startet.
           </p>
 
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a href="mailto:currywurstkokosmilch@gmail.com" class="shine-button rounded-full bg-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              E-Mail senden
-            </a>
-            <a href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#111111] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#111111] hover:text-white sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              Instagram
-            </a>
-            <a href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer" class="shine-button rounded-full bg-[#E58B2A] px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em]">
-              YouTube
+          <div class="newsletter-actions">
+            <button
+              type="button"
+              data-tally-open="PdlMGB"
+              data-tally-layout="modal"
+              data-tally-width="700"
+              data-tally-overlay="1"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+              class="cta-primary"
+            >
+              Jetzt eintragen
+            </button>
+
+            <a href="https://tally.so/r/PdlMGB" target="_blank" rel="noopener noreferrer" class="cta-secondary">
+              Formular direkt öffnen
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="border-t border-black/10 bg-white">
-      <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 text-center lg:px-10">
-        <div class="text-sm font-bold uppercase tracking-[0.22em] text-black/75">
-          Made with <span class="heart">❤️</span> in Thailand
+    <section id="kontakt" class="section-light">
+      <div class="container">
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title">Bereit für ehrliche Gespräche, Gäste oder Kooperationen?</h2>
+        <p class="section-text">
+          Schreib uns direkt per Mail oder folge uns auf Instagram und YouTube. Dort teilen wir neue Folgen, Updates und alles, was hinter den Kulissen passiert.
+        </p>
+
+        <div class="newsletter-actions" style="margin-top:32px;">
+          <a class="cta-primary" href="mailto:currywurstkokosmilch@gmail.com">E-Mail senden</a>
+          <a class="cta-secondary" href="https://www.instagram.com/currywurstkokosmilch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="cta-secondary" href="https://www.youtube.com/channel/UCt3M_1mYNSZIyC4ea5H-srQ" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div style="font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">
+          Made with ❤️ in Thailand
         </div>
 
-        <div class="flex justify-center gap-6 text-xs font-semibold uppercase tracking-[0.2em]">
-          <button onclick="openLegal('impressum')" class="hover:opacity-60">Impressum</button>
-          <button onclick="openLegal('datenschutz')" class="hover:opacity-60">Datenschutz</button>
+        <div class="footer-links">
+          <a href="#" onclick="openLegal('impressum'); return false;">Impressum</a>
+          <a href="#" onclick="openLegal('datenschutz'); return false;">Datenschutz</a>
         </div>
       </div>
     </footer>
-  </main>
+  </div>
 
-  <div id="legalModal" class="legal-backdrop fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4" aria-hidden="true">
-    <div id="legalPanel" class="legal-panel max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 text-left shadow-[0_30px_100px_rgba(0,0,0,0.28)]">
-      <div class="mb-4 flex items-center justify-between">
-        <h3 id="legalTitle" class="text-lg font-bold uppercase">Impressum</h3>
-        <button onclick="closeLegal()" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-xl text-black transition hover:bg-black/5" aria-label="Schließen">✕</button>
+  <div id="legalModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-head">
+        <h3 id="modalTitle" class="modal-title">Impressum</h3>
+        <button class="modal-close" onclick="closeLegal()" aria-label="Schließen">✕</button>
       </div>
-
-      <div id="legalContent" class="text-sm leading-7 text-black/80"></div>
+      <div id="modalContent" class="modal-content"></div>
     </div>
   </div>
 
   <script>
-    const menuButton = document.getElementById('menuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuIconOpen = document.getElementById('menuIconOpen');
-    const menuIconClose = document.getElementById('menuIconClose');
-    const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
-
-    function closeMobileMenu() {
-      if (!menuButton || !mobileMenu) return;
-      mobileMenu.classList.add('hidden');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuIconOpen?.classList.remove('hidden');
-      menuIconClose?.classList.add('hidden');
-    }
-
-    function toggleMobileMenu() {
-      if (!menuButton || !mobileMenu) return;
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        mobileMenu.classList.remove('hidden');
-        menuButton.setAttribute('aria-expanded', 'true');
-        menuIconOpen?.classList.add('hidden');
-        menuIconClose?.classList.remove('hidden');
-      }
-    }
-
-    menuButton?.addEventListener('click', toggleMobileMenu);
-    mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) closeMobileMenu();
-    });
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('in-view');
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    function onScroll() {
-      const y = window.scrollY || window.pageYOffset;
-      const hd = Math.min(40, y * 0.08);
-      document.querySelectorAll('.hero-depth').forEach(el => el.style.setProperty('--hd', hd + 'px'));
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
     function openLegal(type) {
       const modal = document.getElementById('legalModal');
-      const panel = document.getElementById('legalPanel');
-      const title = document.getElementById('legalTitle');
-      const content = document.getElementById('legalContent');
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
 
       if (type === 'impressum') {
         title.textContent = 'Impressum';
@@ -996,8 +927,8 @@
           <strong>Datenschutzerklärung (Kurzfassung)</strong><br><br>
           Diese Website wird über Vercel oder GitHub Pages bereitgestellt. Beim Aufruf der Website können technisch notwendige Informationen wie IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs automatisch verarbeitet werden, um die Seite sicher und stabil bereitzustellen.<br><br>
           Wenn du uns per E-Mail kontaktierst, werden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage verwendet.<br><br>
-          Wenn du dich für unseren Newsletter anmeldest, verwenden wir deine E-Mail-Adresse ausschließlich, um dir Informationen rund um den Podcast zu senden. Die Anmeldung erfolgt über Tally. Du kannst dich jederzeit wieder austragen.<br><br>
-          Diese Website enthält Links zu externen Plattformen wie Instagram, YouTube und später Spotify. Für die Inhalte und Datenschutzbestimmungen dieser Plattformen sind ausschließlich die jeweiligen Anbieter verantwortlich.<br><br>
+          Wenn du dich für unseren Insider-Bereich anmeldest, verwenden wir deine E-Mail-Adresse ausschließlich, um dir Informationen rund um den Podcast zu senden. Die Anmeldung erfolgt über Tally. Du kannst dich jederzeit wieder austragen.<br><br>
+          Diese Website enthält Links zu externen Plattformen wie Instagram, YouTube und später Spotify. Für Inhalte und Datenschutzbestimmungen dieser Plattformen sind ausschließlich die jeweiligen Anbieter verantwortlich.<br><br>
           Verantwortlicher im Sinne der datenschutzrechtlichen Vorschriften ist:<br>
           Takoma Digital LLC<br>
           30 N Gould St, Ste N<br>
@@ -1008,29 +939,26 @@
         `;
       }
 
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      modal.style.display = 'flex';
       modal.setAttribute('aria-hidden', 'false');
-      requestAnimationFrame(() => panel.classList.add('is-open'));
     }
 
     function closeLegal() {
       const modal = document.getElementById('legalModal');
-      const panel = document.getElementById('legalPanel');
-      panel.classList.remove('is-open');
+      modal.style.display = 'none';
       modal.setAttribute('aria-hidden', 'true');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }, 220);
     }
 
-    document.getElementById('legalModal')?.addEventListener('click', (e) => {
-      if (e.target.id === 'legalModal') closeLegal();
+    document.getElementById('legalModal').addEventListener('click', function(e) {
+      if (e.target.id === 'legalModal') {
+        closeLegal();
+      }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLegal();
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLegal();
+      }
     });
   </script>
 </body>
