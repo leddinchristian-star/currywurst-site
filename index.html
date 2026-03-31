@@ -51,6 +51,10 @@
 
     a { color: inherit; text-decoration: none; }
 
+    button {
+      font-family: inherit;
+    }
+
     .site-overlay {
       position: fixed;
       inset: 0;
@@ -501,6 +505,29 @@
       color: rgba(255,255,255,0.84);
     }
 
+    .card-button {
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .card-button:focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 4px;
+    }
+
+    .card-readmore {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
     .newsletter-box {
       margin-top: 2.6rem;
       border-radius: 2rem;
@@ -551,7 +578,8 @@
       50% { transform: scale(1.14); }
     }
 
-    .legal-backdrop {
+    .legal-backdrop,
+    .person-backdrop {
       position: fixed;
       inset: 0;
       z-index: 999;
@@ -564,18 +592,29 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    .legal-panel {
-      width: min(760px, 100%);
-      max-height: 82vh;
+    .legal-panel,
+    .person-panel {
+      width: min(820px, 100%);
+      max-height: 84vh;
       overflow-y: auto;
-      border-radius: 1.6rem;
-      background: #fff;
-      color: #111;
+      border-radius: 1.8rem;
+      background: rgba(10,10,10,0.78);
+      color: #fff;
       padding: 1.7rem;
-      box-shadow: 0 30px 100px rgba(0,0,0,0.28);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.30);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    .legal-panel-head {
+    .legal-panel {
+      background: #fff;
+      color: #111;
+      border: none;
+    }
+
+    .legal-panel-head,
+    .person-panel-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -583,7 +622,8 @@
       margin-bottom: 1rem;
     }
 
-    .legal-title {
+    .legal-title,
+    .person-title {
       margin: 0;
       font-size: 1.1rem;
       font-weight: 900;
@@ -591,23 +631,65 @@
       letter-spacing: 0.08em;
     }
 
-    .legal-close {
+    .person-subtitle {
+      margin: .4rem 0 0;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+    }
+
+    .legal-close,
+    .person-close {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 42px;
       height: 42px;
       border-radius: 999px;
-      border: 1px solid rgba(17,17,17,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
       background: transparent;
       cursor: pointer;
       font-size: 20px;
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    .legal-close {
+      border-color: rgba(17,17,17,0.12);
     }
 
     .legal-content {
       font-size: 15px;
       line-height: 1.8;
       color: rgba(17,17,17,0.82);
+    }
+
+    .person-content {
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .person-content p {
+      margin: 0 0 1rem;
+    }
+
+    .person-highlight {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0.6rem 0.85rem;
+      margin: 0 0 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
     }
 
     .mobile-menu-button,
@@ -682,7 +764,9 @@
       }
 
       .hero-copy-box,
-      .newsletter-box {
+      .newsletter-box,
+      .person-panel,
+      .legal-panel {
         padding: 1.25rem 1.1rem 1.4rem;
       }
 
@@ -928,19 +1012,21 @@
           </p>
 
           <div class="story-grid">
-            <article class="card-glass">
+            <button type="button" class="card-glass card-button" onclick="openPerson('patrick')" aria-label="Mehr über Patrick">
               <h3>Patrick</h3>
               <p>
-                Gesprächig, neugierig, sportlich und immer mit einem Auge für die Geschichte hinter der Geschichte. Im Podcast bringt Patrick Energie, Tiefgang und genau die Fragen mit, die Gespräche spannend machen.
+                Lehrer, Gesprächsmensch, Reisender und der Typ, der mit einem scheinbar einfachen Satz plötzlich ein ganzes Gespräch ins Rollen bringt.
               </p>
-            </article>
+              <span class="card-readmore">Mehr lesen →</span>
+            </button>
 
-            <article class="card-glass">
+            <button type="button" class="card-glass card-button" onclick="openPerson('christian')" aria-label="Mehr über Christian">
               <h3>Christian</h3>
               <p>
-                Direkt, reflektiert und mit einem klaren Blick auf Arbeit, Freiheit, Familie und Veränderung. Christian spricht über das, was viele denken – aber nicht immer aussprechen.
+                Ex-System-Insider, heutiger Hinterfrager und jemand, der Arbeit, Freiheit und Lebenszeit nicht mehr einfach als gegeben hinnimmt.
               </p>
-            </article>
+              <span class="card-readmore">Mehr lesen →</span>
+            </button>
           </div>
         </div>
       </section>
@@ -1154,6 +1240,21 @@
       </footer>
     </main>
 
+    <div id="personModal" class="person-backdrop" aria-hidden="true">
+      <div class="person-panel">
+        <div class="person-panel-head">
+          <div>
+            <h3 id="personTitle" class="person-title">Patrick</h3>
+            <div id="personSubtitle" class="person-subtitle">Host</div>
+          </div>
+          <button onclick="closePerson()" class="person-close" aria-label="Schließen">✕</button>
+        </div>
+
+        <div id="personHighlight" class="person-highlight">Host</div>
+        <div id="personContent" class="person-content"></div>
+      </div>
+    </div>
+
     <div id="legalModal" class="legal-backdrop" aria-hidden="true">
       <div class="legal-panel">
         <div class="legal-panel-head">
@@ -1172,6 +1273,41 @@
     const menuIconOpen = document.getElementById('menuIconOpen');
     const menuIconClose = document.getElementById('menuIconClose');
     const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+    const personData = {
+      patrick: {
+        title: 'Patrick',
+        subtitle: 'Host · Lehrer · Expat · Wein-Nerd',
+        highlight: 'Mehr über Patrick',
+        content: `
+          <p>Patrick ist Lehrer für Deutsch, Sport und Religion und jemand, der Gespräche sammelt wie andere Briefmarken.</p>
+          <p>Wer ihn kennt, weiß: Wenn Patrick einmal ins Erzählen kommt, kann aus einem kurzen Gespräch schnell ein ganzer Abend werden.</p>
+          <p>Seine Freunde würden ihn in drei Worten beschreiben: unterhaltsam, sportlich und redselig.</p>
+          <p>Doch Schule ist für ihn mehr als Unterricht.</p>
+          <p>Auch Patrick stellt sich Fragen wie: Warum akzeptieren Menschen Strukturen oft einfach, ohne sie zu hinterfragen? Und was müsste sich eigentlich ändern, damit Bildung wirklich zukunftsfähig wird?</p>
+          <p>Reisen spielt eine große Rolle in seinem Leben. Besonders geprägt hat ihn seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm.</p>
+          <p>Sein kulinarisches Herz schlägt für Italien, auch die italienischen Weine haben es ihm als Sommelier angetan.</p>
+          <p>Und im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt.</p>
+          <p>Der Swabian-Türk, der gar nicht türkisch ist, verheiratet mit einer asiatisch-amerikanischen Frau – und jetzt fest in Thailand verwurzelt.</p>
+          <p>Mit Chris sinniert er gern übers Auswandern, Beziehungen, Sex, Familie und den kompletten Wahnsinn zwischen Currywurst und Kokosmilch.</p>
+          <p><strong>Patrick.</strong><br>Ex-Beamter, aktueller Expat-Lehrer, Wein-Nerd, Abenteurer, Familienmensch.</p>
+        `
+      },
+      christian: {
+        title: 'Christian',
+        subtitle: 'Host · Ex-System-Insider · Hinterfrager',
+        highlight: 'Mehr über Christian',
+        content: `
+          <p>Ehemaliger Industrieschauspieler – Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon. Maschinenbau, Millionen-Investitionsprojekte, Holzklasse und Jetlag inklusive.</p>
+          <p>Heute schaut er auf vieles davon mit dem Gesichtsausdruck von jemandem, der gerade festgestellt hat: Das Hamsterrad war optional.</p>
+          <p>Seitdem stellt er sich Fragen wie: Wie wollen wir eigentlich leben – und nicht nur funktionieren? Was ist Erfolg wirklich, außer eine hübsche Excel-Tabelle mit Statussymbolen? Und warum rennen so viele Menschen mit Vollgas in eine Richtung, die sie eigentlich gar nicht wollen?</p>
+          <p>Im Podcast bringt Christian die Perspektive von jemandem mit, der lange tief im System drin war – und irgendwann beschlossen hat, die Notbremse zu ziehen.</p>
+          <p>Denn am Ende geht es um die unbequemen Fragen: Arbeit – Karriere oder Lebenszeit? Freiheit – Realität oder nur ein schönes Wort für Montagmorgen? Familie – und wie man sie nicht irgendwann nur noch im Kalender sieht.</p>
+          <p>Mal nachdenklich. Mal ziemlich direkt. Aber immer ehrlich – auch wenn es manchmal weh tut.</p>
+          <p><strong>Christian.</strong><br>Ex-System-Insider. Aktueller Hinterfrager. Und ja: Er hat’s überlebt.</p>
+        `
+      }
+    };
 
     function closeMobileMenu() {
       if (!menuButton || !mobileMenu) return;
@@ -1192,6 +1328,34 @@
         menuIconOpen?.classList.add('hidden');
         menuIconClose?.classList.remove('hidden');
       }
+    }
+
+    function openPerson(personKey) {
+      const modal = document.getElementById('personModal');
+      const title = document.getElementById('personTitle');
+      const subtitle = document.getElementById('personSubtitle');
+      const highlight = document.getElementById('personHighlight');
+      const content = document.getElementById('personContent');
+
+      const person = personData[personKey];
+      if (!modal || !person) return;
+
+      title.textContent = person.title;
+      subtitle.textContent = person.subtitle;
+      highlight.textContent = person.highlight;
+      content.innerHTML = person.content;
+
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePerson() {
+      const modal = document.getElementById('personModal');
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     }
 
     menuButton?.addEventListener('click', toggleMobileMenu);
@@ -1246,20 +1410,29 @@
 
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeLegal() {
       const modal = document.getElementById('legalModal');
       modal.style.display = 'none';
       modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     }
 
     document.getElementById('legalModal')?.addEventListener('click', (e) => {
       if (e.target.id === 'legalModal') closeLegal();
     });
 
+    document.getElementById('personModal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'personModal') closePerson();
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLegal();
+      if (e.key === 'Escape') {
+        closeLegal();
+        closePerson();
+      }
     });
   </script>
 </body>
