@@ -1377,33 +1377,96 @@
       const title = document.getElementById('legalTitle');
       const content = document.getElementById('legalContent');
 
+      if (!modal || !title || !content) return;
+
       if (type === 'impressum') {
         title.textContent = 'Impressum';
         content.innerHTML = `
           <strong>Angaben gemäß § 5 TMG</strong><br><br>
+
           Takoma Digital LLC<br>
           30 N Gould St, Ste N<br>
           Sheridan, WY 82801<br>
           USA<br><br>
-          E-Mail: info@takoma-digital.com<br>
-          Registered in the State of Wyoming
-        `;
-      }
 
-      if (type === 'datenschutz') {
+          E-Mail: info@takoma-digital.com<br>
+          Registered in the State of Wyoming<br><br>
+
+          <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br>
+          Takoma Digital LLC<br>
+          30 N Gould St, Ste N<br>
+          Sheridan, WY 82801<br>
+          USA<br><br>
+
+          <strong>Haftung für Inhalte</strong><br>
+          Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird jedoch keine Gewähr übernommen.<br><br>
+
+          <strong>Haftung für Links</strong><br>
+          Diese Website enthält Links zu externen Websites Dritter. Auf deren Inhalte haben wir keinen Einfluss. Für die Inhalte der verlinkten Seiten sind ausschließlich deren jeweilige Anbieter oder Betreiber verantwortlich.
+        `;
+      } else if (type === 'datenschutz') {
         title.textContent = 'Datenschutz';
         content.innerHTML = `
-          <strong>Datenschutzerklärung (Kurzfassung)</strong><br><br>
-          Diese Website wird über Vercel oder GitHub Pages bereitgestellt. Beim Aufruf der Website können technisch notwendige Informationen wie IP-Adresse, Browsertyp, Datum und Uhrzeit des Zugriffs automatisch verarbeitet werden, um die Seite sicher und stabil bereitzustellen.<br><br>
-          Wenn du uns per E-Mail kontaktierst, werden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage verwendet.<br><br>
-          Wenn du dich für unseren Insider-Bereich anmeldest, verwenden wir deine E-Mail-Adresse ausschließlich, um dir Informationen rund um den Podcast zu senden. Die Anmeldung erfolgt über Tally. Du kannst dich jederzeit wieder austragen.<br><br>
-          Diese Website enthält Links zu externen Plattformen wie Instagram, YouTube und später Spotify. Für Inhalte und Datenschutzbestimmungen dieser Plattformen sind ausschließlich die jeweiligen Anbieter verantwortlich.<br><br>
-          Verantwortlicher im Sinne der datenschutzrechtlichen Vorschriften ist:<br>
+          <strong>Datenschutzerklärung</strong><br><br>
+
+          <strong>1. Allgemeine Hinweise</strong><br>
+          Der Schutz deiner personenbezogenen Daten ist uns wichtig. Nachfolgend informieren wir dich darüber, welche Daten beim Besuch dieser Website verarbeitet werden und zu welchem Zweck dies geschieht.<br><br>
+
+          <strong>2. Verantwortlicher</strong><br>
           Takoma Digital LLC<br>
           30 N Gould St, Ste N<br>
           Sheridan, WY 82801<br>
           USA<br>
           E-Mail: info@takoma-digital.com<br><br>
+
+          <strong>3. Hosting und Server-Logfiles</strong><br>
+          Diese Website wird über Vercel oder GitHub Pages bereitgestellt. Beim Aufruf der Website können durch den Hosting-Anbieter automatisch technisch erforderliche Informationen verarbeitet werden. Dazu gehören insbesondere:<br>
+          - IP-Adresse<br>
+          - Browsertyp und Browserversion<br>
+          - verwendetes Betriebssystem<br>
+          - Referrer-URL<br>
+          - Datum und Uhrzeit des Zugriffs<br><br>
+
+          Die Verarbeitung dieser Daten erfolgt zur Gewährleistung eines sicheren und stabilen Betriebs der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.<br><br>
+
+          <strong>4. Kontaktaufnahme per E-Mail</strong><br>
+          Wenn du uns per E-Mail kontaktierst, werden die von dir übermittelten Angaben ausschließlich zur Bearbeitung deiner Anfrage verarbeitet. Eine Weitergabe an Dritte erfolgt nicht ohne deine ausdrückliche Einwilligung.<br><br>
+
+          Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO, sofern deine Anfrage mit einem Vertrag oder einer vorvertraglichen Maßnahme zusammenhängt, sowie Art. 6 Abs. 1 lit. f DSGVO bei sonstigen Anfragen.<br><br>
+
+          <strong>5. Insider-Bereich / Newsletter-Anmeldung über Tally</strong><br>
+          Wenn du dich für unseren Insider-Bereich anmeldest, wird deine E-Mail-Adresse über den Dienst Tally erfasst und verarbeitet. Die Verwendung erfolgt ausschließlich, um dir Informationen rund um den Podcast, neue Folgen oder relevante Updates zuzusenden.<br><br>
+
+          Die Anmeldung erfolgt freiwillig. Du kannst dich jederzeit wieder abmelden.<br><br>
+
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO.<br><br>
+
+          Weitere Informationen zum Datenschutz bei Tally findest du hier:<br>
+          <a href="https://tally.so/help/privacy-policy" target="_blank" rel="noopener noreferrer">https://tally.so/help/privacy-policy</a><br><br>
+
+          <strong>6. Externe Links und Plattformen</strong><br>
+          Diese Website enthält Links zu externen Plattformen wie Instagram, YouTube und Spotify. Beim Anklicken dieser Links verlässt du unsere Website. Für die Inhalte sowie die Datenschutzbestimmungen der jeweiligen externen Anbieter sind ausschließlich deren Betreiber verantwortlich.<br><br>
+
+          <strong>7. Cookies</strong><br>
+          Diese Website verwendet derzeit keine zustimmungspflichtigen Cookies für Tracking-, Analyse- oder Marketingzwecke.<br><br>
+
+          Sofern künftig solche Technologien eingesetzt werden, erfolgt dies erst nach entsprechender Information und – soweit erforderlich – nach deiner Einwilligung.<br><br>
+
+          <strong>8. Deine Rechte</strong><br>
+          Du hast im Rahmen der geltenden gesetzlichen Bestimmungen insbesondere folgende Rechte:<br>
+          - Recht auf Auskunft über deine gespeicherten Daten<br>
+          - Recht auf Berichtigung unrichtiger Daten<br>
+          - Recht auf Löschung deiner Daten<br>
+          - Recht auf Einschränkung der Verarbeitung<br>
+          - Recht auf Widerspruch gegen die Verarbeitung<br>
+          - Recht auf Datenübertragbarkeit<br><br>
+
+          <strong>9. Beschwerderecht</strong><br>
+          Du hast das Recht, dich bei einer zuständigen Datenschutz-Aufsichtsbehörde über die Verarbeitung deiner personenbezogenen Daten zu beschweren.<br><br>
+
+          <strong>10. Aktualität und Änderungen</strong><br>
+          Diese Datenschutzerklärung hat den Stand 2026. Wir behalten uns vor, sie bei rechtlichen oder technischen Änderungen entsprechend anzupassen.<br><br>
+
           Stand: 2026
         `;
       }
@@ -1415,6 +1478,7 @@
 
     function closeLegal() {
       const modal = document.getElementById('legalModal');
+      if (!modal) return;
       modal.style.display = 'none';
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
