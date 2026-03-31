@@ -1012,16 +1012,16 @@
           </p>
 
           <div class="story-grid">
-            <button type="button" class="card-glass card-button" onclick="openPerson('patrick')" aria-label="Mehr über Patrick">
-              <h3>Patrick</h3>
+            <button type="button" class="card-glass card-button" onclick="openPerson('turk')" aria-label="Mehr über Turk">
+              <h3>Turk</h3>
               <p>
                 Lehrer, Gesprächsmensch, Reisender und der Typ, der mit einem scheinbar einfachen Satz plötzlich ein ganzes Gespräch ins Rollen bringt.
               </p>
               <span class="card-readmore">Mehr lesen →</span>
             </button>
 
-            <button type="button" class="card-glass card-button" onclick="openPerson('christian')" aria-label="Mehr über Christian">
-              <h3>Christian</h3>
+            <button type="button" class="card-glass card-button" onclick="openPerson('led')" aria-label="Mehr über Led">
+              <h3>Led</h3>
               <p>
                 Ex-System-Insider, heutiger Hinterfrager und jemand, der Arbeit, Freiheit und Lebenszeit nicht mehr einfach als gegeben hinnimmt.
               </p>
@@ -1244,7 +1244,7 @@
       <div class="person-panel">
         <div class="person-panel-head">
           <div>
-            <h3 id="personTitle" class="person-title">Patrick</h3>
+            <h3 id="personTitle" class="person-title">Turk</h3>
             <div id="personSubtitle" class="person-subtitle">Host</div>
           </div>
           <button onclick="closePerson()" class="person-close" aria-label="Schließen">✕</button>
@@ -1275,36 +1275,36 @@
     const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
 
     const personData = {
-      patrick: {
-        title: 'Patrick',
+      turk: {
+        title: 'Turk',
         subtitle: 'Host · Lehrer · Expat · Wein-Nerd',
-        highlight: 'Mehr über Patrick',
+        highlight: 'Mehr über Turk',
         content: `
-          <p>Patrick ist Lehrer für Deutsch, Sport und Religion und jemand, der Gespräche sammelt wie andere Briefmarken.</p>
-          <p>Wer ihn kennt, weiß: Wenn Patrick einmal ins Erzählen kommt, kann aus einem kurzen Gespräch schnell ein ganzer Abend werden.</p>
+          <p>Turk ist Lehrer für Deutsch, Sport und Religion und jemand, der Gespräche sammelt wie andere Briefmarken.</p>
+          <p>Wer ihn kennt, weiß: Wenn Turk einmal ins Erzählen kommt, kann aus einem kurzen Gespräch schnell ein ganzer Abend werden.</p>
           <p>Seine Freunde würden ihn in drei Worten beschreiben: unterhaltsam, sportlich und redselig.</p>
           <p>Doch Schule ist für ihn mehr als Unterricht.</p>
-          <p>Auch Patrick stellt sich Fragen wie: Warum akzeptieren Menschen Strukturen oft einfach, ohne sie zu hinterfragen? Und was müsste sich eigentlich ändern, damit Bildung wirklich zukunftsfähig wird?</p>
+          <p>Auch Turk stellt sich Fragen wie: Warum akzeptieren Menschen Strukturen oft einfach, ohne sie zu hinterfragen? Und was müsste sich eigentlich ändern, damit Bildung wirklich zukunftsfähig wird?</p>
           <p>Reisen spielt eine große Rolle in seinem Leben. Besonders geprägt hat ihn seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm.</p>
           <p>Sein kulinarisches Herz schlägt für Italien, auch die italienischen Weine haben es ihm als Sommelier angetan.</p>
           <p>Und im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt.</p>
           <p>Der Swabian-Türk, der gar nicht türkisch ist, verheiratet mit einer asiatisch-amerikanischen Frau – und jetzt fest in Thailand verwurzelt.</p>
           <p>Mit Chris sinniert er gern übers Auswandern, Beziehungen, Familie und den kompletten Wahnsinn zwischen Currywurst und Kokosmilch.</p>
-          <p><strong>Patrick.</strong><br>Ex-Beamter, aktueller Expat-Lehrer, Wein-Nerd, Abenteurer, Familienmensch.</p>
+          <p><strong>Turk.</strong><br>Ex-Beamter, aktueller Expat-Lehrer, Wein-Nerd, Abenteurer, Familienmensch.</p>
         `
       },
-      christian: {
-        title: 'Christian',
+      led: {
+        title: 'Led',
         subtitle: 'Host · Ex-System-Insider · Hinterfrager',
-        highlight: 'Mehr über Christian',
+        highlight: 'Mehr über Led',
         content: `
-          <p>Ehemaliger Industrieschauspieler – Christian hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon. Maschinenbau, Millionen-Investitionsprojekte, Holzklasse und Jetlag inklusive.</p>
+          <p>Ehemaliger Industrieschauspieler – Led hat im internationalen Industrievertrieb die Kilometer gesammelt wie andere Pokémon. Maschinenbau, Millionen-Investitionsprojekte, Holzklasse und Jetlag inklusive.</p>
           <p>Heute schaut er auf vieles davon mit dem Gesichtsausdruck von jemandem, der gerade festgestellt hat: Das Hamsterrad war optional.</p>
           <p>Seitdem stellt er sich Fragen wie: Wie wollen wir eigentlich leben – und nicht nur funktionieren? Was ist Erfolg wirklich, außer eine hübsche Excel-Tabelle mit Statussymbolen? Und warum rennen so viele Menschen mit Vollgas in eine Richtung, die sie eigentlich gar nicht wollen?</p>
-          <p>Im Podcast bringt Christian die Perspektive von jemandem mit, der lange tief im System drin war – und irgendwann beschlossen hat, die Notbremse zu ziehen.</p>
+          <p>Im Podcast bringt Led die Perspektive von jemandem mit, der lange tief im System drin war – und irgendwann beschlossen hat, die Notbremse zu ziehen.</p>
           <p>Denn am Ende geht es um die unbequemen Fragen: Arbeit – Karriere oder Lebenszeit? Freiheit – Realität oder nur ein schönes Wort für Montagmorgen? Familie – und wie man sie nicht irgendwann nur noch im Kalender sieht.</p>
           <p>Mal nachdenklich. Mal ziemlich direkt. Aber immer ehrlich – auch wenn es manchmal weh tut.</p>
-          <p><strong>Christian.</strong><br>Ex-System-Insider. Aktueller Hinterfrager. Und ja: Er hat’s überlebt.</p>
+          <p><strong>Led.</strong><br>Ex-System-Insider. Aktueller Hinterfrager. Und ja: Er hat’s überlebt.</p>
         `
       }
     };
