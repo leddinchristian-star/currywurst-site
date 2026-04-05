@@ -8,7 +8,6 @@
     name="description"
     content="Currywurst & Kokosmilch ist der Podcast über Auswandern, Familie, Freiheit, Zweifel, Neuanfang und das echte Leben zwischen Deutschland und Thailand."
   />
-  <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://tally.so/widgets/embed.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,6 +54,8 @@
       font-family: inherit;
     }
 
+    /* ───── Global overlays ───── */
+
     .site-overlay {
       position: fixed;
       inset: 0;
@@ -82,6 +83,8 @@
       z-index: 2;
     }
 
+    /* ───── Reveal animation ───── */
+
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -93,15 +96,20 @@
       transform: translateY(0);
     }
 
+    /* ───── Section spacing ───── */
+
     .section-space {
       padding-top: 7rem;
       padding-bottom: 7rem;
       background: transparent;
     }
 
+    /* ───── Hero ───── */
+
     .hero {
       position: relative;
       min-height: 100vh;
+      min-height: 100dvh;
       overflow: hidden;
       background: transparent;
       isolation: isolate;
@@ -117,6 +125,8 @@
       z-index: 1;
     }
 
+    /* ───── Glass navigation ───── */
+
     .glass-nav {
       background: rgba(10,10,10,0.36);
       backdrop-filter: blur(18px);
@@ -125,10 +135,94 @@
       box-shadow: 0 14px 42px rgba(0,0,0,0.22);
     }
 
+    /* ───── Header (replaces Tailwind utilities) ───── */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    .header-wrap {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1rem 1rem 0;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 999px;
+      padding: 1rem 1.25rem;
+      color: #fff;
+    }
+
+    .nav-subtitle {
+      margin-top: 0.25rem;
+      font-size: 12px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .desktop-nav a {
+      transition: opacity .2s ease;
+    }
+
+    .desktop-nav a:hover {
+      opacity: 0.6;
+    }
+
+    .menu-icon {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    .menu-icon-hidden {
+      display: none;
+    }
+
+    @media (min-width: 1181px) {
+      .desktop-nav {
+        display: flex;
+      }
+
+      .header-wrap {
+        padding: 1rem 1.5rem 0;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .header-wrap {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .header-wrap {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* ───── Hero layout ───── */
+
     .hero-layout {
       position: relative;
       z-index: 3;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       max-width: 1600px;
@@ -182,6 +276,7 @@
       border-radius: 999px;
       background: var(--yellow);
       box-shadow: 0 0 16px rgba(255,212,0,0.85);
+      flex-shrink: 0;
     }
 
     .brand-top {
@@ -301,6 +396,8 @@
       background: rgba(255,255,255,0.14);
     }
 
+    /* ───── Logo buttons (platform links) ───── */
+
     .logo-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -363,6 +460,8 @@
       color: rgba(255,255,255,0.72);
     }
 
+    /* ───── Floating decorative elements ───── */
+
     .float-layer {
       position: absolute;
       inset: 0;
@@ -415,6 +514,8 @@
       100% { transform: translateX(118vw) translateY(14px) rotate(145deg) scale(0.96); opacity: 0; }
     }
 
+    /* ───── Section layout ───── */
+
     .section-clear {
       position: relative;
       background: transparent;
@@ -458,6 +559,8 @@
       color: rgba(255,255,255,0.82);
     }
 
+    /* ───── Grids ───── */
+
     .story-grid,
     .topics-grid,
     .platform-grid {
@@ -469,6 +572,8 @@
     .story-grid { grid-template-columns: 1fr 1fr; }
     .topics-grid { grid-template-columns: repeat(3, 1fr); }
     .platform-grid { grid-template-columns: 1fr 1fr; }
+
+    /* ───── Glass cards ───── */
 
     .card-glass {
       border-radius: 1.9rem;
@@ -528,6 +633,8 @@
       color: var(--yellow);
     }
 
+    /* ───── Newsletter box ───── */
+
     .newsletter-box {
       margin-top: 2.6rem;
       border-radius: 2rem;
@@ -538,6 +645,8 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
+
+    /* ───── Footer ───── */
 
     .footer {
       background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
@@ -578,6 +687,8 @@
       50% { transform: scale(1.14); }
     }
 
+    /* ───── Legal & Person modals ───── */
+
     .legal-backdrop,
     .person-backdrop {
       position: fixed;
@@ -605,6 +716,7 @@
       border: 1px solid rgba(255,255,255,0.10);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
+      -webkit-overflow-scrolling: touch;
     }
 
     .legal-panel {
@@ -645,8 +757,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
       background: transparent;
@@ -692,10 +804,16 @@
       color: var(--yellow);
     }
 
+    /* ───── Mobile menu (default hidden) ───── */
+
     .mobile-menu-button,
     .mobile-menu {
       display: none;
     }
+
+    /* ═══════════════════════════════════════════
+       TABLET BREAKPOINT (769px – 1180px)
+       ═══════════════════════════════════════════ */
 
     @media (max-width: 1180px) {
       body {
@@ -704,7 +822,7 @@
 
       .hero-layout {
         min-height: auto;
-        padding: 1.25rem 1rem 2rem;
+        padding: 1.5rem 1.25rem 2.5rem;
       }
 
       .hero-left {
@@ -712,12 +830,16 @@
         padding-top: 6rem;
       }
 
-      .story-grid,
-      .topics-grid,
-      .platform-grid {
-        grid-template-columns: 1fr;
+      .hero-title {
+        font-size: clamp(3rem, 9vw, 5.5rem);
       }
 
+      /* Tablet: 2 columns for story & platform, topics stay 3 if room */
+      .story-grid { grid-template-columns: 1fr 1fr; }
+      .platform-grid { grid-template-columns: 1fr 1fr; }
+      .topics-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* Mobile menu toggle visible */
       .mobile-menu-button {
         display: inline-flex;
         width: 46px;
@@ -728,6 +850,7 @@
         border: 1px solid rgba(255,255,255,0.14);
         background: rgba(255,255,255,0.08);
         color: #fff;
+        cursor: pointer;
       }
 
       .mobile-menu {
@@ -752,58 +875,451 @@
         color: rgba(255,255,255,0.92);
       }
 
-      .mobile-menu a:hover {
+      .mobile-menu a:hover,
+      .mobile-menu a:active {
         background: rgba(255,255,255,0.08);
       }
     }
 
-    @media (max-width: 760px) {
+    /* ═══════════════════════════════════════════
+       SMALL TABLET / LARGE PHONE (481px – 768px)
+       ═══════════════════════════════════════════ */
+
+    @media (max-width: 768px) {
       .section-space {
         padding-top: 5rem;
         padding-bottom: 5rem;
       }
 
-      .hero-copy-box,
-      .newsletter-box,
-      .person-panel,
-      .legal-panel {
-        padding: 1.25rem 1.1rem 1.4rem;
+      .hero-layout {
+        padding: 1rem 1rem 2rem;
+        align-items: flex-start;
+      }
+
+      .hero-left {
+        padding-top: 5.5rem;
+      }
+
+      .hero-copy-box {
+        padding: 1.6rem 1.5rem 1.8rem;
+        border-radius: 1.6rem;
       }
 
       .hero-title {
-        font-size: clamp(2.65rem, 17vw, 4.4rem);
+        font-size: clamp(2.8rem, 11vw, 4rem);
       }
 
-      .brand-top {
-        font-size: 10px;
+      .section-title {
+        font-size: clamp(2rem, 5.5vw, 3rem);
       }
 
-      .eyebrow {
-        font-size: 11px;
+      /* All grids go single column on small tablet */
+      .story-grid,
+      .topics-grid,
+      .platform-grid {
+        grid-template-columns: 1fr;
       }
 
-      .subline {
-        font-size: 0.98rem;
+      .card-glass {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
       }
 
+      .card-glass h3 {
+        font-size: 1.4rem;
+      }
+
+      /* CTAs side by side if they fit, else stack */
       .cta-primary,
-      .cta-secondary,
-      .logo-btn,
-      .hero-stat {
-        width: 100%;
-        justify-content: center;
+      .cta-secondary {
+        min-height: 52px;
+        padding: 0 1.3rem;
+        font-size: 12px;
       }
 
-      .logo-buttons,
-      .hero-stats {
+      /* Logo buttons wrap nicely */
+      .logo-buttons {
         gap: 0.75rem;
+      }
+
+      .logo-btn {
+        min-height: 48px;
+        font-size: 11px;
+        padding: 0 0.85rem 0 0.8rem;
+        gap: 0.6rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .logo-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .newsletter-box {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+      }
+
+      /* Modals */
+      .legal-panel,
+      .person-panel {
+        padding: 1.4rem;
+        border-radius: 1.4rem;
+        max-height: 88vh;
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.8rem;
       }
     }
+
+    /* ═══════════════════════════════════════════
+       PHONE BREAKPOINT (≤ 480px)
+       ═══════════════════════════════════════════ */
+
+    @media (max-width: 480px) {
+      .section-space {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
+
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero-layout {
+        padding: 0.75rem 0.75rem 1.5rem;
+      }
+
+      .hero-left {
+        padding-top: 4.8rem;
+      }
+
+      .hero-copy-box {
+        padding: 1.2rem 1rem 1.4rem;
+        border-radius: 1.3rem;
+      }
+
+      .hero-kicker {
+        font-size: 9.5px;
+        padding: 0.45rem 0.7rem;
+        gap: 0.4rem;
+        letter-spacing: 0.14em;
+      }
+
+      .hero-kicker-dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .brand-top {
+        font-size: 10px;
+        letter-spacing: 0.26em;
+      }
+
+      .eyebrow {
+        font-size: 10.5px;
+        margin-top: 0.7rem;
+        letter-spacing: 0.16em;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 14vw, 3.4rem);
+        margin-top: 0.9rem;
+      }
+
+      .subline {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        margin-top: 1rem;
+      }
+
+      .hero-stats {
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .hero-stat {
+        min-height: 36px;
+        padding: 0.5rem 0.75rem;
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+      }
+
+      /* CTAs full width on phone */
+      .hero-cta-row {
+        margin-top: 1.4rem;
+        gap: 0.7rem;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+        min-height: 50px;
+        font-size: 11.5px;
+        padding: 0 1rem;
+      }
+
+      /* Logo buttons: 2 per row grid */
+      .logo-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin-top: 1.2rem;
+      }
+
+      .logo-btn {
+        min-height: 46px;
+        padding: 0 0.7rem 0 0.65rem;
+        font-size: 10px;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .logo-icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      .logo-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .hero-note {
+        font-size: 12px;
+        margin-top: 0.9rem;
+      }
+
+      /* Section titles */
+      .section-label {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+      }
+
+      .section-title {
+        font-size: clamp(1.7rem, 7.5vw, 2.4rem);
+        line-height: 0.96;
+      }
+
+      .section-text {
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
+
+      /* Cards */
+      .card-glass {
+        padding: 1.25rem;
+        border-radius: 1.3rem;
+      }
+
+      .card-glass h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-glass p {
+        font-size: 0.92rem;
+        line-height: 1.72;
+      }
+
+      .card-readmore {
+        margin-top: 1rem;
+        font-size: 11px;
+      }
+
+      /* Newsletter box */
+      .newsletter-box {
+        padding: 1.2rem 1rem 1.4rem;
+        border-radius: 1.3rem;
+        margin-top: 2rem;
+      }
+
+      .newsletter-box h3 {
+        font-size: 1.35rem !important;
+      }
+
+      .newsletter-box p {
+        font-size: 0.92rem !important;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 1.4rem 1rem 1.8rem;
+      }
+
+      .footer-inner {
+        gap: 0.6rem;
+      }
+
+      .footer-links {
+        font-size: 11px;
+        gap: 0.8rem;
+      }
+
+      /* Modals on phone */
+      .legal-backdrop,
+      .person-backdrop {
+        padding: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .legal-panel,
+      .person-panel {
+        padding: 1.2rem;
+        border-radius: 1.2rem 1.2rem 0 0;
+        max-height: 92vh;
+        width: 100%;
+      }
+
+      .person-content {
+        font-size: 14.5px;
+        line-height: 1.8;
+      }
+
+      .legal-content {
+        font-size: 13.5px;
+        line-height: 1.75;
+      }
+
+      .person-subtitle {
+        font-size: 11px;
+      }
+
+      /* Glass nav compact */
+      .glass-nav {
+        padding: 0.7rem 0.9rem;
+      }
+
+      .glass-nav .brand-top {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+      }
+
+      .glass-nav .nav-subtitle {
+        font-size: 9px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       VERY SMALL PHONES (≤ 360px, e.g. SE, Galaxy Fold)
+       ═══════════════════════════════════════════ */
+
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-copy-box {
+        padding: 1rem 0.85rem 1.2rem;
+      }
+
+      .section-title {
+        font-size: 1.55rem;
+      }
+
+      .logo-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+      }
+
+      .hero-stat {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ───── Touch device optimizations ───── */
+
+    @media (hover: none) and (pointer: coarse) {
+      .card-glass:hover {
+        transform: none;
+      }
+
+      .cta-primary:hover,
+      .cta-secondary:hover,
+      .logo-btn:hover {
+        transform: none;
+      }
+
+      /* Active states for touch feedback */
+      .cta-primary:active {
+        transform: scale(0.97);
+        background: var(--yellow-soft);
+      }
+
+      .cta-secondary:active {
+        transform: scale(0.97);
+        background: rgba(255,255,255,0.14);
+      }
+
+      .logo-btn:active {
+        transform: scale(0.97);
+        background: rgba(0,0,0,0.52);
+      }
+
+      .card-glass:active {
+        transform: scale(0.99);
+        background: rgba(10,10,10,0.28);
+      }
+    }
+
+    /* ───── Landscape phone ───── */
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-layout {
+        min-height: auto;
+        padding-top: 5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .hero-left {
+        padding-top: 1rem;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .section-space {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+    }
+
+    /* ───── Safe area insets (iPhone notch / Dynamic Island) ───── */
+
+    @supports (padding: env(safe-area-inset-top)) {
+      .glass-nav {
+        padding-top: max(1rem, env(safe-area-inset-top));
+      }
+
+      .footer {
+        padding-bottom: max(2.4rem, calc(1.4rem + env(safe-area-inset-bottom)));
+      }
+
+      .legal-panel,
+      .person-panel {
+        padding-bottom: max(1.7rem, calc(1rem + env(safe-area-inset-bottom)));
+      }
+    }
+
+    /* ───── Reduced motion ───── */
 
     @media (prefers-reduced-motion: reduce) {
       .reveal,
@@ -812,6 +1328,10 @@
         transition: none !important;
         animation: none !important;
         transform: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
       }
     }
   </style>
@@ -822,22 +1342,22 @@
   <div class="noise-overlay-global"></div>
 
   <div class="page">
-    <header class="fixed inset-x-0 top-0 z-50">
-      <div class="mx-auto max-w-[1600px] px-4 pt-4 sm:px-6 lg:px-8">
-        <div class="glass-nav flex items-center justify-between rounded-full px-5 py-4 text-white">
+    <header class="site-header">
+      <div class="header-wrap">
+        <div class="glass-nav nav-bar">
           <div>
             <div class="brand-top">Currywurst & Kokosmilch</div>
-            <div class="mt-1 text-xs text-white/72">Podcast · Familie · Freiheit · Thailand</div>
+            <div class="nav-subtitle">Podcast · Familie · Freiheit · Thailand</div>
           </div>
 
-          <nav class="hidden items-center gap-7 text-sm font-semibold xl:flex">
-            <a href="#story" class="transition hover:opacity-60">Story</a>
-            <a href="#hosts" class="transition hover:opacity-60">Hosts</a>
-            <a href="#folgen" class="transition hover:opacity-60">Folgen</a>
-            <a href="#plattformen" class="transition hover:opacity-60">Plattformen</a>
-            <a href="#newsletter" class="transition hover:opacity-60">Insider</a>
-            <a href="#launch" class="transition hover:opacity-60">Launch</a>
-            <a href="#kontakt" class="transition hover:opacity-60">Kontakt</a>
+          <nav class="desktop-nav">
+            <a href="#story">Story</a>
+            <a href="#hosts">Hosts</a>
+            <a href="#folgen">Folgen</a>
+            <a href="#plattformen">Plattformen</a>
+            <a href="#newsletter">Insider</a>
+            <a href="#launch">Launch</a>
+            <a href="#kontakt">Kontakt</a>
           </nav>
 
           <button
@@ -848,10 +1368,10 @@
             aria-label="Menü öffnen"
             class="mobile-menu-button"
           >
-            <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg id="menuIconOpen" xmlns="http://www.w3.org/2000/svg" class="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
-            <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg id="menuIconClose" xmlns="http://www.w3.org/2000/svg" class="menu-icon menu-icon-hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
@@ -1287,7 +1807,7 @@
           <p>Auch Turk stellt sich Fragen wie: Warum akzeptieren Menschen Strukturen oft einfach, ohne sie zu hinterfragen? Und was müsste sich eigentlich ändern, damit Bildung wirklich zukunftsfähig wird?</p>
           <p>Reisen spielt eine große Rolle in seinem Leben. Besonders geprägt hat ihn seine Zeit auf Tonga, wo er mit Einheimischen lebte und mit Buckelwalen schwamm.</p>
           <p>Sein kulinarisches Herz schlägt für Italien, auch die italienischen Weine haben es ihm als Sommelier angetan.</p>
-          <p>Und im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?“ ein Gespräch ins Rollen bringt.</p>
+          <p>Und im Podcast ist er oft derjenige, der mit einem einfachen „Ha ja klar … was ist da los?" ein Gespräch ins Rollen bringt.</p>
           <p>Der Swabian-Türk, der gar nicht türkisch ist.</p>
           <p>Mit Led sinniert er gern übers Auswandern, Beziehungen, Sex, Familie und den kompletten Wahnsinn zwischen Currywurst und Kokosmilch.</p>
           <p><strong>Turk.</strong><br>Ex-Beamter, aktueller Expat-Lehrer, Wein-Nerd, Abenteurer, Familienmensch.</p>
@@ -1304,7 +1824,7 @@
           <p>Im Podcast bringt Led die Perspektive von jemandem mit, der lange tief im System drin war – und irgendwann beschlossen hat, die Notbremse zu ziehen.</p>
           <p>Denn am Ende geht es um die unbequemen Fragen: Arbeit – Karriere oder Lebenszeit? Freiheit – Realität oder nur ein schönes Wort für Montagmorgen? Familie – und wie man sie nicht irgendwann nur noch im Kalender sieht.</p>
           <p>Mal nachdenklich. Mal ziemlich direkt. Aber immer ehrlich – auch wenn es manchmal weh tut.</p>
-          <p><strong>Led.</strong><br>Ex-System-Insider. Aktueller Hinterfrager. Und ja: Er hat’s überlebt.</p>
+          <p><strong>Led.</strong><br>Ex-System-Insider. Aktueller Hinterfrager. Und ja: Er hat's überlebt.</p>
         `
       }
     };
@@ -1313,8 +1833,8 @@
       if (!menuButton || !mobileMenu) return;
       mobileMenu.style.display = 'none';
       menuButton.setAttribute('aria-expanded', 'false');
-      menuIconOpen?.classList.remove('hidden');
-      menuIconClose?.classList.add('hidden');
+      menuIconOpen?.classList.remove('menu-icon-hidden');
+      menuIconClose?.classList.add('menu-icon-hidden');
     }
 
     function toggleMobileMenu() {
@@ -1325,8 +1845,8 @@
       } else {
         mobileMenu.style.display = 'block';
         menuButton.setAttribute('aria-expanded', 'true');
-        menuIconOpen?.classList.add('hidden');
-        menuIconClose?.classList.remove('hidden');
+        menuIconOpen?.classList.add('menu-icon-hidden');
+        menuIconClose?.classList.remove('menu-icon-hidden');
       }
     }
 
